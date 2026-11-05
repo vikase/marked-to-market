@@ -8,36 +8,25 @@
 <meta property="og:title" content="How I built a writing system that argues with me">
 <meta property="og:description" content="A reading library, three guides and a review process that pushes back: how the pieces on this site get made, with the Florida op-ed as the worked example.">
 <meta property="og:type" content="article">
+<meta property="og:url" content="https://vikase.github.io/marked-to-market/how-i-built-a-writing-system/">
+<meta property="og:site_name" content="Marked to Market">
+<meta property="og:image" content="https://vikase.github.io/marked-to-market/how-i-built-a-writing-system/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="How I built a writing system that argues with me: a diagram of a reading library feeding three guides, a drafting skill and the published piece.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/mtm.css">
 <style>
-/* Layout: a reading column with "blueprint" figures that break out wider; figures are drawn as process diagrams with a dotted-grid ground, and build themselves when scrolled into view. */
-:root{
-  --bg:#f3f4f1; --paper:#fbfbf9; --ink:#1a1d1a; --ink-2:#4b524c; --ink-3:#7d857e; --rule:#d8dcd6; --rule-2:#e9ece7;
-  --acc:#1f6f5a; --acc-soft:#dcefe6; --warn:#b4541a; --warn-soft:#f6e6da; --grid:#e3e7e1;
-  --display:"Archivo",system-ui,sans-serif; --body:"Lora",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
-}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141715; --paper:#1b1f1c; --ink:#edefe9; --ink-2:#b7bdb6; --ink-3:#858c85; --rule:#2f3531; --rule-2:#252a27; --acc:#4fb08f; --acc-soft:#1d3a30; --warn:#e07a3a; --warn-soft:#3d2719; --grid:#242925; color-scheme:dark } }
-:root[data-theme="dark"]{ --bg:#141715; --paper:#1b1f1c; --ink:#edefe9; --ink-2:#b7bdb6; --ink-3:#858c85; --rule:#2f3531; --rule-2:#252a27; --acc:#4fb08f; --acc-soft:#1d3a30; --warn:#e07a3a; --warn-soft:#3d2719; --grid:#242925; color-scheme:dark }
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.62;padding-block:0 4rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.col{max-width:64ch;margin:0 auto}
-.wide{max-width:920px;margin:2.2rem auto}
-h1,h2,h3{font-family:var(--display);line-height:1.04;text-wrap:balance;margin:0}
-h1{font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:800;letter-spacing:-.015em}
-h2{font-size:1.3rem;font-weight:800;margin:2.6rem 0 .6rem}
-p{margin:0 0 1.15em}
-.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
-.hero{padding-block:3.2rem 1.4rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
-.hero .dek{font-size:1.18rem;color:var(--ink-2);max-width:58ch;margin-top:1rem}
-.byline{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);margin-top:1.3rem;display:flex;gap:1.2rem;flex-wrap:wrap}
-figure{margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:1.2rem;background-image:radial-gradient(var(--grid) 1px,transparent 1px);background-size:18px 18px}
-figure .ftitle{font-family:var(--display);font-size:1.1rem;font-weight:800;margin:0 0 .15rem}
-figure .fsub{font-size:.9rem;color:var(--ink-2);margin:0 0 1rem}
-figcaption{font-size:.8rem;color:var(--ink-3);margin-top:.8rem;font-family:var(--mono);line-height:1.45}
-svg{display:block;width:100%;height:auto;max-width:100%}
+/* Piece-level styles. Process diagrams use the "blueprint" ground (dotted grid). Tokens and figure anatomy live in ../assets/mtm.css. */
+figure.blueprint{background-image:radial-gradient(var(--grid) 1px,transparent 1px);background-size:18px 18px}
+.dia{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dia svg{display:block;width:100%;min-width:720px;height:auto}
+.scrollhint{display:none;margin:0 0 .4rem}
+@media (max-width:760px){.scrollhint{display:block}}
 svg text{font-family:var(--mono);font-size:11.5px;fill:var(--ink-2)}
-svg .t{font-family:var(--display);font-weight:800;font-size:13px;fill:var(--ink)}
+svg .t{font-family:var(--display);font-weight:700;font-size:13.5px;fill:var(--ink)}
 svg .box{fill:var(--paper);stroke:var(--rule);stroke-width:1.2}
 svg .box.acc{fill:var(--acc-soft);stroke:var(--acc)}
 svg .box.warn{fill:var(--warn-soft);stroke:var(--warn)}
@@ -52,13 +41,13 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
 /* rules list */
 .rules{display:grid;gap:.6rem;margin:0;padding:0;list-style:none}
 .rules li{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
-.rules .q{font-family:var(--display);font-weight:800;color:var(--acc);font-size:.9rem;padding-top:.15rem;min-width:2.2ch}
-.rules .h{font-family:var(--display);font-weight:800;font-size:.98rem;margin:0 0 .25rem}
+.rules .q{font-family:var(--display);font-weight:700;color:var(--acc);font-size:.9rem;padding-top:.15rem;min-width:2.2ch}
+.rules .h{font-family:var(--display);font-weight:700;font-size:.98rem;margin:0 0 .25rem}
 .rules .ex{font-size:.88rem;color:var(--ink-2);margin:0}
 .rules .ex b{color:var(--ink);font-weight:600}
 /* versions */
 .vers{display:grid;grid-template-columns:5ch 1fr;gap:.5rem 1rem;font-size:.92rem}
-.vers .v{font-family:var(--display);font-weight:800;color:var(--acc)}
+.vers .v{font-family:var(--display);font-weight:700;color:var(--acc)}
 .vers .d{padding-bottom:.7rem;border-bottom:1px dashed var(--rule)}
 .vers .d b{font-weight:600}
 .vers .meta{font-family:var(--mono);font-size:.74rem;color:var(--ink-3);display:block;margin-top:.25rem}
@@ -75,7 +64,7 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
 .mx .hd{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:.4rem;padding-bottom:.4rem}
 .mx .b{color:var(--ink-2);font-style:italic}
 .mx .n{border-left:3px solid var(--acc);background:var(--paper)}
-.mx .n b{font-family:var(--display);font-weight:800;font-size:.86rem;display:block;font-style:normal}
+.mx .n b{font-family:var(--display);font-weight:700;font-size:.86rem;display:block;font-style:normal}
 .mx .gap{border-left-color:var(--warn)}
 .mx3{grid-template-columns:1fr 1fr 1fr}
 .mx3 .n b{margin-bottom:.1rem}
@@ -91,10 +80,10 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 @media (prefers-reduced-motion: reduce){.build .step,.build .arrow{transition:none}.build.pre .step{opacity:1;transform:none}.build.pre .arrow{stroke-dashoffset:0}}
 @media (max-width:520px){body{font-size:17px} figure{padding:1rem .8rem}}
 </style>
-<style>.site-nav{max-width:66ch;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0 0;font-family:ui-monospace,Menlo,monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.site-nav a{color:inherit;text-decoration:none;font-weight:600}.site-nav a:hover{text-decoration:underline}.site-nav span{opacity:.6}</style>
+
 </head>
 <body>
-<nav class="site-nav"><a href="../">Marked to Market</a><span>Vikas Erraballi</span></nav>
+<nav class="site-nav"><a href="../">Marked to <span class="m">Market</span></a><span>Vikas Erraballi</span></nav>
 
 <header class="hero col">
   <div class="eyebrow">Working notes · November 2026</div>
@@ -118,9 +107,12 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 </main>
 
 <div class="wide">
-<figure>
+<figure id="fig-1">
+  <p class="kick"><span><b>Fig 1</b> · The 2017 pages</span><span>Notepad, Jan 10, 2017</span></p>
+  <p class="ftitle">Five layers, sketched on a dining table in January 2017</p>
   <img src="sketches-jan-2017.jpg" width="1050" height="1400" loading="lazy" alt="Notepad pages spread on a dining table, January 10, 2017. The front page, headed LAYERS, stacks five boxes: Article (L1), Auto-detected elements (L2), Highlights and annotations (L3), Outline (L4) and Relations (L5), with the rule that when more than one layer is present there must be a relationship between them. Behind it are pages on orienting, relations, and notes on The Attention Merchants, beside a highlighted printout of the book." style="display:block;width:100%;max-width:560px;height:auto;margin:0 auto;border-radius:3px">
   <figcaption>The pages as I photographed them on January 10, 2017. Front: the five layers. Behind: "orienting" (you are here in this article, and the evidence for and against its main idea), relations, and my notes on Wu's book.</figcaption>
+  <div class="ticker"><span>Photo: the author</span><span class="asof">Jan 10, 2017 · <a href="#fig-1">¶ fig 1</a></span></div>
 </figure>
 </div>
 
@@ -133,8 +125,9 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 </main>
 
 <div class="wide">
-<figure class="build pre" data-anim>
-  <p class="ftitle">Bush's memex, my 2017 layers, and what they became</p>
+<figure id="fig-2" class="build" data-anim>
+  <p class="kick"><span><b>Fig 2</b> · Memex to system</span><span>1945 · 2017 · 2026</span></p>
+  <p class="ftitle">Every part Bush described now exists, including the one nobody could staff</p>
   <p class="fsub">Left: "As We May Think" (1945). Middle: the January 2017 pages. Right: the part of this system that does the job now.</p>
   <div class="mx mx3">
     <div class="hd">Memex, 1945</div><div class="hd r">My pages, 2017</div><div class="hd r">This system, 2026</div>
@@ -143,9 +136,10 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
     <div class="b" style="--i:3">"He can add marginal notes and comments"</div><div class="n" style="--i:3"><b>L3 Highlights and annotations</b></div><div class="n" style="--i:3"><b>Quote bank</b>one file per book, my highlights with my margin notes beside them</div>
     <div class="b" style="--i:4">&nbsp;</div><div class="n" style="--i:4"><b>L4 Outline</b>sorted from the highlights</div><div class="n" style="--i:4"><b>Drafting skill</b>the thesis, the lens and the outline, built from my reading</div>
     <div class="b" style="--i:5">trails, named and kept, through "the maze of materials"</div><div class="n" style="--i:5"><b>L5 Relations</b>sources, topics, evidence for and against</div><div class="n" style="--i:5"><b>Commonplace book and frameworks</b>ideas filed by theme; nine lenses, each with the questions it makes me ask</div>
-    <div class="b" style="--i:6">"a new profession of trail blazers"</div><div class="n gap" style="--i:6"><b>Nobody</b>the layers had to be built by hand</div><div class="n gap" style="--i:6"><b>Research agents and me</b>the model walks the trails at speed; I decide which ones the argument needs</div>
+    <div class="b" style="--i:6">"a new profession of trail blazers"</div><div class="n gap" style="--i:6"><b>Nobody</b>the layers had to be built by hand<br><span class="stamp" style="margin-top:.4rem">The missing part</span></div><div class="n gap" style="--i:6"><b>Research agents and me</b>the model walks the trails at speed; I decide which ones the argument needs</div>
   </div>
   <figcaption>The 2017 rule, that any two layers present must link to each other, is now the rule that every claim in a piece links to its source. The part neither Bush nor I could mechanize was the reader who builds the trail for you.</figcaption>
+  <div class="ticker"><span>Source: Bush, <a href="https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/">"As We May Think"</a> (1945); the author's notes, Jan 2017</span><span class="asof">Nov 2026 · <a href="#fig-2">¶ fig 2</a></span></div>
 </figure>
 </div>
 
@@ -156,10 +150,12 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 </main>
 
 <div class="wide">
-<figure class="build pre" data-anim>
-  <p class="ftitle">The parts, and what feeds what</p>
-  <p class="fsub">Everything upstream of a piece is mine. The model reads it; it doesn't invent it.</p>
-  <svg viewBox="0 0 900 330" role="img" aria-label="Diagram: a reading library feeds three guides (voice, craft, frameworks), which feed a drafting workflow, which produces a piece; corrections from each piece flow back into the guides.">
+<figure id="fig-3" class="build blueprint" data-anim>
+  <p class="kick"><span><b>Fig 3</b> · The parts</span><span>What feeds what</span></p>
+  <p class="ftitle">Everything upstream of a piece is mine</p>
+  <p class="fsub">The reading library feeds three guides, which feed the drafting skill. The model reads all of it; it doesn't invent it.</p>
+  <p class="hint scrollhint">Scroll sideways for the full diagram →</p>
+  <div class="dia"><svg viewBox="0 0 900 330" role="img" aria-label="Diagram: a reading library feeds three guides (voice, craft, frameworks), which feed a drafting workflow, which produces a piece; corrections from each piece flow back into the guides.">
     <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/></marker></defs>
     <g class="step" style="--i:0"><rect class="box" x="14" y="40" width="226" height="230" rx="4"/><text class="t" x="34" y="66">Reading library</text><text x="34" y="92">Kindle, Audible highlights</text><text x="34" y="110">Evernote, 2009–2019</text><text x="34" y="128">Saved links, 4 platforms</text><text x="34" y="146">Goodreads + Amazon lists</text><text x="34" y="164">Book-page screenshots</text><text class="small" x="34" y="196">→ Quote bank, file per book</text><text class="small" x="34" y="212">→ Commonplace book, by idea</text><text class="small" x="34" y="228">→ Authors, tiered</text><text class="small" x="34" y="244">→ My own writing, 2009–2026</text></g>
     <path class="arrow" style="--i:1" d="M242,100 C270,100 270,70 296,70"/>
@@ -176,8 +172,9 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
     <g class="step" style="--i:6"><rect class="box warn" x="792" y="128" width="96" height="54" rx="4"/><text class="t" x="806" y="152">Piece</text><text x="806" y="170">v1 … v5</text></g>
     <path class="arrow warn" style="--i:7" d="M836,184 C836,300 400,300 397,268"/>
     <text class="small" style="fill:var(--warn)" x="520" y="316">my corrections → corrections log → new rules in the guides</text>
-  </svg>
+  </svg></div>
   <figcaption>The three guides are the system's memory of me. The corrections log is how they change.</figcaption>
+  <div class="ticker"><span>Source: the system as built</span><span class="asof">As of Nov 4, 2026 · <a href="#fig-3">¶ fig 3</a></span></div>
 </figure>
 </div>
 
@@ -201,17 +198,19 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 </main>
 
 <div class="wide">
-<figure>
-  <p class="ftitle">Five drafts in a day</p>
-  <p class="fsub">What my notes caught, and what each one became.</p>
+<figure id="fig-4">
+  <p class="kick"><span><b>Fig 4</b> · Five drafts in a day</span><span>Florida piece · Nov 4</span></p>
+  <p class="ftitle">Every draft taught the system a new rule</p>
+  <p class="fsub">What my notes caught in each version, and the rule each one became.</p>
   <div class="vers">
     <div class="v">v1</div><div class="d">Written from a two-line thesis. The research found the best evidence for the case: the committees moved money into Kansas and Mississippi in October and never into Florida.<span class="meta">Lens: how power works. Check: 35 races, not "hundreds".</span></div>
-    <div class="v">v2</div><div class="d">A style test. I'd asked which writers I might learn from (Sam Kriss, Gore Vidal), so the draft planted its one conceit, "priced at zero," in the opening and closed on it. Four paragraphs changed. <b>Then I ran it through an AI detector: 100 percent.</b> Fair enough; the model typed the sentences. Everything that made the piece worth reading hadn't happened yet.<span class="meta">Lesson: the detector measures the typing. Show the rest.</span></div>
+    <div class="v">v2</div><div class="d">A style test. I'd asked which writers I might learn from (Sam Kriss, Gore Vidal), so the draft planted its one conceit, "priced at zero," in the opening and closed on it. Four paragraphs changed. <b>Then I ran it through an AI detector: 100 percent.</b> <span class="stamp">Detector: 100% AI</span> Fair enough; the model typed the sentences. Everything that made the piece worth reading hadn't happened yet.<span class="meta">Lesson: the detector measures the typing. Show the rest.</span></div>
     <div class="v">v3</div><div class="d">My line notes. The biggest: a sentence about the governor's race had its evidence pointing the wrong way. David Jolly, a centrist ex-Republican, had also been starved of national money and also lost narrowly. That doesn't show a ceiling money couldn't move; it shows the party wrote off the state. The piece reframed around it: Florida could have been a second Texas.<span class="meta">New rule: does each comparison point the way the sentence says?</span></div>
     <div class="v">v4</div><div class="d">My broader questions: how much money did the committees actually have, which other races did they skip, and is Florida unusual? Three research agents ran in parallel; a fourth, which hadn't seen the drafting, fact-checked the result and found thirteen errors. The pattern pointed at the state, not the nominee, which cost the piece its simplest version of the Israel argument and made it more honest.<span class="meta">Rules: did they have the means? Is this case unusual or a pattern?</span></div>
     <div class="v">v5</div><div class="d">A friend's critique: this is hindsight, Florida was close because the whole country moved. So the research computed the swing from 2024 in every red state. The funded ones moved 16 to 26 points; the country moved 13 to 15; Florida moved 10. South Carolina moved 22 on almost nothing, which the piece says too.<span class="meta">Rule: is the defense weighed, and tested against the numbers?</span></div>
   </div>
   <figcaption>Each draft was fact-checked against sources before I saw it. Each rule went into the guide the same day.</figcaption>
+  <div class="ticker"><span>Source: drafts v1–v5 and the corrections log</span><span class="asof">Nov 4, 2026 · <a href="#fig-4">¶ fig 4</a></span></div>
 </figure>
 </div>
 
@@ -223,9 +222,10 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 </main>
 
 <div class="wide">
-<figure>
-  <p class="ftitle">The reader's pushback pass</p>
-  <p class="fsub">Six of the fourteen questions, each with the Florida note it came from.</p>
+<figure id="fig-5">
+  <p class="kick"><span><b>Fig 5</b> · The reader's pushback pass</span><span>6 of 14 questions</span></p>
+  <p class="ftitle">Each standing question began as a note I wrote by hand</p>
+  <p class="fsub">Six of the fourteen questions the pass runs on every draft, each with the Florida note it came from.</p>
   <ol class="rules">
     <li><span class="q">1</span><div><p class="h">Does each comparison point the way the sentence says?</p><p class="ex"><b>From:</b> "Are we saying Jolly did get party support and still lost?" He hadn't. The sentence was reversed.</p></div></li>
     <li><span class="q">2</span><div><p class="h">Are we putting words in anyone's mouth?</p><p class="ex"><b>From:</b> "Not sure Schumer would say that." He hadn't said anything; the draft now attributes the defense to Gillibrand, who had.</p></div></li>
@@ -235,6 +235,7 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
     <li><span class="q">6</span><div><p class="h">Does the reporting change the frame?</p><p class="ex"><b>From:</b> the Jolly finding. The piece was about Nixon; it became about Florida.</p></div></li>
   </ol>
   <figcaption>The last check comes from Mortimer Adler: a reader may disagree with an author only because he is uninformed, misinformed, illogical or incomplete. The pass ends by reading the draft as that critic.</figcaption>
+  <div class="ticker"><span>Source: the craft guide; Adler, <i>How to Read a Book</i></span><span class="asof">As of Nov 4, 2026 · <a href="#fig-5">¶ fig 5</a></span></div>
 </figure>
 </div>
 
@@ -246,10 +247,12 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 </main>
 
 <div class="wide">
-<figure class="build pre" data-anim>
-  <p class="ftitle">Division of labor on one draft</p>
-  <p class="fsub">The desks a newsroom has, each staffed by an agent with one job. The masthead job is mine.</p>
-  <svg viewBox="0 0 900 300" role="img" aria-label="Diagram: three research agents run in parallel and report to the drafting step; a separate fact-check agent reads the draft and sources and returns corrections; the pushback pass runs on the whole draft; then the author reviews.">
+<figure id="fig-6" class="build blueprint" data-anim>
+  <p class="kick"><span><b>Fig 6</b> · Division of labor</span><span>One draft, five desks</span></p>
+  <p class="ftitle">One op-ed, every desk of a newsroom</p>
+  <p class="fsub">The desks a magazine has, each staffed by an agent with one job. The masthead job is mine.</p>
+  <p class="hint scrollhint">Scroll sideways for the full diagram →</p>
+  <div class="dia"><svg viewBox="0 0 900 300" role="img" aria-label="Diagram: three research agents run in parallel and report to the drafting step; a separate fact-check agent reads the draft and sources and returns corrections; the pushback pass runs on the whole draft; then the author reviews.">
     <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/></marker></defs>
     <g class="step" style="--i:0"><rect class="box warn" x="20" y="120" width="120" height="60" rx="4"/><text class="t" x="34" y="145">My notes</text><text x="34" y="163">and questions</text></g>
     <path class="arrow" style="--i:1" d="M142,135 C180,135 180,50 220,50" marker-end="url(#ah2)"/>
@@ -274,8 +277,9 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
     <text class="small role" x="656" y="104">FACT-CHECK DESK</text>
     <text class="small role" x="836" y="112">MASTHEAD</text>
     <text class="small role" x="20" y="112">ASSIGNMENT</text>
-  </svg>
+  </svg></div>
   <figcaption>Each agent starts with a clean context and a narrow brief. The writer reads the reports, never the raw pages, and the fact-checker reads the draft cold.</figcaption>
+  <div class="ticker"><span>Source: the Florida piece, v4</span><span class="asof">Nov 4, 2026 · <a href="#fig-6">¶ fig 6</a></span></div>
 </figure>
 </div>
 
@@ -293,7 +297,8 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 </main>
 
 <div class="wide">
-<figure>
+<figure id="fig-7">
+  <p class="kick"><span><b>Fig 7</b> · Open risks</span><span>Marked Nov 2026</span></p>
   <p class="ftitle">Six ways this could fail, and the plan for each</p>
   <p class="fsub">Each one follows from how language models work, not from anything specific to writing.</p>
   <ol class="rules risk">
@@ -305,6 +310,7 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
     <li><span class="q">6</span><div><p class="h">The model underneath changes</p><p class="ex">The rules were written against one version of the model. A newer one may not need some of them and may misread others.</p><p class="fix"><b>Plan</b>Keep a test set, the Florida drafts and the before-and-after pairs from the corrections log, and rerun it whenever the model changes, the way you'd test code before a release. In the field this is called an eval.</p></div></li>
   </ol>
   <figcaption>Most of these are the same fix in different clothes: independent checks, and a book that gets re-marked when the market moves.</figcaption>
+  <div class="ticker"><span>Source: studies linked in each item</span><span class="asof">As of Nov 4, 2026 · <a href="#fig-7">¶ fig 7</a></span></div>
 </figure>
 </div>
 
@@ -318,11 +324,6 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 
 </main>
 
-<script>
-(function(){
-  var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove("pre");io.unobserve(e.target);}});},{threshold:.3}):null;
-  document.querySelectorAll("[data-anim]").forEach(function(f){ if(io) io.observe(f); else f.classList.remove("pre"); });
-})();
-</script>
+<script src="../assets/mtm.js" defer></script>
 </body>
 </html>

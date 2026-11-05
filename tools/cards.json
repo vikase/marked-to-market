@@ -1,0 +1,26 @@
+[
+  {
+    "out": "florida-priced-at-zero/share.png",
+    "kicker": "Marking to market · Nov 4, 2026",
+    "title": "Florida, priced at <span class=\"pos\">zero</span>",
+    "dek": "Democrats' national committees spent nothing on Florida's Senate race, and lost it by under three points.",
+    "stamp": "Marked at zero",
+    "figure": "<div class=\"mini\"><span>Ohio</span><i style=\"--w:97%\"></i><b>$87.4M</b><span>Maine</span><i style=\"--w:42%\"></i><b>$38.1M</b><span>Texas</span><i style=\"--w:31%\"></i><b>$27.5M</b><span>Kansas</span><i style=\"--w:16%\"></i><b>$14.1M</b><span class=\"pos\">Florida</span><i class=\"zero\"></i><b class=\"pos\">$0</b></div><p class=\"mcap\">Senate Majority PAC network ad spending, by state</p>"
+  },
+  {
+    "out": "how-i-built-a-writing-system/share.png",
+    "kicker": "Working notes · Nov 2026",
+    "title": "How I built a writing system that argues with me",
+    "dek": "A reading library, three guides and a review process that pushes back. What an AI detector measures, and what it leaves out.",
+    "stamp": "Detector: 100% AI",
+    "figure": "<div class=\"flow\"><div class=\"n\">Reading library</div><div class=\"a\"></div><div class=\"n acc\">Voice · Craft · Frameworks</div><div class=\"a\"></div><div class=\"n\">Drafting + pushback</div><div class=\"a\"></div><div class=\"n pos\">Piece, v1 … v5</div></div><p class=\"mcap\">Everything upstream of a piece is mine</p>"
+  },
+  {
+    "out": "share.png",
+    "kicker": "Essays on politics, money and power",
+    "title": "Marked to <span class=\"pos\">Market</span>",
+    "dek": "Written the way a risk desk holds a position: a stated price, the strongest case against, and a promise to re-underwrite when the facts move.",
+    "stamp": "Re-marked as facts move",
+    "figure": ""
+  }
+]

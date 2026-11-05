@@ -8,118 +8,78 @@
 <meta property="og:title" content="Florida, priced at zero">
 <meta property="og:description" content="Democrats' national committees spent nothing on Florida's 2026 Senate race and lost it by under three points. That was a decision, and the ledger shows when it should have changed.">
 <meta property="og:type" content="article">
+<meta property="og:url" content="https://vikase.github.io/marked-to-market/florida-priced-at-zero/">
+<meta property="og:site_name" content="Marked to Market">
+<meta property="og:image" content="https://vikase.github.io/marked-to-market/florida-priced-at-zero/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Florida, priced at zero: a bar chart of Senate Majority PAC's ad spending by state, with Florida's empty bar stamped Marked at zero.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/mtm.css">
 <style>
-/* Layout: a single reading column (66ch) with full-bleed "ledger" figures that break out to ~900px. The figures are drawn like a risk desk's position report: ruled, tabular, monospaced numbers. */
-:root{
-  --bg:#f5f6f8; --paper:#ffffff; --ink:#15181d; --ink-2:#4a5160; --ink-3:#7c8494; --rule:#d9dde4; --rule-2:#eef0f3;
-  --fl:#eb6834; --fl-soft:#fbe9e1; --funded:#2a78d6; --funded-soft:#e4eefb; --band:#eceff4;
-  --display:"IBM Plex Sans Condensed",system-ui,sans-serif; --body:"Source Serif 4",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#121417; --paper:#191c21; --ink:#eceef2; --ink-2:#b4bac6; --ink-3:#848c9b; --rule:#2d323b; --rule-2:#23272e; --fl:#f0784a; --fl-soft:#3a251c; --funded:#3987e5; --funded-soft:#1c2a40; --band:#20242b; color-scheme:dark } }
-:root[data-theme="dark"]{ --bg:#121417; --paper:#191c21; --ink:#eceef2; --ink-2:#b4bac6; --ink-3:#848c9b; --rule:#2d323b; --rule-2:#23272e; --fl:#f0784a; --fl-soft:#3a251c; --funded:#3987e5; --funded-soft:#1c2a40; --band:#20242b; color-scheme:dark }
-
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;padding-block:0 4rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-*{box-sizing:border-box}
-.col{max-width:66ch;margin:0 auto}
-.wide{max-width:900px;margin:2.2rem auto}
-h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0}
-h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:700;letter-spacing:-.01em}
-h2{font-size:1.35rem;font-weight:700;margin-top:2.6rem;margin-bottom:.6rem}
-p{margin:0 0 1.15em}
-.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.hero{padding-block:3.2rem 1.2rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
-.hero .dek{font-size:1.2rem;color:var(--ink-2);max-width:60ch;margin-top:1rem}
-.byline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3);margin-top:1.4rem;display:flex;gap:1.2rem;flex-wrap:wrap}
-.zero{color:var(--fl)}
-sup.fn{font-family:var(--mono);font-size:.62em;vertical-align:super;line-height:0}
-sup.fn a{color:var(--funded);text-decoration:none;border-bottom:1px dotted var(--funded)}
-sup.fn a:focus-visible{outline:2px solid var(--funded);outline-offset:2px}
-.quote{border-left:3px solid var(--fl);padding-left:1rem;color:var(--ink-2);font-style:italic}
-
-/* figures */
-figure{margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:1.2rem 1.2rem 1rem}
-figure .ftitle{font-family:var(--display);font-size:1.15rem;font-weight:700;margin:0 0 .15rem}
-figure .fsub{font-size:.9rem;color:var(--ink-2);margin:0 0 1rem;font-family:var(--body)}
-figcaption{font-size:.82rem;color:var(--ink-3);margin-top:.9rem;font-family:var(--mono);line-height:1.45}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.legend{display:flex;gap:1.2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.75rem;color:var(--ink-2);margin:.2rem 0 .9rem}
-.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:.45rem;vertical-align:-1px;background:var(--sw)}
-
-/* ledger bars */
-.ledger{display:grid;grid-template-columns:minmax(9ch,13ch) 1fr minmax(6ch,8ch);gap:.35rem .8rem;align-items:center;font-size:.85rem}
-.ledger .st{font-family:var(--mono);color:var(--ink-2);white-space:nowrap}
-.ledger .track{position:relative;height:16px;background:var(--rule-2);border-radius:3px;overflow:hidden}
-.ledger .bar{position:absolute;inset:0 auto 0 0;background:var(--funded);border-radius:0 3px 3px 0;width:var(--w);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+/* Piece-level figure styles. Tokens, figure anatomy, stamp and notes live in ../assets/mtm.css. */
+.zero{color:var(--pos)}
+.quote{border-left:3px solid var(--pos);padding-left:1rem;color:var(--ink-2);font-style:italic}
+/* fig 1: ledger */
+.ledger{display:grid;grid-template-columns:max-content 1fr max-content;gap:.38rem .8rem;align-items:center;font-size:.85rem}
+.ledger .st{font-family:var(--mono);color:var(--ink-2);white-space:nowrap;text-align:right}
+.ledger .track{position:relative;height:18px;background:var(--rule-2);border-radius:3px}
+.ledger .bar{position:absolute;inset:0 auto 0 0;background:var(--book);border-radius:0 3px 3px 0;transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
 .ledger .val{text-align:right;color:var(--ink-2)}
-.ledger .row-fl .st,.ledger .row-fl .val{color:var(--fl);font-weight:500}
-.ledger .row-fl .track{background:var(--fl-soft);outline:1px dashed var(--fl)}
-.ledger .zero-tag{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:var(--fl);letter-spacing:.08em}
-.pre .bar{transform:scaleX(0)}
-.in .bar{transform:scaleX(1)}
-.ledger .bar:nth-child(1){transition-delay:calc(var(--i)*60ms)}
-
-/* timeline / price chart */
-.tl{position:relative;overflow-x:auto}
-.tl svg{display:block;width:100%;height:auto;max-width:100%}
-.tl text{font-family:var(--mono);font-size:11px;fill:var(--ink-2)}
-.tl .ax{stroke:var(--rule);stroke-width:1}
-.tl .grid{stroke:var(--rule-2);stroke-width:1}
-.tl .price{fill:none;stroke:var(--fl);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1200;stroke-dashoffset:0;transition:stroke-dashoffset 1.6s ease-out}
-.pre .price{stroke-dashoffset:1200}
-.tl .dot{fill:var(--paper);stroke:var(--fl);stroke-width:2.5}
-.tl .act{fill:var(--funded)}
-.tl .actlab{fill:var(--ink-2)}
-.tl .flat{stroke:var(--fl);stroke-width:2;stroke-dasharray:3 4}
-.tl .lab{fill:var(--ink)}
-.tl .big{font-family:var(--display);font-size:13px;font-weight:700;fill:var(--ink)}
-
-/* swing */
-.swing{display:grid;grid-template-columns:minmax(9ch,11ch) 1fr minmax(4ch,5ch);gap:.35rem .8rem;align-items:center;font-size:.85rem;position:relative}
-.swing .st{font-family:var(--mono);color:var(--ink-2)}
-.swing .track{position:relative;height:16px}
-.swing .track::before{content:"";position:absolute;top:0;bottom:0;left:calc(13/28*100%);width:calc(2/28*100%);background:var(--band)}
-.swing .bar{position:absolute;inset:3px auto 3px 0;width:var(--w);background:var(--funded);border-radius:0 3px 3px 0;transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.swing .row-fl .bar{background:var(--fl)}
-.swing .row-sc .bar{background:var(--funded-soft);outline:1px solid var(--funded)}
-.swing .val{text-align:right;color:var(--ink-2)}
-.swing .row-fl .st,.swing .row-fl .val{color:var(--fl);font-weight:500}
-.swing .bandlab{grid-column:2;font-family:var(--mono);font-size:.7rem;color:var(--ink-3);position:relative;height:1.1rem}
-.swing .bandlab span{position:absolute;left:calc(13/28*100%);transform:translateX(-30%)}
-
-/* treemap-ish squares */
-.sq{display:flex;align-items:flex-end;gap:1.1rem;flex-wrap:wrap;padding-top:.5rem}
-.sq .box{position:relative;background:var(--funded-soft);border:1px solid var(--funded);border-radius:3px;transform-origin:bottom left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.sq .box.fl{background:var(--fl-soft);border-color:var(--fl)}
+.ledger .fl,.swing .ledger-fl{color:var(--pos)!important;font-weight:600}
+.ledger .track.fl{background:var(--pos-soft);outline:1px dashed var(--pos)}
+.ledger .track .stamp{position:absolute;left:8px;top:50%;translate:0 -50%;font-size:.6rem;padding:.12rem .45rem .08rem}
+.pre .ledger .bar{transform:scaleX(0)}
+/* fig 2: squares */
+.sq{display:flex;align-items:flex-end;gap:1.1rem 1.4rem;flex-wrap:wrap;padding-top:.4rem}
+.sq .item{display:flex;flex-direction:column;justify-content:flex-end;max-width:100%}
+.sq .box{background:var(--book-soft);border:1px solid var(--book);border-radius:3px;transform-origin:bottom left;transition:transform .9s cubic-bezier(.2,.7,.2,1);max-width:100%}
+.sq .box.fl{background:var(--pos-soft);border-color:var(--pos)}
 .pre .sq .box{transform:scale(0)}
 .sq .cap{font-family:var(--mono);font-size:.72rem;color:var(--ink-2);margin-top:.4rem;line-height:1.3}
 .sq .cap b{display:block;font-size:.95rem;color:var(--ink);font-weight:500}
-.sq .item{display:flex;flex-direction:column;justify-content:flex-end}
-
-/* spark */
-.spark{display:inline-flex;align-items:flex-end;gap:.6rem;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.6rem .8rem;margin:.2rem 0 1.2rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-2)}
-.spark .b{display:inline-block;width:22px;background:var(--fl);border-radius:2px 2px 0 0;height:var(--h);transform-origin:bottom;transition:transform .8s ease-out}
-.pre .spark .b{transform:scaleY(0)}
+.sq .cap .stamp{margin-top:.35rem}
+/* fig 3: timeline */
+.tl .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tl svg{display:block;width:100%;min-width:700px;height:auto}
+.tl text{font-family:var(--mono);font-size:12px;fill:var(--ink-2)}
+.tl .ax{stroke:var(--rule);stroke-width:1}
+.tl .grid{stroke:var(--rule-2);stroke-width:1}
+.tl .price{fill:none;stroke:var(--pos);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1200;stroke-dashoffset:0;transition:stroke-dashoffset 1.6s ease-out}
+.tl.pre .price{stroke-dashoffset:1200}
+.tl .dot{fill:var(--paper);stroke:var(--pos);stroke-width:2.5}
+.tl .act{fill:var(--book);stroke:var(--paper);stroke-width:2}
+.tl .flat{stroke:var(--pos);stroke-width:2;stroke-dasharray:3 4}
+.tl .lab{fill:var(--ink)}
+.tl .big{font-family:var(--display);font-size:14px;font-weight:700;fill:var(--ink)}
+.scrollhint{display:none;margin:0 0 .4rem}
+@media (max-width:740px){.scrollhint{display:block}}
+/* fig 4: swing */
+.swing{display:grid;grid-template-columns:max-content 1fr max-content;gap:.38rem .8rem;align-items:center;font-size:.85rem}
+.swing .st{font-family:var(--mono);color:var(--ink-2);text-align:right;white-space:nowrap}
+.swing .track{position:relative;height:18px}
+.swing .track::before{content:"";position:absolute;top:0;bottom:0;left:calc(13/28*100%);width:calc(2/28*100%);background:var(--band)}
+.swing .bar{position:absolute;inset:3px auto 3px 0;background:var(--book);border-radius:0 3px 3px 0;transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.swing .sc .bar{background:var(--book-soft);outline:1px solid var(--book)}
+.swing .fl .bar{background:var(--pos)}
+.swing .track .stamp{position:absolute;top:50%;translate:0 -50%;font-size:.58rem;padding:.1rem .4rem .06rem}
+.swing .val{text-align:right;color:var(--ink-2)}
+.swing .bandlab{grid-column:2;font-family:var(--mono);font-size:.7rem;color:var(--ink-3);position:relative;height:1.1rem}
+.swing .bandlab span{position:absolute;left:calc(13/28*100%);transform:translateX(-30%);white-space:nowrap}
+.pre .swing .bar{transform:scaleX(0)}
+.legend span.o::before{outline:1px solid var(--book);outline-offset:-1px}
+/* inline spark */
+.spark{display:inline-flex;align-items:flex-end;gap:.6rem;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.6rem .8rem;margin:.2rem 0 1.2rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-2);flex-wrap:wrap}
+.spark .b{display:inline-block;width:22px;background:var(--pos);border-radius:2px 2px 0 0;height:var(--h);transform-origin:bottom;transition:transform .8s ease-out}
+.spark.pre .b{transform:scaleY(0)}
 .spark .k{display:flex;flex-direction:column;align-items:center;gap:.2rem}
-
-/* refs */
-.refs{font-size:.85rem;color:var(--ink-2)}
-.refs ol{padding-left:1.4rem;margin:0}
-.refs li{margin-bottom:.45rem;line-height:1.45}
-.refs a{color:var(--funded);text-decoration:none;word-break:break-word}
-.refs a:hover,.refs a:focus-visible{text-decoration:underline}
-.note{font-size:.82rem;color:var(--ink-3);font-family:var(--mono);line-height:1.45;border-top:1px solid var(--rule);padding-top:1rem;margin-top:2rem}
-.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.72rem;padding:.35rem .5rem;border-radius:3px;z-index:20;max-width:240px;line-height:1.4}
-.tip[hidden]{display:none}
-.hit{cursor:default}
-@media (prefers-reduced-motion: reduce){ .ledger .bar,.swing .bar,.sq .box,.spark .b,.tl .price{transition:none} .pre .bar,.pre .sq .box,.pre .spark .b{transform:none} .pre .price{stroke-dashoffset:0} }
-@media (max-width:520px){ body{font-size:17px} .ledger,.swing{font-size:.78rem} figure{padding:1rem .8rem .8rem} }
+@media (max-width:520px){ .ledger,.swing{font-size:.78rem} .swing .track .stamp{display:none} }
 </style>
-<style>.site-nav{max-width:66ch;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0 0;font-family:ui-monospace,Menlo,monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.site-nav a{color:inherit;text-decoration:none;font-weight:600}.site-nav a:hover{text-decoration:underline}.site-nav span{opacity:.6}</style>
 </head>
 <body>
-<nav class="site-nav"><a href="../">Marked to Market</a><span>Vikas Erraballi</span></nav>
+<nav class="site-nav"><a href="../">Marked to <span class="m">Market</span></a><span>Vikas Erraballi</span></nav>
 
 <header class="hero col">
   <div class="eyebrow">Marking to market · Nov 4, 2026</div>
@@ -138,11 +98,27 @@ figcaption{font-size:.82rem;color:var(--ink-3);margin-top:.9rem;font-family:var(
 </main>
 
 <div class="wide">
-<figure class="pre" data-anim>
-  <p class="ftitle">The position report</p>
-  <p class="fsub">General-election ad spending by Senate Majority PAC's network, by state, in millions. Florida is the only close race at zero.</p>
-  <div class="ledger" id="ledger"></div>
-  <figcaption>Independent expenditures by WinSenate, Texas Forever, North Star and The Georgia Way, the super PACs Senate Majority PAC funds, through Nov 2. Lower Costs Now, which SMP part-funds, is left out. Source: VoteLog state trackers (ref. 7, 9).</figcaption>
+<figure id="fig-1" data-anim>
+  <p class="kick"><span><b>Fig 1</b> · The position report</span><span>General election · Senate</span></p>
+  <p class="ftitle">Florida was the only close race the network priced at zero</p>
+  <p class="fsub">General-election ad spending by Senate Majority PAC's network, by state, in millions of dollars. Tap a row for detail.</p>
+  <div class="ledger">
+    <div class="st">Ohio</div><div class="track" data-note="Ohio: $87.4M in general-election ads"><div class="bar" style="width:97.1%;transition-delay:0ms"></div></div><div class="val num">$87.4M</div>
+    <div class="st">Iowa</div><div class="track" data-note="Iowa: $47.8M in general-election ads"><div class="bar" style="width:53.1%;transition-delay:60ms"></div></div><div class="val num">$47.8M</div>
+    <div class="st">Michigan</div><div class="track" data-note="Michigan: $46.5M in general-election ads"><div class="bar" style="width:51.7%;transition-delay:120ms"></div></div><div class="val num">$46.5M</div>
+    <div class="st">Maine</div><div class="track" data-note="Maine: $38.1M in general-election ads"><div class="bar" style="width:42.3%;transition-delay:180ms"></div></div><div class="val num">$38.1M</div>
+    <div class="st">Texas</div><div class="track" data-note="Texas: $27.5M in general-election ads"><div class="bar" style="width:30.6%;transition-delay:240ms"></div></div><div class="val num">$27.5M</div>
+    <div class="st">N. Carolina</div><div class="track" data-note="N. Carolina: $21.7M in general-election ads"><div class="bar" style="width:24.1%;transition-delay:300ms"></div></div><div class="val num">$21.7M</div>
+    <div class="st">N. Hampshire</div><div class="track" data-note="N. Hampshire: $17.2M in general-election ads"><div class="bar" style="width:19.1%;transition-delay:360ms"></div></div><div class="val num">$17.2M</div>
+    <div class="st">Alaska</div><div class="track" data-note="Alaska: $15.1M in general-election ads"><div class="bar" style="width:16.8%;transition-delay:420ms"></div></div><div class="val num">$15.1M</div>
+    <div class="st">Kansas</div><div class="track" data-note="Kansas: $14.1M in general-election ads"><div class="bar" style="width:15.7%;transition-delay:480ms"></div></div><div class="val num">$14.1M</div>
+    <div class="st">Georgia</div><div class="track" data-note="Georgia: $7.1M in general-election ads"><div class="bar" style="width:7.9%;transition-delay:540ms"></div></div><div class="val num">$7.1M</div>
+    <div class="st">Mississippi</div><div class="track" data-note="Mississippi: $2.2M in general-election ads"><div class="bar" style="width:2.4%;transition-delay:600ms"></div></div><div class="val num">$2.2M</div>
+    <div class="st">S. Carolina</div><div class="track" data-note="S. Carolina: $0.75M in general-election ads"><div class="bar" style="width:0.8%;transition-delay:660ms"></div></div><div class="val num">$0.75M</div>
+    <div class="st fl">Florida</div><div class="track fl" data-note="Florida: $0 in general-election ads. The Senate race was decided by 2.9 points."><span class="stamp">Marked at zero</span></div><div class="val num fl">$0</div>
+  </div>
+  <figcaption>Independent expenditures by WinSenate, Texas Forever, North Star and The Georgia Way, the super PACs Senate Majority PAC funds. Lower Costs Now, which SMP part-funds, is left out.</figcaption>
+  <div class="ticker"><span>Source: VoteLog state trackers (<a href="#r7">ref 7</a>, <a href="#r9">9</a>)</span><span class="asof">As of Nov 2, 2026 · <a href="#fig-1">¶ fig 1</a></span></div>
 </figure>
 </div>
 
@@ -153,11 +129,19 @@ figcaption{font-size:.82rem;color:var(--ink-3);margin-top:.9rem;font-family:var(
 </main>
 
 <div class="wide">
-<figure class="pre" data-anim>
-  <p class="ftitle">What "Texas-sized money" means</p>
-  <p class="fsub">Everything spent on each race, drawn to scale. Area is dollars.</p>
-  <div class="sq" id="squares"></div>
-  <figcaption>Campaign spending plus outside money, general election. Texas $579M; Maine, Senate Majority PAC's network alone, $38M; Florida $49M, of which $28M benefited Moody and $22M Nixon. Sources: VoteLog (refs. 9, 18, 21).</figcaption>
+<figure id="fig-2" data-anim>
+  <p class="kick"><span><b>Fig 2</b> · Texas-sized money</span><span>Drawn to scale · area is dollars</span></p>
+  <p class="ftitle">Florida's whole Senate race cost a twelfth of Texas's</p>
+  <p class="fsub">Campaign spending plus outside money, general election, in millions of dollars.</p>
+  <div class="sq">
+    <div class="item"><div class="box" style="width:180px;height:180px" data-note="Texas, whole race: $579.0 million"></div><div class="cap"><b class="num">$579M</b>Texas, whole race</div></div>
+    <div class="item"><div class="box fl" style="width:53px;height:53px" data-note="Florida, whole race: $49.3 million"></div><div class="cap"><b class="num">$49.3M</b>Florida, whole race<br><span class="stamp">A twelfth of Texas</span></div></div>
+    <div class="item"><div class="box" style="width:46px;height:46px" data-note="Maine, SMP network only: $38.1 million"></div><div class="cap"><b class="num">$38.1M</b>Maine, SMP network only</div></div>
+    <div class="item"><div class="box" style="width:39px;height:39px" data-note="Moody's side: $27.7 million"></div><div class="cap"><b class="num">$27.7M</b>Moody's side</div></div>
+    <div class="item"><div class="box fl" style="width:35px;height:35px" data-note="Nixon's side: $21.6 million"></div><div class="cap"><b class="num">$21.6M</b>Nixon's side</div></div>
+  </div>
+  <figcaption>Florida's $49M split $28M for Moody and $22M for Nixon. Matching Moody's side would have cost less than Senate Majority PAC's network spent in Maine.</figcaption>
+  <div class="ticker"><span>Source: VoteLog (<a href="#r9">refs 9</a>, <a href="#r18">18</a>, <a href="#r21">21</a>)</span><span class="asof">As of Nov 2, 2026 · <a href="#fig-2">¶ fig 2</a></span></div>
 </figure>
 </div>
 
@@ -166,7 +150,7 @@ figcaption{font-size:.82rem;color:var(--ink-3);margin-top:.9rem;font-family:var(
 
 <h2>The committee's defense</h2>
 <p>The committee has a defense, and the strongest part of it is history. Florida has been drifting away from Democrats for a decade. In 2018 Bill Nelson lost his Senate seat by 10,033 votes after a recount,<sup class="fn"><a href="#r24">24</a></sup> and the party spent the next three cycles losing by more: Rick Scott won re-election in 2024 by nearly 13 points,<sup class="fn"><a href="#r25">25</a></sup> and that year the DSCC spent about $1 million on television in Florida while spending $13 million in Texas.<sup class="fn"><a href="#r26">26</a></sup> The Republican registration edge grew from about 229,000 in 2022 to about 1 million in 2024 to 1.5 million this year.<sup class="fn"><a href="#r27">27</a></sup></p>
-<div class="spark pre" data-anim aria-label="Republican registration edge in Florida: 229 thousand in 2022, 995 thousand in 2024, 1.54 million in 2026">
+<div class="spark" data-anim aria-label="Republican registration edge in Florida: 229 thousand in 2022, 995 thousand in 2024, 1.54 million in 2026">
   <span class="k"><span class="b" style="--h:9px"></span><span>2022</span><span class="num">229K</span></span>
   <span class="k"><span class="b" style="--h:39px"></span><span>2024</span><span class="num">995K</span></span>
   <span class="k"><span class="b" style="--h:60px"></span><span>2026</span><span class="num">1.54M</span></span>
@@ -183,11 +167,14 @@ figcaption{font-size:.82rem;color:var(--ink-3);margin-top:.9rem;font-family:var(
 </main>
 
 <div class="wide">
-<figure class="pre tl" data-anim>
+<figure id="fig-3" class="tl" data-anim>
+  <p class="kick"><span><b>Fig 3</b> · The mark</span><span>Aug 1 – Nov 3, 2026</span></p>
   <p class="ftitle">The price moved. The position didn't.</p>
-  <p class="fsub">Nixon's standing against Moody through the fall, and what Schumer's committees did elsewhere while it moved. Hover the markers.</p>
-  <div id="timeline"></div>
-  <figcaption>Polling: late-September average, Moody +6; University of North Florida, Oct 12–19, Moody +4; result Moody +2.9. Committee moves as reported (refs. 22, 23, 33, 34). The dashed line is Senate Majority PAC's Florida ad spending: zero, start to finish.</figcaption>
+  <p class="fsub">Moody's lead over Nixon through the fall, and what Schumer's committees did elsewhere while it moved. Tap a marker for detail.</p>
+  <p class="hint scrollhint">Scroll sideways for the full timeline →</p>
+  <div class="scroll"><svg viewBox="0 0 860 306" role="img" aria-label="Moody's lead over Nixon fell from about 6 points in late September to 2.9 on election day, while Senate Majority PAC moved money into Kansas, Mississippi and South Carolina and none into Florida."><text x="4" y="14" style="fill:var(--ink-3)">Moody lead, pts</text><line class="grid" x1="70" x2="830" y1="194" y2="194"></line><text x="62" y="198" text-anchor="end">Tied</text><line class="grid" x1="70" x2="830" y1="145.42857142857144" y2="145.42857142857144"></line><text x="62" y="149.42857142857144" text-anchor="end">+4</text><line class="grid" x1="70" x2="830" y1="96.85714285714286" y2="96.85714285714286"></line><text x="62" y="100.85714285714286" text-anchor="end">+8</text><line class="grid" x1="70" x2="830" y1="48.28571428571429" y2="48.28571428571429"></line><text x="62" y="52.28571428571429" text-anchor="end">+12</text><line class="ax" x1="70" x2="830" y1="194" y2="194"></line><text x="70" y="210" text-anchor="middle">Aug</text><text x="320.63829787234044" y="210" text-anchor="middle">Sep</text><text x="563.1914893617021" y="210" text-anchor="middle">Oct</text><text x="830" y="210" text-anchor="middle">Nov 3</text><line class="flat" x1="70" x2="830" y1="188" y2="188"></line><text x="74" y="183" class="lab" style="fill:var(--pos)">SMP ad spending in Florida: $0</text><g transform="rotate(-1.2 360 160)"><rect class="stamp-box" x="282" y="150" width="156" height="20" rx="2"></rect><text class="stamp-txt" x="360" y="164" text-anchor="middle">NEVER RE-MARKED</text></g><path class="price" d="M506.5957446808511,118.71428571428572 L700.6382978723404,145.42857142857144 L830,158.7857142857143"></path><line class="ax" x1="207.4468085106383" x2="207.4468085106383" y1="30" y2="194" stroke-dasharray="2 4"></line><circle class="dot" cx="207.4468085106383" cy="30" r="6" data-note="Aug 18 primary: Nixon +12 over Vindman. Nixon vs Moody: no public polling yet."></circle><text x="217.4468085106383" y="34" class="lab">Aug 18: Nixon wins the primary by 12 while outraised 16 to 1</text><circle class="dot" cx="506.5957446808511" cy="118.71428571428572" r="6" data-note="Sep 24: polling average Moody +6.2"></circle><circle class="dot" cx="700.6382978723404" cy="145.42857142857144" r="6" data-note="Oct 12–19, UNF poll: Moody +4 (governor's race +2)"></circle><circle class="dot" cx="830" cy="158.7857142857143" r="6" data-note="Nov 3 result: Moody +2.9"></circle><text x="500.5957446808511" y="108.71428571428572" class="lab" text-anchor="end">Moody +6</text><text x="700.6382978723404" y="135.42857142857144" class="lab" text-anchor="middle">+4</text><text x="832" y="148.7857142857143" class="big" text-anchor="end">Result +2.9</text><text x="70" y="224" class="lab" style="fill:var(--book)">What the committees did elsewhere</text><circle class="act" cx="70" cy="238" r="6" data-note="Jul 28: DSCC names Florida in its $40M field program"></circle><text class="actlab" x="70" y="258" text-anchor="middle">Jul 28</text><circle class="act" cx="595.5319148936171" cy="258" r="6" data-note="Oct 5: Senate Leadership Fund puts $14M into Kansas"></circle><text class="actlab" x="595.5319148936171" y="278" text-anchor="middle">Oct 5</text><circle class="act" cx="627.8723404255319" cy="278" r="6" data-note="Oct 9: SMP: $5M into Kansas"></circle><text class="actlab" x="627.8723404255319" y="298" text-anchor="middle">Oct 9</text><circle class="act" cx="660.2127659574468" cy="238" r="6" data-note="Oct 13: SMP pulls its Georgia ads"></circle><text class="actlab" x="660.2127659574468" y="258" text-anchor="middle">Oct 13</text><circle class="act" cx="716.8085106382979" cy="258" r="6" data-note="Oct 20: SMP: $1.2M into Mississippi. DGA: first $1M to Jolly"></circle><text class="actlab" x="716.8085106382979" y="278" text-anchor="middle">Oct 20</text><circle class="act" cx="789.5744680851063" cy="278" r="6" data-note="Oct 29: DSCC: $500K into Mississippi"></circle><text class="actlab" x="789.5744680851063" y="298" text-anchor="middle">Oct 29</text><circle class="act" cx="797.6595744680851" cy="238" r="6" data-note="Oct 30: SMP: $750K into South Carolina"></circle><text class="actlab" x="797.6595744680851" y="258" text-anchor="middle">Oct 30</text></svg></div>
+  <figcaption>Polling: late-September average, Moody +6; University of North Florida, Oct 12–19, Moody +4; result Moody +2.9. The dashed line is Senate Majority PAC's Florida ad spending: zero, start to finish.</figcaption>
+  <div class="ticker"><span>Source: polling (<a href="#r31">refs 31</a>, <a href="#r32">32</a>); committee moves (<a href="#r22">22</a>, <a href="#r23">23</a>, <a href="#r33">33</a>, <a href="#r34">34</a>)</span><span class="asof">As of Nov 4, 2026 · <a href="#fig-3">¶ fig 3</a></span></div>
 </figure>
 </div>
 
@@ -199,12 +186,22 @@ figcaption{font-size:.82rem;color:var(--ink-3);margin-top:.9rem;font-family:var(
 </main>
 
 <div class="wide">
-<figure class="pre" data-anim>
-  <p class="ftitle">Who moved more than the wave</p>
-  <p class="fsub">Swing toward Democrats from the 2024 presidential margin to the 2026 Senate margin, in points, for states Trump carried in 2024. The gray band is the national shift.</p>
-  <div class="legend"><span style="--sw:var(--funded)">Committee money</span><span style="--sw:var(--funded-soft);outline:1px solid var(--funded)">Almost none ($750K)</span><span style="--sw:var(--fl)">None</span><span style="--sw:var(--band)">National shift, 13–15 pts</span></div>
-  <div class="swing" id="swing"></div>
-  <figcaption>2024 margins from certified state results; 2026 Senate margins from AP counts at 98–99% reporting. National: House popular vote about D+13 (projected) to a +15 shift (NYT estimate). Alaska is omitted; its count runs to Nov 18. Sources: refs. 36, 37.</figcaption>
+<figure id="fig-4" data-anim>
+  <p class="kick"><span><b>Fig 4</b> · Who moved more than the wave</span><span>Trump-won states · Senate 2026</span></p>
+  <p class="ftitle">The states the committees paid for beat the national swing. Florida trailed it.</p>
+  <p class="fsub">Swing toward Democrats from the 2024 presidential margin to the 2026 Senate margin, in points. The gray band is the national shift.</p>
+  <div class="legend"><span style="--sw:var(--book)">Committee money</span><span class="o" style="--sw:var(--book-soft)">Almost none ($750K)</span><span style="--sw:var(--pos)">None</span><span style="--sw:var(--band)">National shift, 13–15 pts</span></div>
+  <div class="swing">
+    <div></div><div class="bandlab"><span>national 13–15</span></div><div></div>
+    <div class="st">Texas</div><div class="track" data-note="Texas: moved 25.8 points toward Democrats from the 2024 presidential margin"><div class="bar" style="width:92.1%;transition-delay:0ms"></div></div><div class="val num">+26</div>
+    <div class="st">S. Carolina</div><div class="track sc" data-note="S. Carolina: moved 22.3 points toward Democrats from the 2024 presidential margin"><div class="bar" style="width:79.6%;transition-delay:70ms"></div></div><div class="val num">+22</div>
+    <div class="st">Kansas</div><div class="track" data-note="Kansas: moved 20.9 points toward Democrats from the 2024 presidential margin"><div class="bar" style="width:74.6%;transition-delay:140ms"></div></div><div class="val num">+21</div>
+    <div class="st">Iowa</div><div class="track" data-note="Iowa: moved 17.3 points toward Democrats from the 2024 presidential margin"><div class="bar" style="width:61.8%;transition-delay:210ms"></div></div><div class="val num">+17</div>
+    <div class="st">Ohio</div><div class="track" data-note="Ohio: moved 16.0 points toward Democrats from the 2024 presidential margin"><div class="bar" style="width:57.1%;transition-delay:280ms"></div></div><div class="val num">+16</div>
+    <div class="st ledger-fl">Florida</div><div class="track fl" data-note="Florida: moved 10.2 points toward Democrats from the 2024 presidential margin"><div class="bar" style="width:36.4%;transition-delay:350ms"></div><span class="stamp" style="left:calc(36.4% + 8px)">Below the wave</span></div><div class="val num ledger-fl">+10</div>
+  </div>
+  <figcaption>2024 margins from certified state results; 2026 Senate margins from AP counts at 98–99% reporting. National: House popular vote about D+13 (projected) to a +15 shift (NYT estimate). Alaska is omitted; its count runs to Nov 18.</figcaption>
+  <div class="ticker"><span>Source: <a href="#r36">refs 36</a>, <a href="#r37">37</a></span><span class="asof">As of Nov 4, 2026 · <a href="#fig-4">¶ fig 4</a></span></div>
 </figure>
 </div>
 
@@ -273,60 +270,6 @@ figcaption{font-size:.82rem;color:var(--ink-3);margin-top:.9rem;font-family:var(
 <p class="note">Written by Vikas Erraballi. Every number was checked against the source listed; <a href="../how-i-built-a-writing-system/">how this piece was made</a>. Charts show unofficial counts and pre-election filings, and will be updated when the FEC's post-election reports arrive.</p>
 </main>
 
-<div class="tip" id="tip" hidden></div>
-
-<script>
-(function(){
-  var fmt=function(n){return n===0?"$0":"$"+n.toFixed(n<10?1:0)+"M"};
-  // 1. ledger
-  var L=[["Ohio",87.4],["Iowa",47.8],["Michigan",46.5],["Maine",38.1],["Texas",27.5],["N. Carolina",21.7],["N. Hampshire",17.2],["Alaska",15.1],["Kansas",14.1],["Georgia",7.1],["Mississippi",2.2],["S. Carolina",0.75],["Florida",0]];
-  var max=90, el=document.getElementById("ledger"), h="";
-  L.forEach(function(r,i){var fl=r[0]==="Florida";h+='<div class="st">'+r[0]+'</div><div class="track hit" data-tip="'+r[0]+': '+fmt(r[1])+' in general-election ads'+(fl?'. The Senate race was decided by 2.9 points.':'')+'">'+(fl?'<span class="zero-tag">MARKED AT ZERO</span>':'<div class="bar" style="--w:'+(r[1]/max*100)+'%;--i:'+i+'"></div>')+'</div><div class="val num">'+fmt(r[1])+'</div>';});
-  el.innerHTML=h;
-  var rows=el.children; for(var i=rows.length-3;i<rows.length;i++){rows[i].classList.add("row-fl");}
-  // 2. squares (area = dollars)
-  var S=[["Texas, whole race",579,false],["Florida, whole race",49.3,true],["Maine, SMP network only",38.1,false],["Moody's side",27.7,false],["Nixon's side",21.6,true]];
-  var k=Math.sqrt(579)/180, sq=document.getElementById("squares"), s="";
-  S.forEach(function(r){var side=Math.sqrt(r[1])/k;s+='<div class="item"><div class="box'+(r[2]?' fl':'')+' hit" style="width:'+side.toFixed(0)+'px;height:'+side.toFixed(0)+'px;max-width:100%" data-tip="'+r[0]+': $'+r[1].toFixed(1)+' million"></div><div class="cap"><b class="num">$'+(r[1]<100?r[1].toFixed(1):r[1].toFixed(0))+'M</b>'+r[0]+'</div></div>';});
-  sq.innerHTML=s;
-  // 3. timeline (SVG). x = days from Aug 1 to Nov 3 (94 days). y = Moody lead, 0..14.
-  var W=860,H=300,px=70,py=24,pw=W-px-30,ph=170;
-  var x=function(d){return px+d/94*pw}, y=function(v){return py+(1-v/14)*ph};
-  var pts=[[17,12,"Aug 18 primary: Nixon +12 over Vindman. Nixon vs Moody: no public polling yet."],[54,6.2,"Sep 24: polling average Moody +6.2"],[78,4,"Oct 12–19, UNF poll: Moody +4 (governor's race +2)"],[94,2.9,"Nov 3 result: Moody +2.9"]];
-  var line="M"+x(54)+","+y(6.2)+" L"+x(78)+","+y(4)+" L"+x(94)+","+y(2.9);
-  var acts=[[-4,"Jul 28","DSCC names Florida in its $40M field program"],[65,"Oct 5","Senate Leadership Fund puts $14M into Kansas"],[69,"Oct 9","SMP: $5M into Kansas"],[73,"Oct 13","SMP pulls its Georgia ads"],[80,"Oct 20","SMP: $1.2M into Mississippi. DGA: first $1M to Jolly"],[89,"Oct 29","DSCC: $500K into Mississippi"],[90,"Oct 30","SMP: $750K into South Carolina"]];
-  var g='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Moody\'s lead over Nixon fell from about 6 points in late September to 2.9 on election day, while Senate Majority PAC moved money into Kansas, Mississippi and South Carolina and none into Florida.">';
-  [0,4,8,12].forEach(function(v){g+='<line class="grid" x1="'+px+'" x2="'+(px+pw)+'" y1="'+y(v)+'" y2="'+y(v)+'"/><text x="'+(px-8)+'" y="'+(y(v)+4)+'" text-anchor="end">Moody +'+v+'</text>';});
-  g+='<line class="ax" x1="'+px+'" x2="'+(px+pw)+'" y1="'+y(0)+'" y2="'+y(0)+'"/>';
-  [["Aug",0],["Sep",31],["Oct",61],["Nov 3",94]].forEach(function(m){g+='<text x="'+x(m[1])+'" y="'+(y(0)+16)+'" text-anchor="middle">'+m[0]+'</text>';});
-  // flat zero line for SMP Florida spending
-  g+='<line class="flat" x1="'+x(0)+'" x2="'+x(94)+'" y1="'+(y(0)-6)+'" y2="'+(y(0)-6)+'"/><text x="'+(x(0)+4)+'" y="'+(y(0)-11)+'" class="lab" style="fill:var(--fl)">SMP ad spending in Florida: $0</text>';
-  g+='<path class="price" d="'+line+'"/>';
-  // primary marker (separate scale note)
-  g+='<line class="ax" x1="'+x(17)+'" x2="'+x(17)+'" y1="'+(py+6)+'" y2="'+y(0)+'" stroke-dasharray="2 4"/><circle class="dot hit" cx="'+x(17)+'" cy="'+(py+6)+'" r="6" data-tip="'+pts[0][2]+'"/><text x="'+(x(17)+10)+'" y="'+(py+10)+'" class="lab">Aug 18: Nixon wins the primary by 12 while outraised 16 to 1</text>';
-  pts.slice(1).forEach(function(p,i){g+='<circle class="dot hit" cx="'+x(p[0])+'" cy="'+y(p[1])+'" r="6" data-tip="'+p[2]+'"/>';});
-  g+='<text x="'+(x(54)-6)+'" y="'+(y(6.2)-10)+'" class="lab" text-anchor="end">Moody +6</text><text x="'+(x(78))+'" y="'+(y(4)-10)+'" class="lab" text-anchor="middle">+4</text><text x="'+(x(94)+2)+'" y="'+(y(2.9)-10)+'" class="big" text-anchor="end">Result +2.9</text>';
-  // committee actions row
-  var yA=py+ph+44;
-  g+='<text x="'+px+'" y="'+(yA-14)+'" class="lab" style="fill:var(--funded)">What the committees did elsewhere</text>';
-  acts.forEach(function(a,i){var cx=x(a[0]<0?0:a[0]);var yy=yA+(i%3)*20;g+='<circle class="act hit" cx="'+cx+'" cy="'+yy+'" r="6" data-tip="'+a[1]+': '+a[2]+'"/><text class="actlab" x="'+cx+'" y="'+(yy+20)+'" text-anchor="middle">'+a[1]+'</text>';});
-  g+='</svg>';
-  document.getElementById("timeline").innerHTML=g;
-  // 4. swing
-  var SW=[["Texas",25.8,"f"],["S. Carolina",22.3,"sc"],["Kansas",20.9,"f"],["Iowa",17.3,"f"],["Ohio",16.0,"f"],["Florida",10.2,"fl"]];
-  var sw=document.getElementById("swing"), t='<div></div><div class="bandlab"><span>national 13–15</span></div><div></div>';
-  SW.forEach(function(r){t+='<div class="st">'+r[0]+'</div><div class="track hit" data-tip="'+r[0]+': moved '+r[1]+' points toward Democrats from the 2024 presidential margin"><div class="bar" style="--w:'+(r[1]/28*100)+'%"></div></div><div class="val num">+'+r[1].toFixed(0)+'</div>';});
-  sw.innerHTML=t;
-  var c=sw.children; for(var j=3;j<c.length;j+=3){var cls=SW[(j-3)/3][2];if(cls==="fl"){c[j].classList.add("row-fl");c[j+1].classList.add("row-fl");c[j+2].classList.add("row-fl");}if(cls==="sc"){c[j+1].classList.add("row-sc");}}
-  // animate on view
-  var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove("pre");e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.25}):null;
-  document.querySelectorAll("[data-anim]").forEach(function(f){ if(io) io.observe(f); else {f.classList.remove("pre");f.classList.add("in");} });
-  // tooltips
-  var tip=document.getElementById("tip");
-  function show(e){var t=e.target.closest(".hit"); if(!t){tip.hidden=true;return;} tip.textContent=t.getAttribute("data-tip"); tip.hidden=false; var X=e.clientX+12,Y=e.clientY+12; if(X+250>window.innerWidth) X=e.clientX-250; tip.style.left=X+"px"; tip.style.top=Y+"px";}
-  document.addEventListener("mousemove",show); document.addEventListener("mouseleave",function(){tip.hidden=true;});
-  document.addEventListener("click",function(e){var t=e.target.closest(".hit"); if(t){show(e);} else tip.hidden=true;});
-})();
-</script>
+<script src="../assets/mtm.js" defer></script>
 </body>
 </html>
