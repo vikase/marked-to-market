@@ -68,6 +68,23 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
 @media (max-width:640px){.two{grid-template-columns:1fr}}
 .pill{display:inline-block;font-family:var(--mono);font-size:.72rem;padding:.15rem .5rem;border:1px solid var(--rule);border-radius:99px;color:var(--ink-2);margin:0 .3rem .3rem 0}
 .note{font-size:.8rem;color:var(--ink-3);font-family:var(--mono);line-height:1.45;border-top:1px solid var(--rule);padding-top:1rem;margin-top:2.4rem}
+.col a,.wide a{color:var(--acc);text-decoration-thickness:1px;text-underline-offset:3px}
+.col a:hover,.wide a:hover{text-decoration-thickness:2px}
+.mx{display:grid;grid-template-columns:1fr 1fr;font-size:.9rem;border-top:1px solid var(--rule)}
+.mx>div{padding:.65rem .9rem;border-bottom:1px solid var(--rule)}
+.mx .hd{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:.4rem;padding-bottom:.4rem}
+.mx .b{color:var(--ink-2);font-style:italic}
+.mx .n{border-left:3px solid var(--acc);background:var(--paper)}
+.mx .n b{font-family:var(--display);font-weight:800;font-size:.86rem;display:block;font-style:normal}
+.mx .gap{border-left-color:var(--warn)}
+.build .mx>div{transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i)*120ms)}
+.build.pre .mx>div{opacity:0;transform:translateY(6px)}
+.rules .fix{font-size:.86rem;margin:.35rem 0 0;color:var(--ink)}
+.rules .fix b{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:500;margin-right:.35rem}
+.rules.risk .q{color:var(--warn)}
+svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-size:10px}
+@media (max-width:520px){.mx{grid-template-columns:1fr}.mx .hd.r{display:none}.mx .b{border-bottom:none;padding-bottom:.2rem}}
+@media (prefers-reduced-motion: reduce){.build .mx>div{transition:none}.build.pre .mx>div{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.build .step,.build .arrow{transition:none}.build.pre .step{opacity:1;transform:none}.build.pre .arrow{stroke-dashoffset:0}}
 @media (max-width:520px){body{font-size:17px} figure{padding:1rem .8rem}}
 </style>
@@ -76,22 +93,46 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
 <body>
 <nav class="site-nav"><a href="../">Marked to Market</a><span>Vikas Erraballi</span></nav>
 
-
 <header class="hero col">
   <div class="eyebrow">Working notes · November 2026</div>
   <h1>How I built a writing system that argues with me</h1>
   <p class="dek">I spent twenty years reading and posting and never finishing anything. This fall I built a system, with Claude, that turns my arguments into published pieces. When a detector says a piece is AI-written, it's measuring the sentences. This is an account of everything the sentences sit on top of, and most of it is me.</p>
-  <div class="byline"><span>Vikas Erraballi</span><span>About 8 min</span></div>
+  <div class="byline"><span>Vikas Erraballi</span><span>About 13 min</span></div>
 </header>
 
 <main class="col">
 <h2>The problem</h2>
 <p>I had the raw material of a writer and none of the output. Fifteen years of Kindle highlights, Evernote notes going back to 2009, a few thousand saved articles, and about 22,000 Facebook posts and comments, many of them first drafts of essays I never wrote. What I didn't have was a finishing process. And the obvious shortcut had a trap in it: readers now run a piece through a detector, get a number, and stop reading. I understand the reflex. Most of what the detectors catch is a thesis fed to a model and posted. But the number measures the sentences, and the sentences are the last and smallest part of a piece. So the goal was a system that keeps the thinking mine and makes it visible: the model does research, fact-checking and the twenty boring checks, and I do the part a detector can't see, which is deciding what's true and arguing with the draft until it is.</p>
 
-<p>What follows is how the system is put together, with the Florida Senate piece as the worked example, because that one went through five drafts in a day and every draft taught the system something.</p>
+<p>This is an experiment, and the system is still changing week to week. What follows is how it's put together, with <a href="../florida-priced-at-zero/">the Florida Senate piece</a> as the worked example. Florida was the first time the system had to hold up under a real argument: five drafts in a day, and every draft taught it something. One piece proves very little, though, and I'll come back to what would.</p>
+
+<h2>A memex, eighty years late</h2>
+<p>None of this started with AI. In July 1945 Vannevar Bush, who had run American science through the war, published "As We May Think" in <i>The Atlantic</i> and described a desk he called the memex: a private library on microfilm, fast enough to consult that it would be "an enlarged intimate supplement to his memory." His complaint was that libraries are indexed by alphabet and class, and minds aren't. "The human mind does not work that way. It operates by association." So the memex let its owner tie any two items together, build named trails through everything he'd read, write his own notes into the trail, and pull the whole trail up years later in the middle of a conversation. "The process of tying two items together is the important thing."</p>
+
+<p>That essay has had a hold on me for a long time. I clipped it into Evernote in January 2017, and in 2020 I was copying Bush's definition into a notebook beside a sketch of Ted Nelson's parallel documents and visible links, the version of hypertext Nelson built on Bush's idea. For years I've drawn up schemas and built prototypes of the same thing: a library of everything I've read where the articles talk to each other, where my annotations sit on the page the way Hypothesis lets you mark up the web, and where citing a source while I write takes one step. Each version ran into the problem Bush's desk would have had. Somebody has to lay every trail by hand, and a trail is only worth something if somebody walks it.</p>
+
+<p>What changed is the walking. A model can search my highlights by idea instead of by keyword, which is the closest thing yet to selection by association, and it can follow a trail from a 2017 clipping to a 2026 draft in the time it takes me to ask. The library this system runs on is the memex I kept sketching. The trails in it are still mine.</p>
+</main>
+
+<div class="wide">
+<figure class="build pre" data-anim>
+  <p class="ftitle">Bush's memex, and what it became here</p>
+  <p class="fsub">The left column quotes "As We May Think" (1945). The right is the part of this system that does the job.</p>
+  <div class="mx">
+    <div class="hd">Memex, 1945</div><div class="hd r">This system, 2026</div>
+    <div class="b" style="--i:1">"all his books, records, and communications"</div><div class="n" style="--i:1"><b>Reading library</b>Kindle and Audible highlights, Evernote since 2009, saved links, 22,000 of my own posts</div>
+    <div class="b" style="--i:2">"He can add marginal notes and comments"</div><div class="n" style="--i:2"><b>Quote bank</b>one file per book, my highlights with my margin notes beside them</div>
+    <div class="b" style="--i:3">trails, named and kept, through "the maze of materials"</div><div class="n" style="--i:3"><b>Commonplace book and frameworks</b>ideas filed by theme; nine lenses, each with the questions it makes me ask</div>
+    <div class="b" style="--i:4">"a new profession of trail blazers"</div><div class="n gap" style="--i:4"><b>Research agents and me</b>the model walks the trails at speed; I decide which ones the argument needs</div>
+  </div>
+  <figcaption>Bush never built his desk. The part he couldn't mechanize was the reader who follows the trail for you.</figcaption>
+</figure>
+</div>
+
+<main class="col">
 
 <h2>Source material first</h2>
-<p>The first decision was that a writer's references should come from what he has actually read. That sounds obvious, but the default behavior of any model is to reach for the quote everyone reaches for. So before any writing, I consolidated everything into one place: the Kindle and Audible highlights, the Goodreads and Amazon lists, the Evernote archive, the saved links from four platforms, even screenshots of book pages from my phone. From that came a quote bank, one file per book with my highlights and margin notes; a commonplace book of ideas by theme; and a sheet of every author I've engaged with, tiered by how much I trust them. The rule the system follows: a quote earns its place only if it sharpens the argument, it must come from a book I've read or own, and three references is usually the ceiling.</p>
+<p>The first practical decision was that a writer's references should come from what he has actually read. That sounds obvious, but the default behavior of any model is to reach for the quote everyone reaches for. So before any writing, I consolidated everything into one place: the Kindle and Audible highlights, the Goodreads and Amazon lists, the Evernote archive, the saved links from four platforms, even screenshots of book pages from my phone. From that came a quote bank, one file per book with my highlights and margin notes; a commonplace book of ideas by theme; and a sheet of every author I've engaged with, tiered by how much I trust them. The rule the system follows: a quote earns its place only if it sharpens the argument, it must come from a book I've read or own, and three references is usually the ceiling.</p>
 </main>
 
 <div class="wide">
@@ -134,7 +175,7 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
 <p>That was the system on November 1. What happened over the next three days is the part worth writing about.</p>
 
 <h2>The Florida piece, draft by draft</h2>
-<p>The thesis was simple: Chuck Schumer's committees spent nothing on Angie Nixon's Senate race in Florida, she lost by under three points, and that was a decision rather than an oversight. Here's what each draft changed, and what the system learned.</p>
+<p>The thesis of <a href="../florida-priced-at-zero/">the Florida piece</a> was simple: Chuck Schumer's committees spent nothing on Angie Nixon's Senate race in Florida, she lost by under three points, and that was a decision rather than an oversight. Here's what each draft changed, and what the system learned.</p>
 </main>
 
 <div class="wide">
@@ -178,12 +219,14 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
 <main class="col">
 <h2>Scaling the work without losing the thread</h2>
 <p>By v4 the piece had a dozen factual threads and I started to worry about the obvious limit: one model, one context, trying to hold research, drafting and checking at once gets sloppy in exactly the way a tired writer does. The fix was division of labor. Each thread of research goes to its own agent with a clean slate and a narrow brief, and comes back as a short, sourced report. The draft is written from those reports. Then a separate agent that never saw the drafting checks every figure against the sources and reports what's wrong, problems first. The pushback pass runs on the whole draft at the end, because comparisons and framing only show up when you read the thing whole.</p>
+
+<p>None of this is new. It's how a good magazine already works: reporters gather the facts, a writer drafts from their notes, a fact-checker who had no hand in the story checks every claim against the source, and an editor asks the questions a hostile reader would. Those roles exist because nobody, human or model, reliably catches their own mistakes. What's new is that I can staff every desk for a single op-ed at eleven at night. My job is the one at the top of the masthead: what the piece argues, and whether it runs.</p>
 </main>
 
 <div class="wide">
 <figure class="build pre" data-anim>
   <p class="ftitle">Division of labor on one draft</p>
-  <p class="fsub">Research in parallel, drafting from reports, checking by someone who didn't write it.</p>
+  <p class="fsub">The desks a newsroom has, each staffed by an agent with one job. The masthead job is mine.</p>
   <svg viewBox="0 0 900 300" role="img" aria-label="Diagram: three research agents run in parallel and report to the drafting step; a separate fact-check agent reads the draft and sources and returns corrections; the pushback pass runs on the whole draft; then the author reviews.">
     <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/></marker></defs>
     <g class="step" style="--i:0"><rect class="box warn" x="20" y="120" width="120" height="60" rx="4"/><text class="t" x="34" y="145">My notes</text><text x="34" y="163">and questions</text></g>
@@ -203,21 +246,47 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
     <text class="small" style="fill:var(--warn)" x="560" y="246">13 fixes, problems first</text>
     <path class="arrow" style="--i:8" d="M816,150 L840,150" marker-end="url(#ah2)"/>
     <g class="step" style="--i:9"><rect class="box warn" x="842" y="120" width="48" height="60" rx="4"/><text class="t" x="852" y="152">Me</text></g>
-    <text class="small" x="472" y="80">pushback pass runs here, on the whole draft</text>
+    <text class="small" x="472" y="80">pushback pass, the editor's job, runs here</text>
+    <text class="small role" x="222" y="16">REPORTERS</text>
+    <text class="small role" x="466" y="104">WRITER</text>
+    <text class="small role" x="656" y="104">FACT-CHECK DESK</text>
+    <text class="small role" x="836" y="112">MASTHEAD</text>
+    <text class="small role" x="20" y="112">ASSIGNMENT</text>
   </svg>
-  <figcaption>Each agent starts with a clean context and a narrow brief. The reports are what the drafter reads; the raw pages never enter the draft.</figcaption>
+  <figcaption>Each agent starts with a clean context and a narrow brief. The writer reads the reports, never the raw pages, and the fact-checker reads the draft cold.</figcaption>
 </figure>
 </div>
 
 <main class="col">
 <h2>What "AI-written" leaves out</h2>
-<p>The model is better than I am at four things: finding what the record actually says, holding thirty figures straight, catching my own tells, and running the same twenty checks on draft five that it ran on draft one without getting bored. It is worse than I am at the thing that matters more than the four: knowing what I think. The thesis was mine. The lens, marking to market, came from a trading floor I sat on. The reversal that rebuilt the piece came from a question I asked. The friend who said it was hindsight was mine, and so was the decision to put his objection in the piece and test it against the numbers rather than wave it off. The model typed the sentences, and I'll say so every time. But if you read the Florida piece and the only question you have is who typed it, you've asked the one question the piece can't fail.</p>
+<p>The model is better than I am at four things: finding what the record actually says, holding thirty figures straight, catching my own tells, and running the same twenty checks on draft five that it ran on draft one without getting bored. It is worse than I am at the thing that matters more than the four: knowing what I think. The thesis was mine. The lens, marking to market, came from a trading floor I sat on. The reversal that rebuilt the piece came from a question I asked. The friend who said it was hindsight was mine, and so was the decision to put his objection in the piece and test it against the numbers rather than wave it off. The model typed the sentences, and I'll say so every time. But if you read <a href="../florida-priced-at-zero/">the Florida piece</a> and the only question you have is who typed it, you've asked the one question the piece can't fail.</p>
 <p>That's what I'd like this account to change. "AI-created" is doing a lot of work in people's heads right now: it means careless, it means generic, it means nobody checked. Those are real failures, and they're failures of process, not of tools. Here the process was five drafts, three research agents, an independent fact-check that found thirteen errors, fourteen standing questions, and a reader who wouldn't let a comparison stand if it pointed the wrong way. Judge the piece on whether the argument holds. That's the test I built the system to pass.</p>
 
 <p>The rule-extraction is the part I'd tell anyone to copy. Each time I make a correction that would apply to the next piece, it goes into a log as a before-and-after pair with the rule it teaches, and the rule goes into the guide. The system doesn't get smarter because the model does. It gets smarter because it keeps a record of every time I was right and it wasn't.</p>
 
+<h2>What I expect to break</h2>
+<p>Years on risk desks left me with one habit I trust: before asking how a position makes money, ask how it loses it. This system has a few obvious ways to fail, and most of them follow from how the models actually work, which is the part that usually gets skipped when people argue about whether AI can write. Knowing the mechanism tells you where to put the checks.</p>
+</main>
+
+<div class="wide">
+<figure>
+  <p class="ftitle">Six ways this could fail, and the plan for each</p>
+  <p class="fsub">Each one follows from how language models work, not from anything specific to writing.</p>
+  <ol class="rules risk">
+    <li><span class="q">1</span><div><p class="h">The rulebook gets too long to follow</p><p class="ex">Every rule is text the model reads before it writes, and its attention over a long prompt isn't spread evenly. In <a href="https://arxiv.org/abs/2507.11538">one 2025 test</a>, compliance fell steadily as the number of simultaneous instructions rose, and <a href="https://arxiv.org/abs/2307.03172">earlier work</a> found models use what sits at the start and end of a long context better than what's buried in the middle. The pushback pass went from zero questions to fourteen in three days.</p><p class="fix"><b>Plan</b>Tier the rules: a short core loaded every time, and the checklists run as separate passes by agents with one job each. Every so often, merge rules that say the same thing and cut the ones that never fire.</p></div></li>
+    <li><span class="q">2</span><div><p class="h">Long sessions forget</p><p class="ex">A model's working memory is its context window. When a session runs past it, the earlier conversation is compressed into a summary, and any detail the summary dropped is gone. The session that built this page ran out of room once and carried on from its own notes.</p><p class="fix"><b>Plan</b>Nothing that matters lives only in the chat. Guides, the corrections log, drafts and sources are files the next session reads.</p></div></li>
+    <li><span class="q">3</span><div><p class="h">The model grades its own homework</p><p class="ex">A model checking a draft it just wrote shares the blind spots that produced it, and <a href="https://arxiv.org/abs/2404.13076">researchers have found</a> models rate their own output more favorably than other text of the same quality. That's why the fact-checker never sees the drafting.</p><p class="fix"><b>Plan</b>Move the pushback pass out of the drafter's last step and into an agent of its own, the way the fact-check already is.</p></div></li>
+    <li><span class="q">4</span><div><p class="h">It agrees with me too easily</p><p class="ex">Models tuned on human ratings learn that agreement gets rated well, and the <a href="https://arxiv.org/abs/2310.13548">documented result</a> is sycophancy, a pull toward telling the user what he wants to hear. In a system built around my pushback, that's the quiet failure: when my note is wrong, the draft may fold anyway.</p><p class="fix"><b>Plan</b>Check my notes the way the draft gets checked, and have the handover say so when the system thinks I'm wrong.</p></div></li>
+    <li><span class="q">5</span><div><p class="h">The rules are fitted to one piece</p><p class="ex">Every question in the pushback pass came from Florida. Some of them are about argument in general. Some may turn out to be about Senate money in 2026.</p><p class="fix"><b>Plan</b>Log which rules fire on which pieces. A rule that doesn't fire on the next five gets rewritten or cut.</p></div></li>
+    <li><span class="q">6</span><div><p class="h">The model underneath changes</p><p class="ex">The rules were written against one version of the model. A newer one may not need some of them and may misread others.</p><p class="fix"><b>Plan</b>Keep a test set, the Florida drafts and the before-and-after pairs from the corrections log, and rerun it whenever the model changes, the way you'd test code before a release. In the field this is called an eval.</p></div></li>
+  </ol>
+  <figcaption>Most of these are the same fix in different clothes: independent checks, and a book that gets re-marked when the market moves.</figcaption>
+</figure>
+</div>
+
+<main class="col">
 <h2>What's next</h2>
-<p>Figures and citations in every piece, with the numbers checked by someone who didn't write the sentence they sit in. A historical-analogues doc, because half of what I write is forecasting and the reading I do for it should be organized by the question it answers. And a prediction log, so I keep score. I called Michigan right last week. I'd like to be able to show the misses too.</p>
+<p>One piece is a single data point. The proof of the system will be in the next ten, and the measure I care about is whether each one needs fewer of my notes than the last, because that is what it looks like when the rules are capturing how I think. On the list: figures and citations in every piece, with every number checked by a fact-checking agent that had no part in writing the draft. A historical-analogues doc, because half of what I write is forecasting and the reading I do for it should be organized by the question it answers. And a prediction log, so I keep score. I called Michigan right last week. I'd like to be able to show the misses too.</p>
 
 <p class="note">Written by Vikas Erraballi with Claude. The system described here runs on Claude; the guides, the library, the questions and the corrections are mine.</p>
 </main>
@@ -228,6 +297,5 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
   document.querySelectorAll("[data-anim]").forEach(function(f){ if(io) io.observe(f); else f.classList.remove("pre"); });
 })();
 </script>
-
 </body>
 </html>
