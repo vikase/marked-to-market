@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The pushback pass · Marked to Market</title>
+<meta name="description" content="Six questions a skeptical reader asks of any argument, each with the note it came from, and a button that copies them as a prompt you can run on anything you read or write.">
+<meta property="og:title" content="The pushback pass">
+<meta property="og:description" content="Six questions a skeptical reader asks of any argument, each with the note it came from. Run them on anything you read or write.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://vikase.github.io/marked-to-market/pushback-pass/">
+<meta property="og:site_name" content="Marked to Market">
+<meta property="og:image" content="https://vikase.github.io/marked-to-market/pushback-pass/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The pushback pass: six questions a skeptical reader asks of any argument.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/mtm.css">
+<style>
+/* Piece-level styles: a checklist figure. Tokens and figure anatomy live in ../assets/mtm.css. */
+.pass{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;counter-reset:q}
+.pass li{counter-increment:q;background:var(--bg);border:1px solid var(--rule);border-radius:4px}
+.pass label{display:grid;grid-template-columns:auto auto 1fr;gap:.2rem .8rem;align-items:start;padding:.85rem 1rem;cursor:pointer}
+.pass input{margin:.3rem 0 0;width:1.05rem;height:1.05rem;accent-color:var(--book)}
+.pass .n{font-family:var(--mono);font-weight:600;font-size:.8rem;color:var(--book);padding-top:.15rem;min-width:2ch}
+.pass .n::before{content:counter(q)}
+.pass .q{font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.2;margin:0 0 .3rem}
+.pass .how{font-size:.93rem;color:var(--ink-2);margin:0 0 .45rem}
+.pass .ex{font-family:var(--mono);font-size:.74rem;line-height:1.5;color:var(--ink-3);margin:0}
+.pass .ex b{color:var(--ink-2);font-weight:600}
+.pass li:has(input:checked){border-color:var(--book);background:var(--book-soft)}
+.pass li:has(input:checked) .q{text-decoration:line-through;text-decoration-color:var(--book);text-decoration-thickness:2px}
+.last{margin:.9rem 0 0;padding:.85rem 1rem;border-left:3px solid var(--pos);background:var(--pos-soft);border-radius:0 4px 4px 0}
+.last .q{font-family:var(--display);font-weight:700;font-size:1.05rem;margin:0 0 .3rem}
+.last p{margin:0;font-size:.93rem;color:var(--ink-2)}
+.tools{display:flex;gap:.6rem 1rem;flex-wrap:wrap;align-items:center;margin:1.1rem 0 0}
+.btn{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.04em;padding:.55rem .9rem;border-radius:4px;border:1px solid var(--book);background:var(--book);color:#fff;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--book)}
+.btn:hover{filter:brightness(1.08)}
+.status{font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+.count{font-family:var(--mono);font-size:.74rem;color:var(--ink-3);margin-left:auto}
+details.prompt{margin-top:.9rem}
+details.prompt summary{font-family:var(--mono);font-size:.74rem;color:var(--ink-3);cursor:pointer}
+details.prompt pre{white-space:pre-wrap;font-family:var(--mono);font-size:.74rem;line-height:1.5;color:var(--ink-2);background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:.8rem;margin:.5rem 0 0}
+@media (max-width:520px){body{font-size:17px} figure{padding:1rem .8rem} .pass label{padding:.75rem .8rem} .count{margin-left:0;width:100%}}
+</style>
+</head>
+<body>
+<nav class="site-nav"><a href="../">Marked to <span class="m">Market</span></a><span>Vikas Erraballi</span></nav>
+
+<header class="hero col">
+  <div class="eyebrow">Tools · November 2026</div>
+  <h1>The pushback pass</h1>
+  <p class="dek">Six questions a skeptical reader asks of any argument. I run them on every draft before it reaches me. They work just as well on anything you read.</p>
+</header>
+
+<main class="col">
+<p>Each question started as a note I wrote by hand in the margin of <a href="../florida-priced-at-zero/">the Florida piece</a>, and each became a standing rule after that. The full story is in <a href="../how-i-built-a-writing-system/">how I built the system</a>. Here they are in general form, with the note that produced each one kept as the worked example.</p>
+<p>Use it as a checklist, or copy the whole pass as a prompt and give it to whatever model you use, along with the op-ed, memo or draft you want argued with.</p>
+</main>
+
+<div class="wide">
+<figure id="fig-1">
+  <p class="kick"><span><b>Fig 1</b> · The pushback pass</span><span>6 questions · 1 last check</span></p>
+  <p class="ftitle">Every argument should survive these before you believe it</p>
+  <p class="fsub">Tick each one off as the piece answers it. The ones you can't tick are where to push.</p>
+  <ol class="pass" id="pass">
+    <li><label><input type="checkbox"><span class="n"></span><span>
+      <p class="q">Does each comparison point the way the sentence says?</p>
+      <p class="how">For every "like," "unlike," "also" or "even," check what the evidence shows about each side. A comparison that runs backwards can carry a whole paragraph to the wrong conclusion.</p>
+      <p class="ex"><b>From Florida:</b> "Are we saying Jolly did get party support and still lost?" He hadn't. The sentence was reversed.</p>
+    </span></label></li>
+    <li><label><input type="checkbox"><span class="n"></span><span>
+      <p class="q">Are we putting words in anyone's mouth?</p>
+      <p class="how">Every view credited to a person or institution: did they say it, where, and in roughly those words? Paraphrasing a group's position as one person's is the easy slip.</p>
+      <p class="ex"><b>From Florida:</b> "Not sure Schumer would say that." He hadn't said anything. The defense now goes to Gillibrand, who had.</p>
+    </span></label></li>
+    <li><label><input type="checkbox"><span class="n"></span><span>
+      <p class="q">Is every number in context?</p>
+      <p class="how">Set each figure against its total, its base or its prior period. A number with nothing beside it tells the reader nothing about scale.</p>
+      <p class="ex"><b>From Florida:</b> "What firepower did they actually have?" $354 million and $216 million raised; the ask was 3 percent of it.</p>
+    </span></label></li>
+    <li><label><input type="checkbox"><span class="n"></span><span>
+      <p class="q">Did they have the means, and is the defense weighed?</p>
+      <p class="how">Before blaming a choice, check the other choice was possible. Then state the best defense of what they did and test it against the numbers, rather than waving it off.</p>
+      <p class="ex"><b>From Florida:</b> "How can Gillibrand say it needed Texas-sized money when Florida's spending was a third of that?" The piece now tests her claim.</p>
+    </span></label></li>
+    <li><label><input type="checkbox"><span class="n"></span><span>
+      <p class="q">Is this case unusual, or part of a pattern?</p>
+      <p class="how">Find the comparable cases. One instance shows a decision only if the others went differently.</p>
+      <p class="ex"><b>From Florida:</b> "What other races did they choose not to help?" Florida was the only close race with zero; Southern long shots got small, late bets.</p>
+    </span></label></li>
+    <li><label><input type="checkbox"><span class="n"></span><span>
+      <p class="q">Does the reporting change the frame?</p>
+      <p class="how">If what you found contradicts the premise, rewrite the premise. The question the piece started with may not be the one the evidence answers.</p>
+      <p class="ex"><b>From Florida:</b> the Jolly finding. The piece was about Nixon; it became about Florida.</p>
+    </span></label></li>
+  </ol>
+  <div class="last">
+    <p class="q">Last, read it as Adler's critic</p>
+    <p>Mortimer Adler held that a reader may disagree with an author on only four grounds: the author is uninformed, misinformed, illogical or incomplete. Read the piece once more looking for each.</p>
+  </div>
+  <div class="tools">
+    <button class="btn" type="button" id="copy">Copy as a prompt</button>
+    <button class="btn ghost" type="button" id="reset">Clear ticks</button>
+    <span class="status" id="status" role="status" aria-live="polite"></span>
+    <span class="count" id="count">0 of 6 answered</span>
+  </div>
+  <details class="prompt"><summary>See the prompt</summary><pre id="prompt"></pre></details>
+  <figcaption>Six of the fourteen questions the pass runs on my drafts; the others are still being tested on later pieces before I publish them in general form.</figcaption>
+  <div class="ticker"><span>Source: the craft guide; Adler, <a href="https://en.wikipedia.org/wiki/How_to_Read_a_Book"><i>How to Read a Book</i></a></span><span class="asof">As of Nov 5, 2026 · <a href="#fig-1">¶ fig 1</a></span></div>
+</figure>
+</div>
+
+<main class="col">
+<p class="note">The prompt is plain text with nothing hidden in it. Paste it above the piece you want checked.</p>
+</main>
+
+<script src="../assets/mtm.js"></script>
+<script>
+(function(){
+  var items = Array.prototype.slice.call(document.querySelectorAll("#pass li"));
+  var lines = items.map(function(li, i){
+    return (i + 1) + ". " + li.querySelector(".q").textContent.trim() + " " + li.querySelector(".how").textContent.trim();
+  });
+  var last = document.querySelector(".last p:last-child").textContent.trim();
+  var prompt = "Read the piece below as a skeptical, intelligent reader. Work through each question in order. For each, quote the sentence or claim it applies to, say whether the piece passes, and if it doesn't, say what it would take to fix it. Be specific; don't praise.\n\n" +
+    lines.join("\n") +
+    "\n\nLast check: " + last +
+    "\n\nEnd with the single weakest point in the argument.\n\nThe piece:\n";
+  document.getElementById("prompt").textContent = prompt;
+
+  var status = document.getElementById("status");
+  function say(t){ status.textContent = t; setTimeout(function(){ status.textContent = ""; }, 2400); }
+  document.getElementById("copy").addEventListener("click", function(){
+    function fallback(){
+      var ta = document.createElement("textarea"); ta.value = prompt; ta.setAttribute("readonly", "");
+      ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      say(ok ? "Copied." : "Couldn't copy. Open \"See the prompt\" and copy it from there.");
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(prompt).then(function(){ say("Copied. Paste it above the piece you want checked."); }, fallback);
+    } else { fallback(); }
+  });
+
+  var boxes = items.map(function(li){ return li.querySelector("input"); });
+  var count = document.getElementById("count");
+  function update(){ var n = boxes.filter(function(b){ return b.checked; }).length; count.textContent = n + " of " + boxes.length + " answered"; }
+  boxes.forEach(function(b){ b.addEventListener("change", update); });
+  document.getElementById("reset").addEventListener("click", function(){ boxes.forEach(function(b){ b.checked = false; }); update(); });
+  update();
+})();
+</script>
+</body>
+</html>
