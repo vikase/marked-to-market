@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How I built a writing system that argues with me · Marked to Market</title>
+<meta name="description" content="A reading library, three guides and a review process that pushes back: how the pieces on this site get made, with the Florida op-ed as the worked example.">
+<meta property="og:title" content="How I built a writing system that argues with me">
+<meta property="og:description" content="A reading library, three guides and a review process that pushes back: how the pieces on this site get made, with the Florida op-ed as the worked example.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a reading column with "blueprint" figures that break out wider; figures are drawn as process diagrams with a dotted-grid ground, and build themselves when scrolled into view. */
+:root{
+  --bg:#f3f4f1; --paper:#fbfbf9; --ink:#1a1d1a; --ink-2:#4b524c; --ink-3:#7d857e; --rule:#d8dcd6; --rule-2:#e9ece7;
+  --acc:#1f6f5a; --acc-soft:#dcefe6; --warn:#b4541a; --warn-soft:#f6e6da; --grid:#e3e7e1;
+  --display:"Archivo",system-ui,sans-serif; --body:"Lora",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141715; --paper:#1b1f1c; --ink:#edefe9; --ink-2:#b7bdb6; --ink-3:#858c85; --rule:#2f3531; --rule-2:#252a27; --acc:#4fb08f; --acc-soft:#1d3a30; --warn:#e07a3a; --warn-soft:#3d2719; --grid:#242925; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#141715; --paper:#1b1f1c; --ink:#edefe9; --ink-2:#b7bdb6; --ink-3:#858c85; --rule:#2f3531; --rule-2:#252a27; --acc:#4fb08f; --acc-soft:#1d3a30; --warn:#e07a3a; --warn-soft:#3d2719; --grid:#242925; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.62;padding-block:0 4rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:64ch;margin:0 auto}
+.wide{max-width:920px;margin:2.2rem auto}
+h1,h2,h3{font-family:var(--display);line-height:1.04;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:800;letter-spacing:-.015em}
+h2{font-size:1.3rem;font-weight:800;margin:2.6rem 0 .6rem}
+p{margin:0 0 1.15em}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.hero{padding-block:3.2rem 1.4rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
+.hero .dek{font-size:1.18rem;color:var(--ink-2);max-width:58ch;margin-top:1rem}
+.byline{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);margin-top:1.3rem;display:flex;gap:1.2rem;flex-wrap:wrap}
+figure{margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:1.2rem;background-image:radial-gradient(var(--grid) 1px,transparent 1px);background-size:18px 18px}
+figure .ftitle{font-family:var(--display);font-size:1.1rem;font-weight:800;margin:0 0 .15rem}
+figure .fsub{font-size:.9rem;color:var(--ink-2);margin:0 0 1rem}
+figcaption{font-size:.8rem;color:var(--ink-3);margin-top:.8rem;font-family:var(--mono);line-height:1.45}
+svg{display:block;width:100%;height:auto;max-width:100%}
+svg text{font-family:var(--mono);font-size:11.5px;fill:var(--ink-2)}
+svg .t{font-family:var(--display);font-weight:800;font-size:13px;fill:var(--ink)}
+svg .box{fill:var(--paper);stroke:var(--rule);stroke-width:1.2}
+svg .box.acc{fill:var(--acc-soft);stroke:var(--acc)}
+svg .box.warn{fill:var(--warn-soft);stroke:var(--warn)}
+svg .arrow{fill:none;stroke:var(--ink-3);stroke-width:1.6;marker-end:url(#ah)}
+svg .arrow.acc{stroke:var(--acc)}
+svg .arrow.warn{stroke:var(--warn)}
+svg .small{font-size:10.5px;fill:var(--ink-3)}
+.build .step{opacity:1;transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i)*140ms)}
+.build.pre .step{opacity:0;transform:translateY(6px)}
+.build .arrow{stroke-dasharray:400;stroke-dashoffset:0;transition:stroke-dashoffset 1s ease;transition-delay:calc(var(--i)*140ms + 200ms)}
+.build.pre .arrow{stroke-dashoffset:400}
+/* rules list */
+.rules{display:grid;gap:.6rem;margin:0;padding:0;list-style:none}
+.rules li{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+.rules .q{font-family:var(--display);font-weight:800;color:var(--acc);font-size:.9rem;padding-top:.15rem;min-width:2.2ch}
+.rules .h{font-family:var(--display);font-weight:800;font-size:.98rem;margin:0 0 .25rem}
+.rules .ex{font-size:.88rem;color:var(--ink-2);margin:0}
+.rules .ex b{color:var(--ink);font-weight:600}
+/* versions */
+.vers{display:grid;grid-template-columns:5ch 1fr;gap:.5rem 1rem;font-size:.92rem}
+.vers .v{font-family:var(--display);font-weight:800;color:var(--acc)}
+.vers .d{padding-bottom:.7rem;border-bottom:1px dashed var(--rule)}
+.vers .d b{font-weight:600}
+.vers .meta{font-family:var(--mono);font-size:.74rem;color:var(--ink-3);display:block;margin-top:.25rem}
+.callout{border-left:3px solid var(--acc);padding:.2rem 0 .2rem 1rem;color:var(--ink-2);margin:1.4rem 0}
+.callout .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:.3rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+.pill{display:inline-block;font-family:var(--mono);font-size:.72rem;padding:.15rem .5rem;border:1px solid var(--rule);border-radius:99px;color:var(--ink-2);margin:0 .3rem .3rem 0}
+.note{font-size:.8rem;color:var(--ink-3);font-family:var(--mono);line-height:1.45;border-top:1px solid var(--rule);padding-top:1rem;margin-top:2.4rem}
+@media (prefers-reduced-motion: reduce){.build .step,.build .arrow{transition:none}.build.pre .step{opacity:1;transform:none}.build.pre .arrow{stroke-dashoffset:0}}
+@media (max-width:520px){body{font-size:17px} figure{padding:1rem .8rem}}
+</style>
+<style>.site-nav{max-width:66ch;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0 0;font-family:ui-monospace,Menlo,monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.site-nav a{color:inherit;text-decoration:none;font-weight:600}.site-nav a:hover{text-decoration:underline}.site-nav span{opacity:.6}</style>
+</head>
+<body>
+<nav class="site-nav"><a href="../">Marked to Market</a><span>Vikas Erraballi</span></nav>
+
+
+<header class="hero col">
+  <div class="eyebrow">Working notes · November 2026</div>
+  <h1>How I built a writing system that argues with me</h1>
+  <p class="dek">I spent twenty years reading and posting and never finishing anything. This fall I built a system, with Claude, that turns my arguments into published pieces. When a detector says a piece is AI-written, it's measuring the sentences. This is an account of everything the sentences sit on top of, and most of it is me.</p>
+  <div class="byline"><span>Vikas Erraballi</span><span>About 8 min</span></div>
+</header>
+
+<main class="col">
+<h2>The problem</h2>
+<p>I had the raw material of a writer and none of the output. Fifteen years of Kindle highlights, Evernote notes going back to 2009, a few thousand saved articles, and about 22,000 Facebook posts and comments, many of them first drafts of essays I never wrote. What I didn't have was a finishing process. And the obvious shortcut had a trap in it: readers now run a piece through a detector, get a number, and stop reading. I understand the reflex. Most of what the detectors catch is a thesis fed to a model and posted. But the number measures the sentences, and the sentences are the last and smallest part of a piece. So the goal was a system that keeps the thinking mine and makes it visible: the model does research, fact-checking and the twenty boring checks, and I do the part a detector can't see, which is deciding what's true and arguing with the draft until it is.</p>
+
+<p>What follows is how the system is put together, with the Florida Senate piece as the worked example, because that one went through five drafts in a day and every draft taught the system something.</p>
+
+<h2>Source material first</h2>
+<p>The first decision was that a writer's references should come from what he has actually read. That sounds obvious, but the default behavior of any model is to reach for the quote everyone reaches for. So before any writing, I consolidated everything into one place: the Kindle and Audible highlights, the Goodreads and Amazon lists, the Evernote archive, the saved links from four platforms, even screenshots of book pages from my phone. From that came a quote bank, one file per book with my highlights and margin notes; a commonplace book of ideas by theme; and a sheet of every author I've engaged with, tiered by how much I trust them. The rule the system follows: a quote earns its place only if it sharpens the argument, it must come from a book I've read or own, and three references is usually the ceiling.</p>
+</main>
+
+<div class="wide">
+<figure class="build pre" data-anim>
+  <p class="ftitle">The parts, and what feeds what</p>
+  <p class="fsub">Everything upstream of a piece is mine. The model reads it; it doesn't invent it.</p>
+  <svg viewBox="0 0 900 330" role="img" aria-label="Diagram: a reading library feeds three guides (voice, craft, frameworks), which feed a drafting workflow, which produces a piece; corrections from each piece flow back into the guides.">
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/></marker></defs>
+    <g class="step" style="--i:0"><rect class="box" x="14" y="40" width="226" height="230" rx="4"/><text class="t" x="34" y="66">Reading library</text><text x="34" y="92">Kindle, Audible highlights</text><text x="34" y="110">Evernote, 2009–2019</text><text x="34" y="128">Saved links, 4 platforms</text><text x="34" y="146">Goodreads + Amazon lists</text><text x="34" y="164">Book-page screenshots</text><text class="small" x="34" y="196">→ Quote bank, file per book</text><text class="small" x="34" y="212">→ Commonplace book, by idea</text><text class="small" x="34" y="228">→ Authors, tiered</text><text class="small" x="34" y="244">→ 22,000 of my own posts</text></g>
+    <path class="arrow" style="--i:1" d="M242,100 C270,100 270,70 296,70"/>
+    <path class="arrow" style="--i:1" d="M242,155 L296,155"/>
+    <path class="arrow" style="--i:1" d="M242,210 C270,210 270,240 296,240"/>
+    <g class="step" style="--i:2"><rect class="box acc" x="298" y="44" width="212" height="52" rx="4"/><text class="t" x="312" y="66">Voice guide</text><text x="312" y="84">how I sound, from my posts</text></g>
+    <g class="step" style="--i:2"><rect class="box acc" x="298" y="129" width="212" height="52" rx="4"/><text class="t" x="312" y="151">Craft guide</text><text x="312" y="169">how a piece works, sourced</text></g>
+    <g class="step" style="--i:2"><rect class="box acc" x="298" y="214" width="212" height="52" rx="4"/><text class="t" x="312" y="236">Frameworks guide</text><text x="312" y="254">how I think: nine lenses</text></g>
+    <path class="arrow" style="--i:3" d="M512,70 C540,70 540,155 566,155"/>
+    <path class="arrow" style="--i:3" d="M512,155 L566,155"/>
+    <path class="arrow" style="--i:3" d="M512,240 C540,240 540,155 566,155"/>
+    <g class="step" style="--i:4"><rect class="box" x="568" y="110" width="176" height="90" rx="4"/><text class="t" x="586" y="134">Drafting skill</text><text x="586" y="152">thesis, lens, facts</text><text x="586" y="168">reading, edit</text><text x="586" y="184">pushback pass</text></g>
+    <path class="arrow" style="--i:5" d="M746,155 L790,155"/>
+    <g class="step" style="--i:6"><rect class="box warn" x="792" y="128" width="96" height="54" rx="4"/><text class="t" x="806" y="152">Piece</text><text x="806" y="170">v1 … v5</text></g>
+    <path class="arrow warn" style="--i:7" d="M836,184 C836,300 400,300 397,268"/>
+    <text class="small" style="fill:var(--warn)" x="520" y="316">my corrections → corrections log → new rules in the guides</text>
+  </svg>
+  <figcaption>The three guides are the system's memory of me. The corrections log is how they change.</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<h2>Three guides, three jobs</h2>
+<p>A model that knows your reading still writes in its own voice, so the second layer is three guides it reads before every draft. The <b>voice guide</b> was mined from my own posts: the moves that are mine (analogy as the main argument, mechanism before morality, stated odds with the reason behind them, a credential worn lightly) and the habits I wanted to lose (sarcasm as a rebuttal, contempt words, stacked rhetorical questions). The <b>craft guide</b> is how a piece works, built from the writing advice I had saved for fifteen years without ever applying: Palahniuk on received text, Mamet's boredom test, Roy Peter Clark on aiming a long sentence at one word. Every rule names its source. The <b>frameworks guide</b> is the one I'm proudest of. It's how I think: the nine analytical lenses I got from the books that changed how I see the world, each with the questions it makes me ask. The voice guide is how I sound. This one is why my pieces aren't interchangeable with anyone else's.</p>
+
+<p>Two rules from the craft guide, as examples of the kind of thing that's in there:</p>
+<div class="callout"><span class="lab">Craft guide</span>No received text; invent your own. A phrase worn smooth by other writers ("wringing my hands") that the writer never actually pictured. If something has been described one way, find a new way, in terms only this writer would use. The same goes for aphorisms: coin the line only this piece could have.</div>
+<div class="callout"><span class="lab">Craft guide</span>Aim long sentences at one word. A long sentence works when it flies toward an emphatic final word. Put the payoff at the end.</div>
+
+<h2>The workflow for one piece</h2>
+<p>I send a thesis, sometimes two lines. The model finds the one-sentence version of what I'm saying, names the lens it runs on, checks every fact, searches my reading by idea rather than keyword, runs a reversal test and writes the strongest case against, then edits rather than rewrites. Then two passes I added after the first published piece came back sounding like a machine: a second read "as Vikas would," and a scan for the tells of model prose: signpost openers, a closer on every paragraph, "not X but Y" reversals, threes for rhythm, colon reveals, abstractions as characters. Any draft that fails those doesn't reach me.</p>
+
+<p>That was the system on November 1. What happened over the next three days is the part worth writing about.</p>
+
+<h2>The Florida piece, draft by draft</h2>
+<p>The thesis was simple: Chuck Schumer's committees spent nothing on Angie Nixon's Senate race in Florida, she lost by under three points, and that was a decision rather than an oversight. Here's what each draft changed, and what the system learned.</p>
+</main>
+
+<div class="wide">
+<figure>
+  <p class="ftitle">Five drafts in a day</p>
+  <p class="fsub">What my notes caught, and what each one became.</p>
+  <div class="vers">
+    <div class="v">v1</div><div class="d">Written from a two-line thesis. The research found the best evidence for the case: the committees moved money into Kansas and Mississippi in October and never into Florida.<span class="meta">Lens: how power works. Check: 35 races, not "hundreds".</span></div>
+    <div class="v">v2</div><div class="d">A style test. I'd asked which writers I might learn from (Sam Kriss, Gore Vidal), so the draft planted its one conceit, "priced at zero," in the opening and closed on it. Four paragraphs changed. <b>Then I ran it through an AI detector: 100 percent.</b> Fair enough; the model typed the sentences. Everything that made the piece worth reading hadn't happened yet.<span class="meta">Lesson: the detector measures the typing. Show the rest.</span></div>
+    <div class="v">v3</div><div class="d">My line notes. The biggest: a sentence about the governor's race had its evidence pointing the wrong way. David Jolly, a centrist ex-Republican, had also been starved of national money and also lost narrowly. That doesn't show a ceiling money couldn't move; it shows the party wrote off the state. The piece reframed around it: Florida could have been a second Texas.<span class="meta">New rule: does each comparison point the way the sentence says?</span></div>
+    <div class="v">v4</div><div class="d">My broader questions: how much money did the committees actually have, which other races did they skip, and is Florida unusual? Three research agents ran in parallel; a fourth, which hadn't seen the drafting, fact-checked the result and found thirteen errors. The pattern pointed at the state, not the nominee, which cost the piece its simplest version of the Israel argument and made it more honest.<span class="meta">Rules: did they have the means? Is this case unusual or a pattern?</span></div>
+    <div class="v">v5</div><div class="d">A friend's critique: this is hindsight, Florida was close because the whole country moved. So the research computed the swing from 2024 in every red state. The funded ones moved 16 to 26 points; the country moved 13 to 15; Florida moved 10. South Carolina moved 22 on almost nothing, which the piece says too.<span class="meta">Rule: is the defense weighed, and tested against the numbers?</span></div>
+  </div>
+  <figcaption>Each draft was fact-checked against sources before I saw it. Each rule went into the guide the same day.</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<h2>Arguing with the draft</h2>
+<p>The thing I do that the system couldn't, at first, is read a draft the way a hostile, intelligent reader would and ask the questions that reader would ask. Are we putting words in Schumer's mouth? He never said that; Gillibrand did. Why is Ohio the comparison, when Maine, where the party spent $38 million against a senator in a state Harris carried, makes the point better? If the socialist label cost Nixon less than a point against the centrist, couldn't you say the lack of money cost her just as little? What would a $15 million buy have done to Republican spending in response? Every one of those questions made the piece better, and every one of them was a question I'd had to write by hand.</p>
+
+<p>So the next move was the one that makes this a system rather than a chat: I asked for the questions to be performed before I see the draft. The craft guide now has a reader's pushback pass, fourteen questions answered and fixed on every handover, each of which came from a note I once had to make myself. The handover I get back lists what the pass changed, then only what needs me: judgment calls, personal lines, odds I have to own.</p>
+</main>
+
+<div class="wide">
+<figure>
+  <p class="ftitle">The reader's pushback pass</p>
+  <p class="fsub">Six of the fourteen questions, each with the Florida note it came from.</p>
+  <ol class="rules">
+    <li><span class="q">1</span><div><p class="h">Does each comparison point the way the sentence says?</p><p class="ex"><b>From:</b> "Are we saying Jolly did get party support and still lost?" He hadn't. The sentence was reversed.</p></div></li>
+    <li><span class="q">2</span><div><p class="h">Are we putting words in anyone's mouth?</p><p class="ex"><b>From:</b> "Not sure Schumer would say that." He hadn't said anything; the draft now attributes the defense to Gillibrand, who had.</p></div></li>
+    <li><span class="q">3</span><div><p class="h">Is every number in context?</p><p class="ex"><b>From:</b> "What firepower did they actually have?" Answer: $354 million and $216 million raised; the ask was 3 percent of it.</p></div></li>
+    <li><span class="q">4</span><div><p class="h">Did they have the means, and is the defense weighed?</p><p class="ex"><b>From:</b> "How can Gillibrand say it needed Texas-sized money when Florida's spending was a third of that?" The piece now tests her claim against the numbers.</p></div></li>
+    <li><span class="q">5</span><div><p class="h">Is this case unusual, or part of a pattern?</p><p class="ex"><b>From:</b> "What other races did they choose not to help?" Florida was the only close race with zero; Southern long shots got small, late bets.</p></div></li>
+    <li><span class="q">6</span><div><p class="h">Does the reporting change the frame?</p><p class="ex"><b>From:</b> the Jolly finding. The piece was about Nixon; it became about Florida.</p></div></li>
+  </ol>
+  <figcaption>The last check comes from Mortimer Adler: a reader may disagree with an author only because he is uninformed, misinformed, illogical or incomplete. The pass ends by reading the draft as that critic.</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<h2>Scaling the work without losing the thread</h2>
+<p>By v4 the piece had a dozen factual threads and I started to worry about the obvious limit: one model, one context, trying to hold research, drafting and checking at once gets sloppy in exactly the way a tired writer does. The fix was division of labor. Each thread of research goes to its own agent with a clean slate and a narrow brief, and comes back as a short, sourced report. The draft is written from those reports. Then a separate agent that never saw the drafting checks every figure against the sources and reports what's wrong, problems first. The pushback pass runs on the whole draft at the end, because comparisons and framing only show up when you read the thing whole.</p>
+</main>
+
+<div class="wide">
+<figure class="build pre" data-anim>
+  <p class="ftitle">Division of labor on one draft</p>
+  <p class="fsub">Research in parallel, drafting from reports, checking by someone who didn't write it.</p>
+  <svg viewBox="0 0 900 300" role="img" aria-label="Diagram: three research agents run in parallel and report to the drafting step; a separate fact-check agent reads the draft and sources and returns corrections; the pushback pass runs on the whole draft; then the author reviews.">
+    <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/></marker></defs>
+    <g class="step" style="--i:0"><rect class="box warn" x="20" y="120" width="120" height="60" rx="4"/><text class="t" x="34" y="145">My notes</text><text x="34" y="163">and questions</text></g>
+    <path class="arrow" style="--i:1" d="M142,135 C180,135 180,50 220,50" marker-end="url(#ah2)"/>
+    <path class="arrow" style="--i:1" d="M142,150 L220,150" marker-end="url(#ah2)"/>
+    <path class="arrow" style="--i:1" d="M142,165 C180,165 180,250 220,250" marker-end="url(#ah2)"/>
+    <g class="step" style="--i:2"><rect class="box acc" x="222" y="24" width="170" height="52" rx="4"/><text class="t" x="236" y="46">Agent: the money</text><text x="236" y="64">committees, by race</text></g>
+    <g class="step" style="--i:2"><rect class="box acc" x="222" y="124" width="170" height="52" rx="4"/><text class="t" x="236" y="146">Agent: the state</text><text x="236" y="164">Florida since 2018</text></g>
+    <g class="step" style="--i:2"><rect class="box acc" x="222" y="224" width="170" height="52" rx="4"/><text class="t" x="236" y="246">Agent: the defense</text><text x="236" y="264">what Gillibrand said</text></g>
+    <path class="arrow" style="--i:3" d="M394,50 C430,50 430,150 470,150" marker-end="url(#ah2)"/>
+    <path class="arrow" style="--i:3" d="M394,150 L470,150" marker-end="url(#ah2)"/>
+    <path class="arrow" style="--i:3" d="M394,250 C430,250 430,150 470,150" marker-end="url(#ah2)"/>
+    <g class="step" style="--i:4"><rect class="box" x="466" y="112" width="150" height="76" rx="4"/><text class="t" x="486" y="136">Draft</text><text x="486" y="154">from the reports</text><text x="486" y="172">short, sourced</text></g>
+    <path class="arrow" style="--i:5" d="M618,150 L654,150" marker-end="url(#ah2)"/>
+    <g class="step" style="--i:6"><rect class="box acc" x="656" y="112" width="158" height="76" rx="4"/><text class="t" x="670" y="136">Fact-checker</text><text x="670" y="154">never saw the draft</text><text x="670" y="172">being written</text></g>
+    <path class="arrow warn" style="--i:7" d="M735,190 C735,230 541,230 541,190" marker-end="url(#ah2)"/>
+    <text class="small" style="fill:var(--warn)" x="560" y="246">13 fixes, problems first</text>
+    <path class="arrow" style="--i:8" d="M816,150 L840,150" marker-end="url(#ah2)"/>
+    <g class="step" style="--i:9"><rect class="box warn" x="842" y="120" width="48" height="60" rx="4"/><text class="t" x="852" y="152">Me</text></g>
+    <text class="small" x="472" y="80">pushback pass runs here, on the whole draft</text>
+  </svg>
+  <figcaption>Each agent starts with a clean context and a narrow brief. The reports are what the drafter reads; the raw pages never enter the draft.</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<h2>What "AI-written" leaves out</h2>
+<p>The model is better than I am at four things: finding what the record actually says, holding thirty figures straight, catching my own tells, and running the same twenty checks on draft five that it ran on draft one without getting bored. It is worse than I am at the thing that matters more than the four: knowing what I think. The thesis was mine. The lens, marking to market, came from a trading floor I sat on. The reversal that rebuilt the piece came from a question I asked. The friend who said it was hindsight was mine, and so was the decision to put his objection in the piece and test it against the numbers rather than wave it off. The model typed the sentences, and I'll say so every time. But if you read the Florida piece and the only question you have is who typed it, you've asked the one question the piece can't fail.</p>
+<p>That's what I'd like this account to change. "AI-created" is doing a lot of work in people's heads right now: it means careless, it means generic, it means nobody checked. Those are real failures, and they're failures of process, not of tools. Here the process was five drafts, three research agents, an independent fact-check that found thirteen errors, fourteen standing questions, and a reader who wouldn't let a comparison stand if it pointed the wrong way. Judge the piece on whether the argument holds. That's the test I built the system to pass.</p>
+
+<p>The rule-extraction is the part I'd tell anyone to copy. Each time I make a correction that would apply to the next piece, it goes into a log as a before-and-after pair with the rule it teaches, and the rule goes into the guide. The system doesn't get smarter because the model does. It gets smarter because it keeps a record of every time I was right and it wasn't.</p>
+
+<h2>What's next</h2>
+<p>Figures and citations in every piece, with the numbers checked by someone who didn't write the sentence they sit in. A historical-analogues doc, because half of what I write is forecasting and the reading I do for it should be organized by the question it answers. And a prediction log, so I keep score. I called Michigan right last week. I'd like to be able to show the misses too.</p>
+
+<p class="note">Written by Vikas Erraballi with Claude. The system described here runs on Claude; the guides, the library, the questions and the corrections are mine.</p>
+</main>
+
+<script>
+(function(){
+  var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove("pre");io.unobserve(e.target);}});},{threshold:.3}):null;
+  document.querySelectorAll("[data-anim]").forEach(function(f){ if(io) io.observe(f); else f.classList.remove("pre"); });
+})();
+</script>
+
+</body>
+</html>

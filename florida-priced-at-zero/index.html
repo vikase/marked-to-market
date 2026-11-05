@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Florida, priced at zero · Marked to Market</title>
+<meta name="description" content="Democrats' national committees spent nothing on Florida's 2026 Senate race and lost it by under three points. That was a decision, and the ledger shows when it should have changed.">
+<meta property="og:title" content="Florida, priced at zero">
+<meta property="og:description" content="Democrats' national committees spent nothing on Florida's 2026 Senate race and lost it by under three points. That was a decision, and the ledger shows when it should have changed.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (66ch) with full-bleed "ledger" figures that break out to ~900px. The figures are drawn like a risk desk's position report: ruled, tabular, monospaced numbers. */
+:root{
+  --bg:#f5f6f8; --paper:#ffffff; --ink:#15181d; --ink-2:#4a5160; --ink-3:#7c8494; --rule:#d9dde4; --rule-2:#eef0f3;
+  --fl:#eb6834; --fl-soft:#fbe9e1; --funded:#2a78d6; --funded-soft:#e4eefb; --band:#eceff4;
+  --display:"IBM Plex Sans Condensed",system-ui,sans-serif; --body:"Source Serif 4",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#121417; --paper:#191c21; --ink:#eceef2; --ink-2:#b4bac6; --ink-3:#848c9b; --rule:#2d323b; --rule-2:#23272e; --fl:#f0784a; --fl-soft:#3a251c; --funded:#3987e5; --funded-soft:#1c2a40; --band:#20242b; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#121417; --paper:#191c21; --ink:#eceef2; --ink-2:#b4bac6; --ink-3:#848c9b; --rule:#2d323b; --rule-2:#23272e; --fl:#f0784a; --fl-soft:#3a251c; --funded:#3987e5; --funded-soft:#1c2a40; --band:#20242b; color-scheme:dark }
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;padding-block:0 4rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+*{box-sizing:border-box}
+.col{max-width:66ch;margin:0 auto}
+.wide{max-width:900px;margin:2.2rem auto}
+h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.35rem;font-weight:700;margin-top:2.6rem;margin-bottom:.6rem}
+p{margin:0 0 1.15em}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.hero{padding-block:3.2rem 1.2rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
+.hero .dek{font-size:1.2rem;color:var(--ink-2);max-width:60ch;margin-top:1rem}
+.byline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3);margin-top:1.4rem;display:flex;gap:1.2rem;flex-wrap:wrap}
+.zero{color:var(--fl)}
+sup.fn{font-family:var(--mono);font-size:.62em;vertical-align:super;line-height:0}
+sup.fn a{color:var(--funded);text-decoration:none;border-bottom:1px dotted var(--funded)}
+sup.fn a:focus-visible{outline:2px solid var(--funded);outline-offset:2px}
+.quote{border-left:3px solid var(--fl);padding-left:1rem;color:var(--ink-2);font-style:italic}
+
+/* figures */
+figure{margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:1.2rem 1.2rem 1rem}
+figure .ftitle{font-family:var(--display);font-size:1.15rem;font-weight:700;margin:0 0 .15rem}
+figure .fsub{font-size:.9rem;color:var(--ink-2);margin:0 0 1rem;font-family:var(--body)}
+figcaption{font-size:.82rem;color:var(--ink-3);margin-top:.9rem;font-family:var(--mono);line-height:1.45}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:1.2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.75rem;color:var(--ink-2);margin:.2rem 0 .9rem}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:.45rem;vertical-align:-1px;background:var(--sw)}
+
+/* ledger bars */
+.ledger{display:grid;grid-template-columns:minmax(9ch,13ch) 1fr minmax(6ch,8ch);gap:.35rem .8rem;align-items:center;font-size:.85rem}
+.ledger .st{font-family:var(--mono);color:var(--ink-2);white-space:nowrap}
+.ledger .track{position:relative;height:16px;background:var(--rule-2);border-radius:3px;overflow:hidden}
+.ledger .bar{position:absolute;inset:0 auto 0 0;background:var(--funded);border-radius:0 3px 3px 0;width:var(--w);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.ledger .val{text-align:right;color:var(--ink-2)}
+.ledger .row-fl .st,.ledger .row-fl .val{color:var(--fl);font-weight:500}
+.ledger .row-fl .track{background:var(--fl-soft);outline:1px dashed var(--fl)}
+.ledger .zero-tag{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:var(--fl);letter-spacing:.08em}
+.pre .bar{transform:scaleX(0)}
+.in .bar{transform:scaleX(1)}
+.ledger .bar:nth-child(1){transition-delay:calc(var(--i)*60ms)}
+
+/* timeline / price chart */
+.tl{position:relative;overflow-x:auto}
+.tl svg{display:block;width:100%;height:auto;max-width:100%}
+.tl text{font-family:var(--mono);font-size:11px;fill:var(--ink-2)}
+.tl .ax{stroke:var(--rule);stroke-width:1}
+.tl .grid{stroke:var(--rule-2);stroke-width:1}
+.tl .price{fill:none;stroke:var(--fl);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1200;stroke-dashoffset:0;transition:stroke-dashoffset 1.6s ease-out}
+.pre .price{stroke-dashoffset:1200}
+.tl .dot{fill:var(--paper);stroke:var(--fl);stroke-width:2.5}
+.tl .act{fill:var(--funded)}
+.tl .actlab{fill:var(--ink-2)}
+.tl .flat{stroke:var(--fl);stroke-width:2;stroke-dasharray:3 4}
+.tl .lab{fill:var(--ink)}
+.tl .big{font-family:var(--display);font-size:13px;font-weight:700;fill:var(--ink)}
+
+/* swing */
+.swing{display:grid;grid-template-columns:minmax(9ch,11ch) 1fr minmax(4ch,5ch);gap:.35rem .8rem;align-items:center;font-size:.85rem;position:relative}
+.swing .st{font-family:var(--mono);color:var(--ink-2)}
+.swing .track{position:relative;height:16px}
+.swing .track::before{content:"";position:absolute;top:0;bottom:0;left:calc(13/28*100%);width:calc(2/28*100%);background:var(--band)}
+.swing .bar{position:absolute;inset:3px auto 3px 0;width:var(--w);background:var(--funded);border-radius:0 3px 3px 0;transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.swing .row-fl .bar{background:var(--fl)}
+.swing .row-sc .bar{background:var(--funded-soft);outline:1px solid var(--funded)}
+.swing .val{text-align:right;color:var(--ink-2)}
+.swing .row-fl .st,.swing .row-fl .val{color:var(--fl);font-weight:500}
+.swing .bandlab{grid-column:2;font-family:var(--mono);font-size:.7rem;color:var(--ink-3);position:relative;height:1.1rem}
+.swing .bandlab span{position:absolute;left:calc(13/28*100%);transform:translateX(-30%)}
+
+/* treemap-ish squares */
+.sq{display:flex;align-items:flex-end;gap:1.1rem;flex-wrap:wrap;padding-top:.5rem}
+.sq .box{position:relative;background:var(--funded-soft);border:1px solid var(--funded);border-radius:3px;transform-origin:bottom left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.sq .box.fl{background:var(--fl-soft);border-color:var(--fl)}
+.pre .sq .box{transform:scale(0)}
+.sq .cap{font-family:var(--mono);font-size:.72rem;color:var(--ink-2);margin-top:.4rem;line-height:1.3}
+.sq .cap b{display:block;font-size:.95rem;color:var(--ink);font-weight:500}
+.sq .item{display:flex;flex-direction:column;justify-content:flex-end}
+
+/* spark */
+.spark{display:inline-flex;align-items:flex-end;gap:.6rem;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.6rem .8rem;margin:.2rem 0 1.2rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-2)}
+.spark .b{display:inline-block;width:22px;background:var(--fl);border-radius:2px 2px 0 0;height:var(--h);transform-origin:bottom;transition:transform .8s ease-out}
+.pre .spark .b{transform:scaleY(0)}
+.spark .k{display:flex;flex-direction:column;align-items:center;gap:.2rem}
+
+/* refs */
+.refs{font-size:.85rem;color:var(--ink-2)}
+.refs ol{padding-left:1.4rem;margin:0}
+.refs li{margin-bottom:.45rem;line-height:1.45}
+.refs a{color:var(--funded);text-decoration:none;word-break:break-word}
+.refs a:hover,.refs a:focus-visible{text-decoration:underline}
+.note{font-size:.82rem;color:var(--ink-3);font-family:var(--mono);line-height:1.45;border-top:1px solid var(--rule);padding-top:1rem;margin-top:2rem}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.72rem;padding:.35rem .5rem;border-radius:3px;z-index:20;max-width:240px;line-height:1.4}
+.tip[hidden]{display:none}
+.hit{cursor:default}
+@media (prefers-reduced-motion: reduce){ .ledger .bar,.swing .bar,.sq .box,.spark .b,.tl .price{transition:none} .pre .bar,.pre .sq .box,.pre .spark .b{transform:none} .pre .price{stroke-dashoffset:0} }
+@media (max-width:520px){ body{font-size:17px} .ledger,.swing{font-size:.78rem} figure{padding:1rem .8rem .8rem} }
+</style>
+<style>.site-nav{max-width:66ch;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0 0;font-family:ui-monospace,Menlo,monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.site-nav a{color:inherit;text-decoration:none;font-weight:600}.site-nav a:hover{text-decoration:underline}.site-nav span{opacity:.6}</style>
+</head>
+<body>
+<nav class="site-nav"><a href="../">Marked to Market</a><span>Vikas Erraballi</span></nav>
+
+
+<header class="hero col">
+  <div class="eyebrow">Marking to market · Nov 4, 2026</div>
+  <h1>Florida, priced at <span class="zero">zero</span></h1>
+  <p class="dek">Democrats flipped Senate seats in Texas, Kansas and South Carolina on Tuesday. In Florida they lost two statewide races by less than three points, and the party's own committees never put a dollar into the Senate race. That was a decision, and the ledger shows when it should have changed.</p>
+  <div class="byline"><span>Vikas Erraballi</span><span>About 9 min</span><span>Sources at the end</span></div>
+</header>
+
+<main class="col">
+<p>Democrats flipped Senate seats last night in Texas, Ohio, Kansas and South Carolina, among others, and will hold something like 54 in January.<sup class="fn"><a href="#r1">1</a></sup> In Florida they lost both big statewide races, the Senate seat by under three points and the governorship by just over one, after the party's national committees spent heavily almost everywhere else and almost nothing there. On the party's books, Florida was marked at zero. I think that deserves a harder look than it will get this week while the party toasts Kansas, because Florida could have been a second Texas, and the people who decide where Democratic money goes chose not to find out.</p>
+
+<p>Angie Nixon, a state representative from Jacksonville and a former union organizer, won the Democratic nomination for the Senate in August, beating Alex Vindman 56 to 44. Vindman had raised $16 million to her $1 million.<sup class="fn"><a href="#r2">2</a></sup> She beat him with volunteers and turnout: her campaign ran on more than 300,000 contributions averaging about $31,<sup class="fn"><a href="#r3">3</a></sup> she won 80 percent of the Democratic vote in her home county,<sup class="fn"><a href="#r4">4</a></sup> and Black turnout surged.<sup class="fn"><a href="#r5">5</a></sup> Vindman declined to debate her and spent the Sunday before the primary at a fundraiser on Nantucket.<sup class="fn"><a href="#r2">2</a></sup> That night Schumer and Kirsten Gillibrand, who chairs the Democratic Senatorial Campaign Committee, put out a joint statement praising her.<sup class="fn"><a href="#r6">6</a></sup> Then neither the DSCC nor Senate Majority PAC, the super PAC network aligned with Schumer, spent a dollar on ads for her between that night and Election Day.<sup class="fn"><a href="#r7">7</a></sup> On the airwaves, where those committees spend, Republicans outspent Democrats $28.7 million to $7.9 million, by AdImpact's count.<sup class="fn"><a href="#r8">8</a></sup> All in, with the candidates' own money and every outside group counted, it was $27.7 million for Moody to $21.6 million for Nixon.<sup class="fn"><a href="#r9">9</a></sup> Nixon lost 50.9 to 48.0, about 239,000 votes out of 8.3 million.<sup class="fn"><a href="#r10">10</a></sup> Ron DeSantis appointed Ashley Moody, a Republican, to the seat when Marco Rubio became secretary of state, and Tuesday's vote was a special election for the rest of Rubio's term, so she is on the ballot again in 2028.<sup class="fn"><a href="#r11">11</a></sup></p>
+
+<p>The money was there. Through mid-October, Senate Majority PAC had raised $354 million this cycle and the DSCC $216 million.<sup class="fn"><a href="#r12">12</a></sup> Senate Majority PAC's network spent about $87 million for Sherrod Brown in Ohio, about $47 million in Michigan, $38 million in Maine and about $27 million in Texas.<sup class="fn"><a href="#r7">7</a></sup> Over two weeks in mid-October, Senate ads in Florida from both sides together cost $11.7 million. Ohio's cost $111 million.<sup class="fn"><a href="#r13">13</a></sup></p>
+</main>
+
+<div class="wide">
+<figure class="pre" data-anim>
+  <p class="ftitle">The position report</p>
+  <p class="fsub">General-election ad spending by Senate Majority PAC's network, by state, in millions. Florida is the only close race at zero.</p>
+  <div class="ledger" id="ledger"></div>
+  <figcaption>Independent expenditures by WinSenate, Texas Forever, North Star and The Georgia Way, the super PACs Senate Majority PAC funds, through Nov 2. Lower Costs Now, which SMP part-funds, is left out. Source: VoteLog state trackers (ref. 7, 9).</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<p>The governor's race ran the same way. David Jolly, a former Republican congressman running as a centrist Democrat, lost to Republican Byron Donalds 50.0 to 48.7, and Donalds outraised him more than six to one.<sup class="fn"><a href="#r14">14</a></sup> The Democratic Governors Association put at least $15 million each into six other states and $10 million into Iowa.<sup class="fn"><a href="#r15">15</a></sup> It made its first $1 million payment to Jolly's campaign around Oct. 20, two weeks before the election,<sup class="fn"><a href="#r16">16</a></sup> and in the end described its Florida spending as "seven figures."<sup class="fn"><a href="#r15">15</a></sup> So a former Republican and a member of the DSA, with nothing in common but a ballot line, both ran short of money and finished within a point of each other. Whatever moved Florida's voters this year, it wasn't the candidates' labels.</p>
+
+<p>Texas shows what the other path looked like. It hadn't elected a Democratic senator since 1988.<sup class="fn"><a href="#r17">17</a></sup> James Talarico raised $145 million for his own campaign, and Schumer's network added about $27 million.<sup class="fn"><a href="#r18">18</a></sup> He beat Ken Paxton even though Elon Musk by himself put more than $150 million into super PACs backing Paxton.<sup class="fn"><a href="#r19">19</a></sup> In Kansas, which hadn't elected a Democrat to the Senate since 1932, money benefiting the Democrat, Adam Hamilton, ran about $74 million to $42 million for Republican Sen. Roger Marshall.<sup class="fn"><a href="#r20">20</a></sup> Florida is the third most populous state, and its whole Senate race drew $49 million, about a twelfth of what was spent in Texas.<sup class="fn"><a href="#r9">9</a></sup></p>
+</main>
+
+<div class="wide">
+<figure class="pre" data-anim>
+  <p class="ftitle">What "Texas-sized money" means</p>
+  <p class="fsub">Everything spent on each race, drawn to scale. Area is dollars.</p>
+  <div class="sq" id="squares"></div>
+  <figcaption>Campaign spending plus outside money, general election. Texas $579M; Maine, Senate Majority PAC's network alone, $38M; Florida $49M, of which $28M benefited Moody and $22M Nixon. Sources: VoteLog (refs. 9, 18, 21).</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<p>Florida was the exception among the close races. Of those I could find, it was the only one where Schumer's committees spent nothing on ads for the Democrat. Other Southern long shots got small, late bets. South Carolina got about $750,000 in digital ads in the final week, and Annie Andrews won.<sup class="fn"><a href="#r22">22</a></sup> Mississippi got about $1.7 million starting Oct. 20, and Scott Colom is narrowly ahead with ballots still being counted.<sup class="fn"><a href="#r23">23</a></sup></p>
+
+<h2>The committee's defense</h2>
+<p>The committee has a defense, and the strongest part of it is history. Florida has been drifting away from Democrats for a decade. In 2018 Bill Nelson lost his Senate seat by 10,033 votes after a recount,<sup class="fn"><a href="#r24">24</a></sup> and the party spent the next three cycles losing by more: Rick Scott won re-election in 2024 by nearly 13 points,<sup class="fn"><a href="#r25">25</a></sup> and that year the DSCC spent about $1 million on television in Florida while spending $13 million in Texas.<sup class="fn"><a href="#r26">26</a></sup> The Republican registration edge grew from about 229,000 in 2022 to about 1 million in 2024 to 1.5 million this year.<sup class="fn"><a href="#r27">27</a></sup></p>
+<div class="spark pre" data-anim aria-label="Republican registration edge in Florida: 229 thousand in 2022, 995 thousand in 2024, 1.54 million in 2026">
+  <span class="k"><span class="b" style="--h:9px"></span><span>2022</span><span class="num">229K</span></span>
+  <span class="k"><span class="b" style="--h:39px"></span><span>2024</span><span class="num">995K</span></span>
+  <span class="k"><span class="b" style="--h:60px"></span><span>2026</span><span class="num">1.54M</span></span>
+  <span style="align-self:center;max-width:14ch;line-height:1.3">Republican registration edge, Florida</span>
+</div>
+<p>Gillibrand said after the results that the party did invest in Florida, but "you would have needed Texas-sized money to win in Florida."<sup class="fn"><a href="#r28">28</a></sup> Its media markets are expensive. The DSCC exists to win a majority, and it won one. The committee also points to what it did do for Nixon: a joint fundraising committee, which raised about $395,000 in its first three weeks;<sup class="fn"><a href="#r29">29</a></sup> a $5,000 check from Gillibrand's leadership PAC; virtual donor events; and an undisclosed share of a $40 million field program spread across ten states.<sup class="fn"><a href="#r30">30</a></sup> Set against the $38 million the network spent against Susan Collins, in a state Kamala Harris carried,<sup class="fn"><a href="#r21">21</a></sup> it is hard to call that an investment.</p>
+
+<p>Texas-sized money is also smaller than it sounds. In Texas, Schumer's network put in about $27 million, and the candidate raised the rest himself. Everything spent on Moody's side came to about $28 million. Matching it would have cost less than Maine.</p>
+
+<p>Oversights happen when you are running hundreds of races, but this was a Senate seat. The DSCC had 35 races this year, and in July it named Florida as one of ten states in its field program.<sup class="fn"><a href="#r30">30</a></sup> Gillibrand isn't claiming they missed it. Her answer is cost, and cost is a decision.</p>
+
+<h2>Marking to market</h2>
+<p>On the risk desks I used to sit on, the rule that kept everyone honest was marking to market. When the price moves you re-underwrite the position, whatever you thought of it when you put it on. Florida's price moved twice. In August an underfunded insurgent beat a $16 million candidate by 12 points. In late September the polling average had her about six back.<sup class="fn"><a href="#r31">31</a></sup> In mid-October a University of North Florida poll had her four back, with the governor's race at two.<sup class="fn"><a href="#r32">32</a></sup> Schumer's side did re-underwrite that month, in other states. It pulled money out of Georgia and North Carolina, where Jon Ossoff and Roy Cooper were running strong,<sup class="fn"><a href="#r33">33</a></sup> put $5 million into Kansas with about four weeks left,<sup class="fn"><a href="#r34">34</a></sup> and put $1.2 million into Mississippi, followed by $500,000 from the DSCC.<sup class="fn"><a href="#r23">23</a></sup> Florida was never re-marked.</p>
+</main>
+
+<div class="wide">
+<figure class="pre tl" data-anim>
+  <p class="ftitle">The price moved. The position didn't.</p>
+  <p class="fsub">Nixon's standing against Moody through the fall, and what Schumer's committees did elsewhere while it moved. Hover the markers.</p>
+  <div id="timeline"></div>
+  <figcaption>Polling: late-September average, Moody +6; University of North Florida, Oct 12–19, Moody +4; result Moody +2.9. Committee moves as reported (refs. 22, 23, 33, 34). The dashed line is Senate Majority PAC's Florida ad spending: zero, start to finish.</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<p>So the committee was happy to bet on long shots this fall. Was the difference Nixon herself? Schumer helped recruit Mississippi's Democrat, a moderate district attorney.<sup class="fn"><a href="#r35">35</a></sup> Nixon was the candidate who beat the establishment's choice. But that can't be the whole story. Abdul El-Sayed also beat the party's preferred candidate in Michigan's primary, and Schumer's network spent about $47 million for him.<sup class="fn"><a href="#r7">7</a></sup> And the governors' committee held back from Jolly, about as safe a nominee as Democrats get. The pattern points at the state. Somewhere along the way the national party decided Florida was gone, and this year nobody re-marked the position.</p>
+
+<h2>The hindsight objection</h2>
+<p>The fair objection is that this is hindsight. Florida was close because the whole country moved; the party just rode a wave it didn't make. The numbers say something more specific. Democrats ran about 13 to 15 points ahead of 2024 nationally.<sup class="fn"><a href="#r36">36</a></sup> The red states the committees paid for moved more than that: Texas by about 26 points, Kansas by 21, Iowa by 17, Ohio by 16. Florida moved 10.<sup class="fn"><a href="#r37">37</a></sup> South Carolina moved 22 on almost no committee money, so money isn't the whole explanation either. But Florida, the one state the committees skipped outright, is also the one big red state that moved less than the country did. You can read that as a state that resisted the wave, or as a state nobody paid to push. I think it's mostly the second, and I can't prove it, because the experiment was never run.</p>
+</main>
+
+<div class="wide">
+<figure class="pre" data-anim>
+  <p class="ftitle">Who moved more than the wave</p>
+  <p class="fsub">Swing toward Democrats from the 2024 presidential margin to the 2026 Senate margin, in points, for states Trump carried in 2024. The gray band is the national shift.</p>
+  <div class="legend"><span style="--sw:var(--funded)">Committee money</span><span style="--sw:var(--funded-soft);outline:1px solid var(--funded)">Almost none ($750K)</span><span style="--sw:var(--fl)">None</span><span style="--sw:var(--band)">National shift, 13–15 pts</span></div>
+  <div class="swing" id="swing"></div>
+  <figcaption>2024 margins from certified state results; 2026 Senate margins from AP counts at 98–99% reporting. National: House popular vote about D+13 (projected) to a +15 shift (NYT estimate). Alaska is omitted; its count runs to Nov 18. Sources: refs. 36, 37.</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<p>Party money might not have been enough. Spending to help Moody ran $27.7 million to Nixon's $21.6 million, and $13.5 million of Moody's side came from Stronger Safer Nation, a super PAC whose donors include Ken Griffin.<sup class="fn"><a href="#r9">9</a></sup> The Republican Senate committees mostly stayed out too: the Senate Leadership Fund spent $30,000 in Florida.<sup class="fn"><a href="#r9">9</a></sup> In Kansas it put in $14 million in early October as the race tightened, and Democratic super PACs followed with about $8 million more.<sup class="fn"><a href="#r38">38</a></sup> Money follows money, so a Democratic buy in Florida would likely have drawn a response, and the price was never a free option. My estimate is that another $15 to $20 million from Schumer's side in October would have made it roughly a 40/60 race, still against her, instead of the write-off it was treated as. That is about 3 percent of what the two committees raised this cycle. Nixon herself asked on Tuesday night what would have happened with more investment early on.<sup class="fn"><a href="#r39">39</a></sup></p>
+
+<p>What was on the table was more than one seat. A Democratic senator from Florida would have been the first since 2018, in a state Trump carried by 13 points two years ago, with 30 electoral votes in 2028. I came of political age watching Florida decide the 2000 election by 537 votes, and I don't think it has ever stopped being the state where a few hundred thousand dollars a point matters most.</p>
+
+<h2>Whose checks they were</h2>
+<p>Primary voters pick the nominee, and the committee decides whether the nominee gets to compete. Robert Caro tells how a young Lyndon Johnson, in the fall of 1940, made himself the channel through which Texas money reached Democratic House candidates, and how quickly the congressmen who got the checks learned whose checks they were.<sup class="fn"><a href="#r40">40</a></sup> A leader who chooses which races get money is also choosing which senators will owe him. At 54 seats, Democrats control the Senate either way; what's left for the leader to shape is which Democrats sit in it.</p>
+
+<p>That matters most where Democratic voters have moved and their senators haven't. Nixon called Israel's war in Gaza a genocide and took no AIPAC money; donors giving through AIPAC's PAC sent Moody about $620,000.<sup class="fn"><a href="#r41">41</a></sup> On April 15, 40 of the 47 members of the Senate Democratic caucus voted for a resolution to block a sale of bulldozers to Israel, and Schumer and Gillibrand were among the seven who voted no.<sup class="fn"><a href="#r42">42</a></sup> I'm not claiming Gaza decided Florida; the pattern above says the state did. But the effect on the caucus is the same either way, one fewer senator likely to vote to block the next sale.</p>
+
+<p>Nikki Fried, who chairs the Florida Democratic Party, said on Tuesday night that writing Florida off "is a mistake no one should make again."<sup class="fn"><a href="#r43">43</a></sup> Last week I predicted El-Sayed would win Michigan, and he did. I'd have given Florida worse odds than Michigan, but nowhere near zero, and Jolly's result says it was closer than I would have guessed. Moody is on the ballot again in 2028 and Nixon has all but said she's running,<sup class="fn"><a href="#r44">44</a></sup> so Schumer's committees have two years of warning. Mark Florida at zero again and nobody gets to call it an oversight.</p>
+
+<section class="refs" id="refs">
+<h2>Sources</h2>
+<p class="note" style="border:0;margin-top:0;padding-top:0">All election figures are unofficial counts as of Nov 4, 2026. Money figures are FEC filings compiled by VoteLog through Nov 2 unless noted. "Senate Majority PAC's network" means the super PACs it funds: WinSenate, Texas Forever, North Star and The Georgia Way.</p>
+<ol>
+<li id="r1">Al Jazeera, <a href="https://www.aljazeera.com/news/2026/11/4/democrats-win-control-of-house-and-senate-key-us-midterms-takeaways">Democrats win control of House and Senate</a>, Nov 4, 2026.</li>
+<li id="r2">Washington Sun, <a href="https://www.washingtonsun.com/2026-election/florida-democratic-senate-primary-alex-vindman-angie-nixon">Florida Democratic Senate primary: Vindman vs. Nixon</a>; Wikipedia, <a href="https://en.wikipedia.org/wiki/2026_United_States_Senate_special_election_in_Florida">2026 Florida Senate special election</a> (primary result and fundraising).</li>
+<li id="r3">CBS News, <a href="https://www.cbsnews.com/news/angie-nixon-florida-democratic-senate-candiate-face-the-nation-transcript-10-18-2026/">Face the Nation transcript, Oct 18, 2026</a>.</li>
+<li id="r4">Jacksonville Today, <a href="https://jaxtoday.org/2026/08/19/duvals-election-turnout-angie-nixon/">Duval's election turnout</a>, Aug 19, 2026.</li>
+<li id="r5">Robert Kuttner, The American Prospect, <a href="https://prospect.org/2026/08/21/stunning-florida-senate-win-angie-nixon-dsa/">Angie Nixon's stunning Florida win</a>, Aug 21, 2026.</li>
+<li id="r6">DSCC, <a href="https://www.dscc.org/article/dscc-statement-on-angie-nixons-victory-in-florida-senate-primary/">Statement on Angie Nixon's primary victory</a>, Aug 18, 2026.</li>
+<li id="r7">The American Prospect, <a href="https://prospect.org/2026/11/03/angie-nixon-will-run-again-florida-senate/">Angie Nixon will run again</a>, Nov 3, 2026 (no DSCC or SMP spending for Nixon; SMP spending in Ohio, Michigan, Maine, Texas).</li>
+<li id="r8">AdImpact figures via Holly Otterbein, <a href="https://x.com/hollyotterbein/status/2117786237981405476">X post</a>, and Truthout, <a href="https://truthout.org/articles/angie-nixon-hints-at-another-senate-run-in-2028-after-being-heavily-outspent/">Nixon hints at another run</a>.</li>
+<li id="r9">VoteLog, <a href="https://votelog.org/investigations/florida-senate-general-money">Florida Senate special election money tracker</a>.</li>
+<li id="r10">NBC Miami, <a href="https://www.nbcmiami.com/elections/florida-senate-election-results-2026-midterms/3880159/">Florida Senate results</a>.</li>
+<li id="r11">CBS News, <a href="https://www.cbsnews.com/news/florida-2026-senate-moody-nixon/">Moody wins Florida Senate special election</a>.</li>
+<li id="r12">FEC, <a href="https://www.fec.gov/data/committee/C00484642/">Senate Majority PAC</a> and <a href="https://www.fec.gov/data/committee/C00042366/">DSCC</a> committee pages, filings through Oct 14, 2026.</li>
+<li id="r13">Wesleyan Media Project, <a href="https://mediaproject.wesleyan.edu/releases-102926/">Ad spending Oct 12–25, 2026</a>.</li>
+<li id="r14">MultiState, <a href="https://www.multistate.us/elections/governor-race/florida-2026">Florida governor results</a>; Independent Florida Alligator, <a href="https://www.alligator.org/article/2026/11/election-results-byron-donalds-will-be-florida-s-new-governor">Donalds wins</a> (fundraising).</li>
+<li id="r15">Democratic Governors Association, <a href="https://democraticgovernors.org/wp-content/uploads/2026/10/DGA-October-Map-Memo-10.30.26.pdf">October map memo</a>, Oct 30, 2026.</li>
+<li id="r16">Tampa Bay Times, <a href="https://www.tampabay.com/news/florida-politics/elections/2026/10/20/david-jolly-democratic-governors-association-campaign-finance-donalds-governor/">DGA puts $1 million behind Jolly</a>, Oct 20, 2026.</li>
+<li id="r17">Fortune, <a href="https://fortune.com/2026/11/03/james-talarico-democrat-senator-texas-elon-musk-200-million">Talarico wins Texas</a>, Nov 3, 2026.</li>
+<li id="r18">VoteLog, <a href="https://votelog.org/investigations/texas-senate-general-money">Texas Senate money tracker</a>.</li>
+<li id="r19">CBS News, <a href="https://www.cbsnews.com/news/elon-musk-midterm-donations-texas-ken-paxton/">Musk's midterm donations</a>.</li>
+<li id="r20">VoteLog, <a href="https://votelog.org/investigations/kansas-senate-general-money">Kansas Senate money tracker</a>; Sunflower State Journal, <a href="https://sunflowerstatejournal.com/national-democrats-poised-to-spend-5-million-in-kansas-as-senate-race-tightens/">Democrats to spend $5 million in Kansas</a>.</li>
+<li id="r21">VoteLog, <a href="https://votelog.org/investigations/maine-senate-general-money">Maine Senate money tracker</a>; Wikipedia, <a href="https://en.wikipedia.org/wiki/2024_United_States_presidential_election_in_Maine">2024 presidential election in Maine</a>.</li>
+<li id="r22">Political Wire, <a href="https://politicalwire.com/2026/10/30/senate-democrats-super-pac-spends-in-south-carolina/">Senate Democrats' super PAC spends in South Carolina</a>, Oct 30, 2026.</li>
+<li id="r23">Magnolia Tribune, <a href="https://magnoliatribune.com/2026/10/20/colom-gets-1-2-million-in-ad-help-from-national-democrats-in-lead-up-to-election-day/">Colom gets $1.2 million</a>; Yahoo/Semafor, <a href="https://www.yahoo.com/news/politics/articles/senate-democrats-drop-500k-mississippi-010227215.html">DSCC $500K in Mississippi</a>; Mississippi Free Press, <a href="https://www.mississippifreepress.org/liveblog-mississippis-2026-u-s-senate-election-results/">results live blog</a>.</li>
+<li id="r24">Wikipedia, <a href="https://en.wikipedia.org/wiki/2018_United_States_Senate_election_in_Florida">2018 Florida Senate election</a>.</li>
+<li id="r25">Wikipedia, <a href="https://en.wikipedia.org/wiki/2024_United_States_Senate_election_in_Florida">2024 Florida Senate election</a>.</li>
+<li id="r26">Politico via Yahoo, <a href="https://www.yahoo.com/news/democrats-keeping-flirting-florida-aren-180000267.html">Democrats keep flirting with Florida</a>, 2024.</li>
+<li id="r27">Creative Loafing Tampa, <a href="https://www.cltampa.com/news/florida-republicans-now-have-a-1-5-million-voter-registration-advantage-over-democrats/">Republicans' 1.5 million registration advantage</a>, Aug 2026.</li>
+<li id="r28">Politico via Yahoo, <a href="https://www.yahoo.com/news/politics/articles/progressives-claim-vindication-midterm-bloodbath-105500195.html">Progressives claim vindication</a>, Nov 4, 2026.</li>
+<li id="r29">FEC, <a href="https://www.fec.gov/data/committee/C00961359/">Angie Nixon Victory Fund</a>.</li>
+<li id="r30">DSCC, <a href="https://www.dscc.org/article/dscc-announces-40-million-investment-in-win-the-senate-program/">$40 million Win the Senate program</a>, Jul 28, 2026; DisputeIndex, <a href="https://disputeindex.com/cases/are-national-democrats-holding-back-money-from-angie-nixons-florida-senate-campaign">Are national Democrats holding back money from Nixon?</a></li>
+<li id="r31">Polling average as compiled on Wikipedia, <a href="https://en.wikipedia.org/wiki/2026_United_States_Senate_special_election_in_Florida">2026 Florida Senate special election</a>.</li>
+<li id="r32">WUSF, <a href="https://www.wusf.org/politics-issues/2026-10-22/unf-poll-republicans-donalds-moody-hold-slim-leads-tightening-governor-us-senate-races">UNF poll, Oct 12–19</a>.</li>
+<li id="r33">Washington Examiner, <a href="https://www.washingtonexaminer.com/news/campaigns/congressional/4763981/senate-majority-pac-statement-pull-ad-georgia-ossoff-likely-against-mike-collins/">SMP pulls Georgia ads</a>; The Hill, <a href="https://thehill.com/homenews/campaign/6130438-democrats-pull-north-carolina-senate-ads/">Democrats pull North Carolina ads</a>.</li>
+<li id="r34">Bloomberg, <a href="https://www.bloomberg.com/news/articles/2026-10-09/democratic-pac-targets-tossup-kansas-senate-race-with-5-million">Democratic PAC targets Kansas with $5 million</a>, Oct 9, 2026.</li>
+<li id="r35">Magnolia Tribune, <a href="https://magnoliatribune.com/2025/09/03/democrats-get-their-man-coloms-entry-in-mississippi-u-s-senate-race-has-been-years-in-the-making/">Democrats get their man</a>, Sep 3, 2025.</li>
+<li id="r36">Yahoo/NYT, <a href="https://www.yahoo.com/news/politics/article/democrats-2026-midterm-rout-was-big--really-big-here-are-the-numbers-that-prove-it-225923613.html">The numbers behind the 2026 rout</a>.</li>
+<li id="r37">2024 margins: Wikipedia state results pages; 2026 margins: Yahoo/AP, <a href="https://www.yahoo.com/news/politics/articles/tracking-2026-senate-midterm-election-222040883.html">Senate results tracker</a>.</li>
+<li id="r38">Punchbowl News, <a href="https://punchbowl.news/article/campaigns/slf-kansas-spending/">SLF's Kansas spending</a>, Oct 5; Washington Sun, <a href="https://www.washingtonsun.com/campaigns/kansas-senate-race-marshall-hamilton-spending">Republicans try to spend their way out of Kansas</a>, Oct 14, 2026.</li>
+<li id="r39">Common Dreams, <a href="https://www.commondreams.org/news/angie-nixon">Nixon's election-night statement</a>.</li>
+<li id="r40">Robert A. Caro, <i>The Years of Lyndon Johnson: The Path to Power</i> (1982), on the 1940 congressional campaign.</li>
+<li id="r41">WhoFundsMyRep, <a href="https://whofundsmyrep.com/2026-ballot/fl/senate">Florida Senate 2026</a>; ChamberLight, <a href="https://chamberlight.com/money/aipac/recipients">AIPAC recipients</a>.</li>
+<li id="r42">Time, <a href="https://time.com/article/2026/04/16/the-seven-senate-democrats-who-caucused-with-republicans-to-continue-arms-sales-to-israel/">The seven Senate Democrats</a>, Apr 16, 2026.</li>
+<li id="r43">Florida Democratic Party, <a href="https://floridadems.org/2026/11/florida-democratic-party-chair-nikki-fried-democrats-gained-ground-across-florida-tonight-and-were-not-backing-down/">Fried statement</a>, Nov 3, 2026.</li>
+<li id="r44">Yahoo, <a href="https://www.yahoo.com/news/politics/articles/angie-nixon-says-she-lost-041756875.html">Nixon's concession</a>, Nov 4, 2026.</li>
+</ol>
+</section>
+<p class="note">Written by Vikas Erraballi. Research, fact-checking and the figures were done with Claude; every number was checked against the source listed. Charts show unofficial counts and pre-election filings, and will be updated when the FEC's post-election reports arrive.</p>
+</main>
+
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(function(){
+  var fmt=function(n){return n===0?"$0":"$"+n.toFixed(n<10?1:0)+"M"};
+  // 1. ledger
+  var L=[["Ohio",87.4],["Iowa",47.8],["Michigan",46.5],["Maine",38.1],["Texas",27.5],["N. Carolina",21.7],["N. Hampshire",17.2],["Alaska",15.1],["Kansas",14.1],["Georgia",7.1],["Mississippi",2.2],["S. Carolina",0.75],["Florida",0]];
+  var max=90, el=document.getElementById("ledger"), h="";
+  L.forEach(function(r,i){var fl=r[0]==="Florida";h+='<div class="st">'+r[0]+'</div><div class="track hit" data-tip="'+r[0]+': '+fmt(r[1])+' in general-election ads'+(fl?'. The Senate race was decided by 2.9 points.':'')+'">'+(fl?'<span class="zero-tag">MARKED AT ZERO</span>':'<div class="bar" style="--w:'+(r[1]/max*100)+'%;--i:'+i+'"></div>')+'</div><div class="val num">'+fmt(r[1])+'</div>';});
+  el.innerHTML=h;
+  var rows=el.children; for(var i=rows.length-3;i<rows.length;i++){rows[i].classList.add("row-fl");}
+  // 2. squares (area = dollars)
+  var S=[["Texas, whole race",579,false],["Florida, whole race",49.3,true],["Maine, SMP network only",38.1,false],["Moody's side",27.7,false],["Nixon's side",21.6,true]];
+  var k=Math.sqrt(579)/180, sq=document.getElementById("squares"), s="";
+  S.forEach(function(r){var side=Math.sqrt(r[1])/k;s+='<div class="item"><div class="box'+(r[2]?' fl':'')+' hit" style="width:'+side.toFixed(0)+'px;height:'+side.toFixed(0)+'px;max-width:100%" data-tip="'+r[0]+': $'+r[1].toFixed(1)+' million"></div><div class="cap"><b class="num">$'+(r[1]<100?r[1].toFixed(1):r[1].toFixed(0))+'M</b>'+r[0]+'</div></div>';});
+  sq.innerHTML=s;
+  // 3. timeline (SVG). x = days from Aug 1 to Nov 3 (94 days). y = Moody lead, 0..14.
+  var W=860,H=300,px=70,py=24,pw=W-px-30,ph=170;
+  var x=function(d){return px+d/94*pw}, y=function(v){return py+(1-v/14)*ph};
+  var pts=[[17,12,"Aug 18 primary: Nixon +12 over Vindman. Nixon vs Moody: no public polling yet."],[54,6.2,"Sep 24: polling average Moody +6.2"],[78,4,"Oct 12–19, UNF poll: Moody +4 (governor's race +2)"],[94,2.9,"Nov 3 result: Moody +2.9"]];
+  var line="M"+x(54)+","+y(6.2)+" L"+x(78)+","+y(4)+" L"+x(94)+","+y(2.9);
+  var acts=[[-4,"Jul 28","DSCC names Florida in its $40M field program"],[65,"Oct 5","Senate Leadership Fund puts $14M into Kansas"],[69,"Oct 9","SMP: $5M into Kansas"],[73,"Oct 13","SMP pulls its Georgia ads"],[80,"Oct 20","SMP: $1.2M into Mississippi. DGA: first $1M to Jolly"],[89,"Oct 29","DSCC: $500K into Mississippi"],[90,"Oct 30","SMP: $750K into South Carolina"]];
+  var g='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Moody\'s lead over Nixon fell from about 6 points in late September to 2.9 on election day, while Senate Majority PAC moved money into Kansas, Mississippi and South Carolina and none into Florida.">';
+  [0,4,8,12].forEach(function(v){g+='<line class="grid" x1="'+px+'" x2="'+(px+pw)+'" y1="'+y(v)+'" y2="'+y(v)+'"/><text x="'+(px-8)+'" y="'+(y(v)+4)+'" text-anchor="end">Moody +'+v+'</text>';});
+  g+='<line class="ax" x1="'+px+'" x2="'+(px+pw)+'" y1="'+y(0)+'" y2="'+y(0)+'"/>';
+  [["Aug",0],["Sep",31],["Oct",61],["Nov 3",94]].forEach(function(m){g+='<text x="'+x(m[1])+'" y="'+(y(0)+16)+'" text-anchor="middle">'+m[0]+'</text>';});
+  // flat zero line for SMP Florida spending
+  g+='<line class="flat" x1="'+x(0)+'" x2="'+x(94)+'" y1="'+(y(0)-6)+'" y2="'+(y(0)-6)+'"/><text x="'+(x(0)+4)+'" y="'+(y(0)-11)+'" class="lab" style="fill:var(--fl)">SMP ad spending in Florida: $0</text>';
+  g+='<path class="price" d="'+line+'"/>';
+  // primary marker (separate scale note)
+  g+='<line class="ax" x1="'+x(17)+'" x2="'+x(17)+'" y1="'+(py+6)+'" y2="'+y(0)+'" stroke-dasharray="2 4"/><circle class="dot hit" cx="'+x(17)+'" cy="'+(py+6)+'" r="6" data-tip="'+pts[0][2]+'"/><text x="'+(x(17)+10)+'" y="'+(py+10)+'" class="lab">Aug 18: Nixon wins the primary by 12 while outraised 16 to 1</text>';
+  pts.slice(1).forEach(function(p,i){g+='<circle class="dot hit" cx="'+x(p[0])+'" cy="'+y(p[1])+'" r="6" data-tip="'+p[2]+'"/>';});
+  g+='<text x="'+(x(54)-6)+'" y="'+(y(6.2)-10)+'" class="lab" text-anchor="end">Moody +6</text><text x="'+(x(78))+'" y="'+(y(4)-10)+'" class="lab" text-anchor="middle">+4</text><text x="'+(x(94)+2)+'" y="'+(y(2.9)-10)+'" class="big" text-anchor="end">Result +2.9</text>';
+  // committee actions row
+  var yA=py+ph+44;
+  g+='<text x="'+px+'" y="'+(yA-14)+'" class="lab" style="fill:var(--funded)">What the committees did elsewhere</text>';
+  acts.forEach(function(a,i){var cx=x(a[0]<0?0:a[0]);var yy=yA+(i%3)*20;g+='<circle class="act hit" cx="'+cx+'" cy="'+yy+'" r="6" data-tip="'+a[1]+': '+a[2]+'"/><text class="actlab" x="'+cx+'" y="'+(yy+20)+'" text-anchor="middle">'+a[1]+'</text>';});
+  g+='</svg>';
+  document.getElementById("timeline").innerHTML=g;
+  // 4. swing
+  var SW=[["Texas",25.8,"f"],["S. Carolina",22.3,"sc"],["Kansas",20.9,"f"],["Iowa",17.3,"f"],["Ohio",16.0,"f"],["Florida",10.2,"fl"]];
+  var sw=document.getElementById("swing"), t='<div></div><div class="bandlab"><span>national 13–15</span></div><div></div>';
+  SW.forEach(function(r){t+='<div class="st">'+r[0]+'</div><div class="track hit" data-tip="'+r[0]+': moved '+r[1]+' points toward Democrats from the 2024 presidential margin"><div class="bar" style="--w:'+(r[1]/28*100)+'%"></div></div><div class="val num">+'+r[1].toFixed(0)+'</div>';});
+  sw.innerHTML=t;
+  var c=sw.children; for(var j=3;j<c.length;j+=3){var cls=SW[(j-3)/3][2];if(cls==="fl"){c[j].classList.add("row-fl");c[j+1].classList.add("row-fl");c[j+2].classList.add("row-fl");}if(cls==="sc"){c[j+1].classList.add("row-sc");}}
+  // animate on view
+  var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove("pre");e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.25}):null;
+  document.querySelectorAll("[data-anim]").forEach(function(f){ if(io) io.observe(f); else {f.classList.remove("pre");f.classList.add("in");} });
+  // tooltips
+  var tip=document.getElementById("tip");
+  function show(e){var t=e.target.closest(".hit"); if(!t){tip.hidden=true;return;} tip.textContent=t.getAttribute("data-tip"); tip.hidden=false; var X=e.clientX+12,Y=e.clientY+12; if(X+250>window.innerWidth) X=e.clientX-250; tip.style.left=X+"px"; tip.style.top=Y+"px";}
+  document.addEventListener("mousemove",show); document.addEventListener("mouseleave",function(){tip.hidden=true;});
+  document.addEventListener("click",function(e){var t=e.target.closest(".hit"); if(t){show(e);} else tip.hidden=true;});
+})();
+</script>
+
+</body>
+</html>
