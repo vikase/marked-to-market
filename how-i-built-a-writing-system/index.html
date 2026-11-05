@@ -77,12 +77,15 @@ svg .small{font-size:10.5px;fill:var(--ink-3)}
 .mx .n{border-left:3px solid var(--acc);background:var(--paper)}
 .mx .n b{font-family:var(--display);font-weight:800;font-size:.86rem;display:block;font-style:normal}
 .mx .gap{border-left-color:var(--warn)}
+.mx3{grid-template-columns:1fr 1fr 1fr}
+.mx3 .n b{margin-bottom:.1rem}
 .build .mx>div{transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i)*120ms)}
 .build.pre .mx>div{opacity:0;transform:translateY(6px)}
 .rules .fix{font-size:.86rem;margin:.35rem 0 0;color:var(--ink)}
 .rules .fix b{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:500;margin-right:.35rem}
 .rules.risk .q{color:var(--warn)}
 svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-size:10px}
+@media (max-width:640px){.mx3{grid-template-columns:1fr}.mx3 .hd.r{display:none}.mx3 .b{border-bottom:none;padding-bottom:.2rem}}
 @media (max-width:520px){.mx{grid-template-columns:1fr}.mx .hd.r{display:none}.mx .b{border-bottom:none;padding-bottom:.2rem}}
 @media (prefers-reduced-motion: reduce){.build .mx>div{transition:none}.build.pre .mx>div{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.build .step,.build .arrow{transition:none}.build.pre .step{opacity:1;transform:none}.build.pre .arrow{stroke-dashoffset:0}}
@@ -97,7 +100,7 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
   <div class="eyebrow">Working notes · November 2026</div>
   <h1>How I built a writing system that argues with me</h1>
   <p class="dek">I spent twenty years reading and posting and never finishing anything. This fall I built a system, with Claude, that turns my arguments into published pieces. When a detector says a piece is AI-written, it's measuring the sentences. This is an account of everything the sentences sit on top of, and most of it is me.</p>
-  <div class="byline"><span>Vikas Erraballi</span><span>About 14 min</span></div>
+  <div class="byline"><span>Vikas Erraballi</span><span>About 15 min</span></div>
 </header>
 
 <main class="col">
@@ -109,7 +112,20 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 <h2>A memex, eighty years late</h2>
 <p>None of this started with AI. In July 1945 Vannevar Bush, who had run American science through the war, published <a href="https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/">"As We May Think"</a> in <i>The Atlantic</i> and described a desk he called the memex: a private library on microfilm, fast enough to consult that it would be "an enlarged intimate supplement to his memory." His complaint was that libraries are indexed by alphabet and class, and minds aren't. "The human mind does not work that way. It operates by association." So the memex let its owner tie any two items together, build named trails through everything he'd read, write his own notes into the trail, and pull the whole trail up years later in the middle of a conversation. "The process of tying two items together is the important thing."</p>
 
-<p>I came to the essay late. A month after the 2016 election I sent four friends a write-up for what I called a civic platform. It would sit one layer above Snopes and PolitiFact, where people you already trust do the fact-checking they'd be doing anyway and organize it for everyone else. Facts would be kept apart from views, each issue would be a page maintained like a Wikipedia entry, and from any page you could cross over to how another group saw the same issue, "to allow for cross-pollination of opposing views, synthesis when possible." By January I had a note that read "Essays should be able to talk to each other, or too much replication of effort," and another saying the tool should aim at <a href="https://en.wikipedia.org/wiki/How_to_Read_a_Book">Adler</a>'s ideal of dialectical objectivity: "To look at all sides and take no sides." In February, introducing myself to a group working on the same problem, I wrote that I'd been designing "something I saw later originally conceived of by Vannevar Bush."</p>
+<p>I came to the essay late. A month after the 2016 election I sent four friends a write-up for what I called a civic platform. It would sit one layer above Snopes and PolitiFact, where people you already trust do the fact-checking they'd be doing anyway and organize it for everyone else. Facts would be kept apart from views, each issue would be a page maintained like a Wikipedia entry, and from any page you could cross over to how another group saw the same issue, "to allow for cross-pollination of opposing views, synthesis when possible."</p>
+
+<p>A month later, with a highlighted printout of Tim Wu's <a href="https://www.penguinrandomhouse.com/books/234876/the-attention-merchants-by-tim-wu/9780385352024"><i>The Attention Merchants</i></a> on the dining table, I sketched the reading half on a dozen notepad pages. Every article would carry five layers you could switch on and off: the article itself, the names and entities a machine could pick out of it, my highlights and annotations, an outline sorted from those highlights, and its relations to everything else I'd read. Any layer could be missing. The line I wrote at the bottom of the page was the one that mattered: "If more than 1 layer(s) present there must be a relationship between the layer(s)." I posted a photo of the pages the next day, with a caption about laying the layers out in space instead of scrolling one screen: "See the whole, not just a piece."</p>
+</main>
+
+<div class="wide">
+<figure>
+  <img src="sketches-jan-2017.jpg" width="1050" height="1400" loading="lazy" alt="Notepad pages spread on a dining table, January 10, 2017. The front page, headed LAYERS, stacks five boxes: Article (L1), Auto-detected elements (L2), Highlights and annotations (L3), Outline (L4) and Relations (L5), with the rule that when more than one layer is present there must be a relationship between them. Behind it are pages on orienting, relations, and notes on The Attention Merchants, beside a highlighted printout of the book." style="display:block;width:100%;max-width:560px;height:auto;margin:0 auto;border-radius:3px">
+  <figcaption>The pages as I photographed them on January 10, 2017. Front: the five layers. Behind: "orienting" (you are here in this article, and the evidence for and against its main idea), relations, and my notes on Wu's book.</figcaption>
+</figure>
+</div>
+
+<main class="col">
+<p>By late January I had a note that read "Essays should be able to talk to each other, or too much replication of effort," and another saying the tool should aim at <a href="https://en.wikipedia.org/wiki/How_to_Read_a_Book">Adler</a>'s ideal of dialectical objectivity: "To look at all sides and take no sides." In February, introducing myself to a group working on the same problem, I wrote that I'd been designing "something I saw later originally conceived of by Vannevar Bush." That fall I was trading notes on the layers with a group planning the fiftieth anniversary of <a href="https://en.wikipedia.org/wiki/The_Mother_of_All_Demos">Douglas Engelbart's 1968 demo</a>, the line that runs from Bush's desk to the hyperlink.</p>
 
 <p>Over the next few years I drew up schemas and built prototypes of the same thing: a library where the articles talk to each other, where my annotations sit on the page the way <a href="https://web.hypothes.is/">Hypothesis</a> lets you mark up the web, and where citing a source while I write takes one step. Every version stalled on the same problem Bush's design had. Someone has to make each link between two items by hand, and I was never going to make ten thousand links on the chance I'd need one.</p>
 
@@ -118,16 +134,18 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 
 <div class="wide">
 <figure class="build pre" data-anim>
-  <p class="ftitle">Bush's memex, and what it became here</p>
-  <p class="fsub">The left column quotes "As We May Think" (1945). The right is the part of this system that does the job.</p>
-  <div class="mx">
-    <div class="hd">Memex, 1945</div><div class="hd r">This system, 2026</div>
-    <div class="b" style="--i:1">"all his books, records, and communications"</div><div class="n" style="--i:1"><b>Reading library</b>Kindle and Audible highlights, Evernote since 2009, saved links, and twenty years of my own writing</div>
-    <div class="b" style="--i:2">"He can add marginal notes and comments"</div><div class="n" style="--i:2"><b>Quote bank</b>one file per book, my highlights with my margin notes beside them</div>
-    <div class="b" style="--i:3">trails, named and kept, through "the maze of materials"</div><div class="n" style="--i:3"><b>Commonplace book and frameworks</b>ideas filed by theme; nine lenses, each with the questions it makes me ask</div>
-    <div class="b" style="--i:4">"a new profession of trail blazers"</div><div class="n gap" style="--i:4"><b>Research agents and me</b>the model walks the trails at speed; I decide which ones the argument needs</div>
+  <p class="ftitle">Bush's memex, my 2017 layers, and what they became</p>
+  <p class="fsub">Left: "As We May Think" (1945). Middle: the January 2017 pages. Right: the part of this system that does the job now.</p>
+  <div class="mx mx3">
+    <div class="hd">Memex, 1945</div><div class="hd r">My pages, 2017</div><div class="hd r">This system, 2026</div>
+    <div class="b" style="--i:1">"all his books, records, and communications"</div><div class="n" style="--i:1"><b>L1 Article</b>the text itself</div><div class="n" style="--i:1"><b>Reading library</b>Kindle and Audible highlights, Evernote since 2009, saved links, and twenty years of my own writing</div>
+    <div class="b" style="--i:2">"selection by association"</div><div class="n" style="--i:2"><b>L2 Auto-detected elements</b>names and entities a machine picks out</div><div class="n" style="--i:2"><b>Search by idea</b>the model finds passages by what they mean, not the words they use</div>
+    <div class="b" style="--i:3">"He can add marginal notes and comments"</div><div class="n" style="--i:3"><b>L3 Highlights and annotations</b></div><div class="n" style="--i:3"><b>Quote bank</b>one file per book, my highlights with my margin notes beside them</div>
+    <div class="b" style="--i:4">&nbsp;</div><div class="n" style="--i:4"><b>L4 Outline</b>sorted from the highlights</div><div class="n" style="--i:4"><b>Drafting skill</b>the thesis, the lens and the outline, built from my reading</div>
+    <div class="b" style="--i:5">trails, named and kept, through "the maze of materials"</div><div class="n" style="--i:5"><b>L5 Relations</b>sources, topics, evidence for and against</div><div class="n" style="--i:5"><b>Commonplace book and frameworks</b>ideas filed by theme; nine lenses, each with the questions it makes me ask</div>
+    <div class="b" style="--i:6">"a new profession of trail blazers"</div><div class="n gap" style="--i:6"><b>Nobody</b>the layers had to be built by hand</div><div class="n gap" style="--i:6"><b>Research agents and me</b>the model walks the trails at speed; I decide which ones the argument needs</div>
   </div>
-  <figcaption>Bush never built his desk. The part he couldn't mechanize was the reader who follows the trail for you.</figcaption>
+  <figcaption>The 2017 rule, that any two layers present must link to each other, is now the rule that every claim in a piece links to its source. The part neither Bush nor I could mechanize was the reader who builds the trail for you.</figcaption>
 </figure>
 </div>
 
@@ -294,7 +312,7 @@ svg text.role{font-family:var(--mono);letter-spacing:.08em;fill:var(--acc);font-
 <h2>What's next</h2>
 <p>One piece is a single data point. The proof of the system will be in the next ten, and the measure I care about is whether each one needs fewer of my notes than the last, because that is what it looks like when the rules are capturing how I think. On the list: figures and citations in every piece, with every number checked by a fact-checking agent that had no part in writing the draft. A historical-analogues doc, because half of what I write is forecasting and the reading I do for it should be organized by the question it answers. And a prediction log, so I keep score, misses included.</p>
 
-<p>The writing system is half of what I sketched in 2016. The other half was for readers. My cousin, one of the four who got that write-up, read a draft of this page and went straight to it. <a href="https://genius.com/">Rap Genius</a> put a crowd's annotations under every lyric, so put this machinery under everything else. Hover on a claim in <a href="https://www.marxists.org/archive/marx/works/1867-c1/"><i>Das Kapital</i></a> and see the strongest objections and who made them. Hover on a line in a mayor's plan for city-run grocery stores and see how the idea has fared in the cities that tried one. That's the 2016 design with the staffing problem solved. Crowd annotation never scaled past lyrics because it needed Bush's "new profession of trail blazers," and nobody could pay for one. A model can do that job, and the pushback pass I run on my own drafts is the same pass a reader would want run on anything he reads. For now I'm pointing it at my own backlog.</p>
+<p>The writing system is one half of those 2017 pages. The other half was for readers. My cousin, one of the four who got the 2016 write-up, read a draft of this page and went straight to it. <a href="https://genius.com/">Rap Genius</a> put a crowd's annotations under every lyric, so put this machinery under everything else. Hover on a claim in <a href="https://www.marxists.org/archive/marx/works/1867-c1/"><i>Das Kapital</i></a> and see the strongest objections and who made them. Hover on a line in a mayor's plan for city-run grocery stores and see how the idea has fared in the cities that tried one. That's the five layers with the staffing problem solved. Crowd annotation never scaled past lyrics because it needed Bush's "new profession of trail blazers," and nobody could pay for one. A model can do that job, and the pushback pass I run on my own drafts is the same pass a reader would want run on anything he reads. For now I'm pointing it at my own backlog.</p>
 
 <p>And one open position to mark honestly, since the conceit of this site demands it: I can't yet show the system saves me time. Florida ate most of a day in notes, rebuttals and checks. The bet is that the rules compound and my notes thin out, so the tenth piece costs a fraction of the first. If the tenth piece still takes a day of my pushback, then this is a very elaborate way of writing alone, and I'll say so.</p>
 
