@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+  <title>Marked to Market</title>
+  <link>https://vikase.github.io/marked-to-market/</link>
+  <atom:link href="https://vikase.github.io/marked-to-market/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Essays on politics, money and power, written to be re-underwritten when the price moves. By Vikas Erraballi.</description>
+  <language>en-us</language>
+  <lastBuildDate>Wed, 04 Nov 2026 17:00:00 GMT</lastBuildDate>
+  <item>
+    <title>How I built a writing system that argues with me</title>
+    <link>https://vikase.github.io/marked-to-market/how-i-built-a-writing-system/</link>
+    <guid isPermaLink="true">https://vikase.github.io/marked-to-market/how-i-built-a-writing-system/</guid>
+    <pubDate>Wed, 04 Nov 2026 17:00:00 GMT</pubDate>
+    <dc:creator>Vikas Erraballi</dc:creator>
+    <description>A reading library, three guides and a review process that pushes back: how the pieces on this site get made, with the Florida op-ed as the worked example.</description>
+  </item>
+  <item>
+    <title>Florida, priced at zero</title>
+    <link>https://vikase.github.io/marked-to-market/florida-priced-at-zero/</link>
+    <guid isPermaLink="true">https://vikase.github.io/marked-to-market/florida-priced-at-zero/</guid>
+    <pubDate>Wed, 04 Nov 2026 17:00:00 GMT</pubDate>
+    <dc:creator>Vikas Erraballi</dc:creator>
+    <description>Democrats' national committees spent nothing on Florida's 2026 Senate race and lost it by under three points. That was a decision, and the ledger shows when it should have changed.</description>
+  </item>
+</channel>
+</rss>

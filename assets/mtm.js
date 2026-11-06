@@ -96,3 +96,36 @@
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && open) { var a = open; close(); a.focus(); } });
   document.addEventListener("click", function(e){ if (open && !card.contains(e.target) && !e.target.closest("sup.fn")) close(); });
 })();
+
+/* 4. share and subscribe extras (the plain links in .share work without this) */
+(function(){
+  "use strict";
+  document.querySelectorAll(".share-copy").forEach(function(b){
+    if (!(navigator.clipboard && window.isSecureContext)) return;
+    b.parentNode.hidden = false;
+    b.addEventListener("click", function(){
+      navigator.clipboard.writeText(b.getAttribute("data-url")).then(function(){
+        b.textContent = "Link copied"; b.classList.add("done");
+        setTimeout(function(){ b.textContent = "Copy link"; b.classList.remove("done"); }, 2200);
+      });
+    });
+  });
+  /* The phone share sheet: shown only where the device offers one and the pointer is coarse. */
+  var coarse = window.matchMedia && matchMedia("(pointer: coarse)").matches;
+  document.querySelectorAll(".share-native").forEach(function(b){
+    if (!navigator.share || !coarse) return;
+    b.parentNode.hidden = false;
+    b.addEventListener("click", function(){
+      navigator.share({title: b.getAttribute("data-title"), url: b.getAttribute("data-url")}).catch(function(){});
+    });
+  });
+  /* Until an email provider is connected, say so instead of posting nowhere. */
+  document.querySelectorAll("form.sub[data-pending]").forEach(function(f){
+    f.addEventListener("submit", function(e){
+      e.preventDefault();
+      var m = f.parentNode.querySelector(".sub-msg");
+      if (!m) { m = document.createElement("p"); m.className = "sub-msg"; m.setAttribute("aria-live", "polite"); f.after(m); }
+      m.textContent = "Email sign-up opens shortly. Until then, the RSS feed below carries every new piece.";
+    });
+  });
+})();

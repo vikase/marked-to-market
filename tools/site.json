@@ -1,0 +1,13 @@
+{
+  "base": "https://vikase.github.io/marked-to-market/",
+  "title": "Marked to Market",
+  "author": "Vikas Erraballi",
+  "description": "Essays on politics, money and power, written to be re-underwritten when the price moves. By Vikas Erraballi.",
+  "subscribe": {
+    "provider": "",
+    "action": "",
+    "field": "email",
+    "extra": {}
+  },
+  "share": ["x", "linkedin", "facebook", "whatsapp", "bluesky", "threads", "reddit", "email"]
+}

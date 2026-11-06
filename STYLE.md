@@ -46,3 +46,12 @@ IBM Plex Sans Condensed (display, 700), Source Serif 4 (body), IBM Plex Mono (nu
 ## Share cards
 
 `tools/render-cards.js` renders every entry in `tools/cards.json` with Playwright, using the fonts vendored in `tools/fonts` (SIL Open Font License), so it works offline. Headlines step down in size automatically if they would overflow. The brief is a claim, not a topic: say what the piece argues.
+
+## Share and subscribe
+
+Every piece ends with a share row and a subscribe box, and the site has a Subscribe page and an RSS feed (`feed.xml`). None of it is hand-written per piece. `tools/build-site.js` writes it from `tools/site.json`:
+
+- A new piece needs `<meta property="article:published_time" content="YYYY-MM-DD">` in its head, the feed link (`<link rel="alternate" type="application/rss+xml" … href="../feed.xml">`), the Subscribe link in its nav, and the two marker comments `<!-- mtm:follow --><!-- /mtm:follow -->` where the block goes: after the last paragraph, before Sources.
+- Run `node tools/build-site.js` after adding or editing a piece. It fills the markers, refreshes the Subscribe page and rewrites `feed.xml`. Running it twice changes nothing.
+- Share links are plain URLs to each network's own share page: no buttons from the networks, no scripts of theirs, no tracking. mtm.js only adds "Copy link" and, on phones, the system share sheet.
+- The email provider's form address lives in `tools/site.json` (`subscribe.action`, plus `field` and any hidden `extra` inputs the provider needs), and nowhere else. While it's empty the form says sign-up opens shortly and points to RSS.
