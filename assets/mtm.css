@@ -115,6 +115,19 @@ sup.fn a[aria-expanded="true"]{background:var(--book-soft)}
 .note{font-size:.8rem;color:var(--ink-3);font-family:var(--mono);line-height:1.5;border-top:1px solid var(--rule);padding-top:1rem;margin-top:2.2rem}
 .note a{color:var(--ink-2)}
 
+/* ---------- signup (Kit form 10155433, plain POST: works with JS off) ---------- */
+.signup{margin:2.6rem 0 1rem;padding:1.3rem 1.3rem 1.15rem;background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--pos);border-radius:4px}
+.signup .eyebrow{display:block;margin-bottom:.35rem}
+.signup h2{font-size:1.45rem;line-height:1.15;margin:0 0 .35rem}
+.signup p{margin:0 0 .9rem;color:var(--ink-2);font-size:1rem}
+.signup form{display:flex;gap:.5rem;flex-wrap:wrap}
+.signup input[type=email]{flex:1 1 15rem;min-width:0;font:inherit;font-size:1rem;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:3px;background:var(--bg);color:var(--ink)}
+.signup input[type=email]:focus{outline:2px solid var(--book);outline-offset:1px;border-color:var(--book)}
+.signup button{font-family:var(--mono);font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.1rem;border:0;border-radius:3px;background:var(--ink);color:var(--bg);cursor:pointer}
+.signup button:hover{background:var(--book);color:#fff}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.signup small{display:block;margin-top:.6rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
+
 /* ---------- motion ---------- */
 /* Figures are complete at rest. mtm.js adds .pre only to figures still below the fold, then removes it on view. */
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
