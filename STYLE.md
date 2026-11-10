@@ -39,6 +39,25 @@ Marking to market means writing the honest number on a position, whatever you th
 - The stamp in HTML: `<span class="stamp">Marked at zero</span>`. In SVG: a `rect.stamp-box` plus `text.stamp-txt`, rotated −1.2°.
 - Wide SVG diagrams sit in a horizontally scrolling wrapper with a `min-width` (about 700px) and a "scroll sideways" hint on phones, so labels stay readable instead of shrinking to 5px.
 
+## Byline, author box and links to erraballi.ai
+
+The erraballi.ai project owns the wording below. Do not change it. Do not name an employer or Ode. Do not add a price or a dollar figure other than "$5.8B". Use the Marked to Market colours, not the erraballi.ai colours.
+
+- **Byline (every piece):** `Vikas Erraballi · I put AI to work in companies → erraballi.ai`. Only "erraballi.ai" is a link. The reading time comes after it.
+  ```html
+  <div class="byline"><span>Vikas Erraballi · I put AI to work in companies → <a href="https://erraballi.ai/?utm_source=marked-to-market&amp;utm_campaign=<slug>">erraballi.ai</a></span><span>About N min</span><span>Sources at the end</span></div>
+  ```
+- **Author box (AI and business pieces only):** at the end of the piece, above `<h2>Sources</h2>`. If the piece has no Sources section, put it above the signup box.
+  ```html
+  <aside class="author" aria-label="About the author">
+    <p>Vikas Erraballi built the first AI program at a $5.8B bank. He now helps owner-run and mid-sized companies put AI to work on real problems, and builds it to keep improving.</p>
+    <p class="links"><a href="https://erraballi.ai/?utm_source=marked-to-market&amp;utm_campaign=<slug>">erraballi.ai</a><a href="mailto:vikas@erraballi.org">Book a 30-minute call</a></p>
+  </aside>
+  ```
+- **Political pieces:** no author box. In the end note, make "Vikas Erraballi" a link to erraballi.ai with the piece's tracking tag: `<p class="note">Written by <a href="…utm_campaign=<slug>">Vikas Erraballi</a>. …`
+- **Navigation and home page:** the `site-nav` span and the home page `who` line link "erraballi.ai" with `utm_campaign=site`.
+- **Tracking tag:** every link to erraballi.ai uses `https://erraballi.ai/?utm_source=marked-to-market&utm_campaign=<piece-slug>`. The slug is the piece's folder name.
+
 ## Type
 
 IBM Plex Sans Condensed (display, 700), Source Serif 4 (body), IBM Plex Mono (numbers, labels, kickers, tickers). Numbers that line up use `font-variant-numeric: tabular-nums` (`.num`).

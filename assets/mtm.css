@@ -46,10 +46,12 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .site-nav a .m{color:var(--pos)}
 .site-nav a:hover{text-decoration:underline}
 .site-nav span{color:var(--ink-3)}
+.site-nav span a{font-weight:400;color:var(--ink-2);text-transform:none}
 
 .hero{padding-block:3.2rem 1.3rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
 .hero .dek{font-size:1.18rem;color:var(--ink-2);max-width:60ch;margin-top:1rem}
 .byline{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);margin-top:1.4rem;display:flex;gap:1.2rem;flex-wrap:wrap}
+.byline a{color:var(--ink-2)}
 
 /* ---------- the stamp: the house mark ---------- */
 .stamp{display:inline-block;font-family:var(--mono);font-weight:600;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;
@@ -114,6 +116,11 @@ sup.fn a[aria-expanded="true"]{background:var(--book-soft)}
 
 .note{font-size:.8rem;color:var(--ink-3);font-family:var(--mono);line-height:1.5;border-top:1px solid var(--rule);padding-top:1rem;margin-top:2.2rem}
 .note a{color:var(--ink-2)}
+/* Author box: end of AI and business pieces, above Sources. Not on political pieces. */
+.author{margin:2.6rem 0 1rem;padding:1.1rem 1.3rem;background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--book);border-radius:4px}
+.author p{margin:0;font-size:1rem;color:var(--ink-2)}
+.author .links{margin-top:.7rem;font-family:var(--mono);font-size:.78rem;display:flex;gap:1.2rem;flex-wrap:wrap}
+.author .links a{color:var(--ink)}
 
 /* ---------- signup (Kit form 10155433, plain POST: works with JS off) ---------- */
 .signup{margin:2.6rem 0 1rem;padding:1.3rem 1.3rem 1.15rem;background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--pos);border-radius:4px}
