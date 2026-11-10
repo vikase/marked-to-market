@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marked as a spy · Marked to Market</title>
+<meta name="description" content="The case that Nvidia's CEO was the target of a Chinese agent rests on a memo nobody outside government has read. Washington has already priced it as fact.">
+<meta property="og:title" content="Marked as a spy">
+<meta property="og:description" content="The case that Nvidia's CEO was the target of a Chinese agent rests on a memo nobody outside government has read. Washington has already priced it as fact.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://vikase.github.io/marked-to-market/marked-as-a-spy/">
+<meta property="og:site_name" content="Marked to Market">
+<meta property="og:image" content="https://vikase.github.io/marked-to-market/marked-as-a-spy/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Marked as a spy: how the words used for Alice Huang hardened from &quot;recruited&quot; in the reporting to an unqualified &quot;Chinese spy&quot; in the headlines, stamped No qualifier.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/mtm.css">
+<style>
+/* Piece-level figure styles. Tokens, figure anatomy, stamp and notes live in ../assets/mtm.css. */
+.hl{color:var(--pos)}
+/* fig 1: the word ladder */
+.ladder{display:grid;gap:.5rem;margin-top:.4rem}
+.ladder .rung{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:.2rem 1rem;align-items:center;
+  margin-left:calc(var(--i) * 7%);padding:.55rem .8rem;border:1px solid var(--rule);border-left:4px solid var(--book);
+  border-radius:3px;background:var(--paper);transition:opacity .6s ease-out,transform .6s ease-out}
+.ladder .w{font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.15;color:var(--ink)}
+.ladder .w s{color:var(--ink-3);text-decoration-thickness:1px}
+.ladder .src{font-family:var(--mono);font-size:.72rem;color:var(--ink-2);text-align:right;white-space:nowrap}
+.ladder .hedge{grid-column:1/-1;font-family:var(--mono);font-size:.7rem;color:var(--ink-3);letter-spacing:.04em}
+.ladder .rung.top{border-color:var(--pos);border-left-color:var(--pos);background:var(--pos-soft)}
+.ladder .rung.top .hedge{color:var(--pos);font-weight:600}
+.ladder .rung .stamp{justify-self:start}
+.pre .ladder .rung{opacity:0;transform:translateY(8px)}
+@media (max-width:560px){
+  .ladder .rung{margin-left:calc(var(--i) * 3%);grid-template-columns:1fr}
+  .ladder .src{text-align:left}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav"><a href="../">Marked to <span class="m">Market</span></a><span>Vikas Erraballi</span></nav>
+
+<header class="hero col">
+  <div class="eyebrow">Marking to market · Nov 10, 2026</div>
+  <h1>Marked as a <span class="hl">spy</span></h1>
+  <p class="dek">The case that Nvidia's CEO was the target of a Chinese agent rests on a memo nobody outside government has read. Washington has already priced it as fact.</p>
+  <div class="byline"><span>Vikas Erraballi</span><span>About 7 min</span><span>Sources at the end</span></div>
+</header>
+
+<main class="col">
+<p>Is Alice Huang a Chinese spy?</p>
+
+<p>Watch the words first. The reporting says U.S. officials believe she was "recruited" by China's Ministry of State Security and was passing information to Beijing.<sup class="fn"><a href="#r1">1</a></sup> The New York Times headline said Nvidia's chief was "seen as target of Chinese spy plot."<sup class="fn"><a href="#r2">2</a></sup> Bloomberg called her a "suspected China spy."<sup class="fn"><a href="#r3">3</a></sup> By the time Newsweek got to her she was an "alleged Chinese spy who had affair with Jensen Huang,"<sup class="fn"><a href="#r4">4</a></sup> and the Daily Beast's headline had him admitting "to affair with Chinese spy," with no qualifier at all.<sup class="fn"><a href="#r5">5</a></sup> That last one does something sly. Huang admitted an affair, and the headline hands his admission to a claim he never made. Each retelling is a little firmer than the one before it, and none of them adds a fact. How a story is worded decides what readers think is settled, and on this one the words have run well ahead of the evidence.</p>
+</main>
+
+<div class="wide">
+<figure id="fig-1" data-anim>
+  <p class="kick"><span><b>Fig 1</b> · How the word hardened</span><span>Oct 29 – Nov 8, 2026</span></p>
+  <p class="ftitle">Each retelling dropped a hedge that the evidence never lost</p>
+  <p class="fsub">How Alice Huang is described, from the underlying reporting to the headlines. The qualifier on each rung is in small type. Tap a rung for the source.</p>
+  <div class="ladder">
+    <div class="rung" style="--i:0" data-note="NYT and FT reporting, citing people briefed on a classified U.S. assessment. No document has been published.">
+      <span class="w">"recruited" to pass information to Beijing</span><span class="src">The reporting, via officials</span>
+      <span class="hedge">Hedge: officials believe · anonymous · classified</span>
+    </div>
+    <div class="rung" style="--i:1" data-note="New York Times headline, Oct 29, 2026: Nvidia's chief seen as target of Chinese spy plot.">
+      <span class="w">"seen as target of Chinese spy plot"</span><span class="src">New York Times headline</span>
+      <span class="hedge">Hedge: seen as</span>
+    </div>
+    <div class="rung" style="--i:2" data-note="Bloomberg headline: Alice Huang, Suspected China Spy, Spent Years in Nvidia's Orbit.">
+      <span class="w">"suspected China spy"</span><span class="src">Bloomberg headline</span>
+      <span class="hedge">Hedge: suspected</span>
+    </div>
+    <div class="rung" style="--i:3" data-note="Newsweek headline: Who Is Alice Huang? Alleged Chinese spy who had affair with Jensen Huang.">
+      <span class="w">"alleged Chinese spy who had affair with Jensen Huang"</span><span class="src">Newsweek headline</span>
+      <span class="hedge">Hedge: alleged</span>
+    </div>
+    <div class="rung top" style="--i:4" data-note="Daily Beast headline, Nov 8, 2026. Huang admitted an affair; he did not say she was a spy.">
+      <span class="w">"admits to affair with Chinese spy"</span><span class="src">Daily Beast headline</span>
+      <span class="hedge"><span class="stamp">No qualifier</span></span>
+    </div>
+  </div>
+  <figcaption>Headlines as published. The Daily Beast headline is quoted from "admits" onward; the full headline adds a political label. No new evidence was reported between the first rung and the last.</figcaption>
+  <div class="ticker"><span>Source: the outlets named (<a href="#r2">refs 2</a>, <a href="#r3">3</a>, <a href="#r4">4</a>, <a href="#r5">5</a>)</span>
+    <span class="asof">As of Nov 10, 2026 · <a href="#fig-1">¶ fig 1</a></span></div>
+</figure>
+</div>
+
+<main class="col">
+<p>I don't know whether she is a spy. Two weeks into the story, I can't find anyone writing about her who knows either, including the reporters who broke it. What I can find is a near-consensus that she is one. Whether you follow this story for what it says about China or for what it did to Nvidia's stock, I'd ask you to sit with that gap for a minute. How it hardened into fact says something about how intelligence now moves through Washington and Wall Street, and about who pays when it moves too fast.</p>
+
+<p>Jensen Huang has admitted the relationship. In a memo to Nvidia staff on November 8 he disclosed that he had been intimate with her, and Nvidia's board has opened an independent investigation.<sup class="fn"><a href="#r6">6</a></sup> Everything beyond that comes from people describing classified material to the New York Times and the Financial Times. They say U.S. agencies surveilled Alice Huang for more than a year and concluded she was passing information to Beijing. (She stepped down as a director of the Singapore data-center company Megaspeed in late 2023 but, by several accounts, kept helping to run it.)<sup class="fn"><a href="#r7">7</a></sup> They say a memo prepared under Secretary of State Marco Rubio, and circulated to senior officials this spring, said China's Ministry of State Security had recruited her.<sup class="fn"><a href="#r6">6</a></sup> The Times itself says it doesn't know which agency ran the surveillance, what started it, or what (if anything) she sent.<sup class="fn"><a href="#r1">1</a></sup></p>
+
+<p>Walter Lippmann gave newspaper readers a test a century ago that still works: "Who actually saw, heard, felt, counted, named the thing, about which you have an opinion?"<sup class="fn"><a href="#r8">8</a></sup> Here the answer is an unnamed analyst whose work we can't see, described by unnamed officials whose motives we don't know.</p>
+
+<h2>Who is saying it</h2>
+<p>The word "spy" comes from anonymous officials and from politicians who repeat it without vouching for it. Trump says Huang told him he had "absolutely no idea that the person in question was a spy," a sentence that assumes its own conclusion.<sup class="fn"><a href="#r9">9</a></sup> The institutions that would have to prove it, the FBI, the Justice Department and the intelligence agencies, have said nothing on the record, and the CIA and White House declined to comment on the memo. Taiwan, which the Wall Street Journal says put her under physical surveillance, hasn't said a word.<sup class="fn"><a href="#r9">9</a></sup> Singapore went further and denied, on the record, that its officials told the Journal anything about her intelligence ties or ever investigated them.<sup class="fn"><a href="#r10">10</a></sup> Alice Huang herself hasn't been reached.</p>
+
+<p>To be fair, this is how these cases usually go. Counterintelligence rarely produces public proof, because the evidence is the secret. What it usually produces is a response. When the FBI concluded that a suspected Chinese operative named Christine Fang was cultivating Representative Eric Swalwell, it warned him, and he cut her off.<sup class="fn"><a href="#r11">11</a></sup> When MI5 decided in 2022 that the lawyer Christine Lee was working for Beijing, it issued a warning to Parliament that named her, and a tribunal later upheld it.<sup class="fn"><a href="#r12">12</a></sup> Here the government reportedly briefed the President about a year ago, then gave Jensen Huang no warning, approved H200 sales to China with a 25% cut for the government, and left Megaspeed off every restricted list.<sup class="fn"><a href="#r13">13</a></sup> Either officials were protecting a live operation, or other priorities came first, or the assessment was weaker than the leak suggests.</p>
+
+<p>If officials were protecting a live operation, the leak burned the thing they spent a year protecting; the surveillance was still running when the Times published.<sup class="fn"><a href="#r14">14</a></sup> If the assessment was weak, Alice Huang has been convicted in the press with no forum to answer and no evidence to rebut. Either way, someone decided a classified assessment was worth more as ammunition in a policy fight than as counterintelligence. And each time an assessment gets laundered into fact and later quietly fails to hold up, the next warning (the real one) buys less.</p>
+
+<h2>Three claims, one story</h2>
+<p>The story feels proven because three claims of very different quality are traveling together. The affair is admitted. The export case is real but unresolved. The Commerce Department's export-control bureau has been looking at Megaspeed since September 2024, and Singapore police are investigating the company, over whether Nvidia chips leaked into China.<sup class="fn"><a href="#r15">15</a></sup> In late 2025 the Justice Department asked Commerce to pause its part of the probe.<sup class="fn"><a href="#r16">16</a></sup> No charges have been filed, Megaspeed isn't on any restricted list, and Malaysia says it has seen no clear evidence of violations. Some of what sounds sinister, like Megaspeed renting Nvidia capacity to Alibaba at Southeast Asian sites, may be legal; as far as I know, U.S. rules restrict shipping the chips to China, not renting compute on chips that stay abroad.<sup class="fn"><a href="#r17">17</a></sup> The espionage claim is the weakest of the three and the only one nobody can test. Stacked, each borrows credibility from the others. The admitted affair makes the unseen memo feel confirmed, and the memo makes an open export probe feel like a solved case.</p>
+
+<p>The one test we can see came out the other way. The FT's sources say part of her brief was to push Huang toward looser export rules.<sup class="fn"><a href="#r18">18</a></sup> In June 2025, about a month after the two were photographed together in Taipei, Nvidia banned all sales and shipments to Megaspeed, the company she reportedly still helped run, and the ban still stands.<sup class="fn"><a href="#r9">9</a></sup> Whoever made that call, the relationship didn't bend Nvidia's compliance decisions. That says nothing about whether she passed along what she heard, and it does sit awkwardly with Nvidia's line that her contact with Huang was routine. (Companies don't usually ban their routine customers.)</p>
+
+<p>The case for believing it deserves a fair statement. Agencies don't keep surveillance running for more than a year on a hunch, and this intelligence reached the President and the Secretary of State. China's Ministry of State Security does run operations like this. And Jensen Huang, by his own account, kept quiet about a relationship with a woman tied to a customer buying billions of dollars of his chips. A counterintelligence officer would call that a vulnerability whether or not anyone used it. Bloomberg also reports that in August 2025 Nvidia's general counsel went straight to the head of Commerce's export bureau, asking about the probe and whether the bureau had a hand in Singapore holding Alice Huang for questioning in its Megaspeed inquiry, and that staff found the approach unusual enough to raise concerns.<sup class="fn"><a href="#r16">16</a></sup> I think all of that is right. None of it shows she was a spy.</p>
+
+<p>In 1837 Lord Palmerston recalled David Urquhart, a British diplomat who had tried to provoke a war with Russia by running guns to Circassian rebels. Urquhart spent the next two decades insisting Palmerston was in Russia's pay, and he recruited Karl Marx to the cause.<sup class="fn"><a href="#r19">19</a></sup> When Britain did go to war with Russia, with Palmerston as prime minister for its second half, Urquhart called the war a sham.<sup class="fn"><a href="#r20">20</a></sup> A charge like that can't be disproved, because every fact against it becomes part of the cover. Nvidia's ban on Megaspeed is that kind of fact.</p>
+
+<p>Only after the leak did Trump say the FBI is looking into it, and he says he doesn't recall the memo.<sup class="fn"><a href="#r16">16</a></sup> An administration that sat on the assessment for a year is an unlikely leaker. (My pet theory is that it came from people inside the government who lost the export argument and found a better weapon than a policy memo. I hold that loosely, since nothing public says who leaked.)</p>
+
+<h2>The price of an untested claim</h2>
+<p>Investors didn't wait for proof either. Nvidia's shares fell 4.3% on November 9, the first trading day after Huang's staff memo and the board's announcement. That was about $190 billion of market value in one session,<sup class="fn"><a href="#r21">21</a></sup> on a day its chip peers rose with the market. A shareholder class action was filed in San Jose about five minutes after the close. Its theory is that Nvidia should have disclosed the relationship, and it doesn't need Alice Huang to be a spy. (The stock was already down about 21% over the past month in a wider AI selloff, so only that one day clearly belongs to this story.)<sup class="fn"><a href="#r22">22</a></sup> Analysts are pricing key-person risk. Huang has run the company since 1993 with no named successor, and his standing in Washington is now discounted whatever the board finds. None of that reverses if the memo turns out to be wrong. A leaked assessment that moves a $4.5 trillion company is a stronger weapon than one that only moves a news cycle, and an allegation nobody can test still has a price.</p>
+
+<p>The stakes are bigger than one CEO. Export controls on AI chips are the most important chokepoint the U.S. holds over China. Serious people disagree about how tight they should be, and that argument should turn on evidence about chips and licenses. If it turns on a scandal instead, policy will swing toward whoever controls the next leak.</p>
+
+<p>On November 18, three House committees want Huang in a closed room to explain himself.<sup class="fn"><a href="#r23">23</a></sup> That briefing will be classified too, and a courtroom may never settle the question either. The U.S. law against acting as an unregistered agent of a foreign government covers conduct inside the United States, and collecting what a CEO says over dinner isn't a crime unless it's classified or a trade secret. The Espionage Act does reach foreigners abroad, and an export case is possible, but either one would need her in an American court, and she was last reported to be in China, which doesn't extradite its citizens.<sup class="fn"><a href="#r24">24</a></sup> My base case is that we learn nothing more from it, that no charges are filed against Alice Huang in the next year (I'd put that at 80/20), and that she is described as a Chinese spy in every story about Nvidia for the rest of the decade.</p>
+
+<p>Is Alice Huang a Chinese spy? Maybe. Ask whoever marked her.</p>
+
+<aside class="signup" id="subscribe" aria-labelledby="subscribe-h">
+  <span class="eyebrow">Marked to Market · by email</span>
+  <h2 id="subscribe-h">New essays, when they're ready</h2>
+  <p>No schedule and no filler. Each piece arrives in your inbox the day it's published.</p>
+  <form action="https://app.kit.com/forms/10155433/subscriptions" method="post">
+    <label for="subscribe-email" class="sr-only">Email address</label>
+    <input id="subscribe-email" type="email" name="email_address" placeholder="you@example.com" autocomplete="email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <small>You'll get one email to confirm. Unsubscribe anytime.</small>
+</aside>
+
+<section class="refs" id="refs">
+<h2>Sources</h2>
+<p class="note" style="border:0;margin-top:0;padding-top:0">Most of what is known about the U.S. assessment comes from people describing classified material to reporters. Where a source relays another outlet's reporting, both are named.</p>
+<ol>
+<li id="r1">Agenzia Nova, <a href="https://www.agenzianova.com/en/news/new-york-times-una-confidente-del-capo-di-nvidia-al-servizio-dellintelligence-cinese/">summary of the New York Times report</a>, Oct 2026, including what the Times says it does not know.</li>
+<li id="r2">New York Times headline as relayed by Ground News, <a href="https://ground.news/article/nvidia-chief-seen-as-target-of-chinese-spy-plot">Nvidia chief seen as target of Chinese spy plot</a>, Oct 29, 2026.</li>
+<li id="r3">Bloomberg via Yahoo Finance, <a href="https://finance.yahoo.com/technology/articles/alice-huang-suspected-china-spy-101526066.html">Alice Huang, suspected China spy, spent years in Nvidia's orbit</a>, Nov 2026.</li>
+<li id="r4">Newsweek, <a href="https://www.newsweek.com/alice-huang-alleged-chinese-spy-affair-jensen-huang-12685860">Who is Alice Huang?</a>, Nov 2026.</li>
+<li id="r5">The Daily Beast, <a href="https://www.thedailybeast.com/donald-trumps-favorite-tech-lord-jensen-huang-of-nvidia-admits-to-affair-with-chinese-spy">headline on Huang's admission</a>, Nov 8, 2026.</li>
+<li id="r6">CNBC, <a href="https://www.cnbc.com/2026/11/08/jensen-huang-nvidia-china-spy-congress.html">Huang faces bipartisan congressional scrutiny</a>, Nov 8, 2026: the staff memo, the board investigation, and Rubio's role in the memo.</li>
+<li id="r7">Yahoo News, <a href="https://www.yahoo.com/news/us/articles/alice-huang-megaspeed-executive-center-061818512.html">Megaspeed filings</a> (director from March to November 2023); SBS, <a href="https://news.sbs.co.kr/english/article.do?news_id=N1008839824">reports she stayed involved in management, and her whereabouts</a>, Nov 2026.</li>
+<li id="r8">Walter Lippmann, <i>Public Opinion</i> (1922), ch. 2, <a href="https://www.gutenberg.org/ebooks/6456">Project Gutenberg text</a>.</li>
+<li id="r9">Wall Street Journal via To Vima, <a href="https://www.tovima.com/wsj/how-jensen-huangs-affair-spiraled-into-a-national-security-nightmare">How Jensen Huang's affair spiraled into a national security nightmare</a>, Nov 2026: Trump's remarks, CIA and White House declining comment, the Taiwan surveillance claim, Nvidia's June 2025 ban on Megaspeed.</li>
+<li id="r10">Singapore Ministry of Home Affairs and Police Force, <a href="https://www.police.gov.sg/media-hub/news/2026/10/20261030_clarification_statement_on_wall_street_journals_article">clarification on the Wall Street Journal's article</a>, Oct 30, 2026.</li>
+<li id="r11">Axios, <a href="https://www.axios.com/2020/12/09/eric-swalwell-china-spy-investigation-california">Swalwell on the FBI's warning about Christine Fang</a>, Dec 9, 2020.</li>
+<li id="r12">Investigatory Powers Tribunal, <a href="https://investigatorypowerstribunal.org.uk/wp-content/uploads/2024/12/Lee-and-Wilkes-v-Security-Service-Press-Summary-IPT-17-December-2024.pdf">Lee and Wilkes v Security Service, press summary</a>, Dec 17, 2024.</li>
+<li id="r13">IBTimes, <a href="https://www.ibtimes.co.uk/us-intelligence-jensen-huang-alleged-chinese-asset-1828917">Trump briefed on alleged Chinese operation</a>, Nov 2026, on the briefing and the December 2025 H200 decision; TweakTown, <a href="https://www.tweaktown.com/news/114387/nvidia-pushes-back-against-report-linking-ceo-jensen-huang-to-suspected-chinese-intelligence-asset/index.html">no defensive briefing</a>.</li>
+<li id="r14">TweakTown, <a href="https://www.tweaktown.com/news/114387/nvidia-pushes-back-against-report-linking-ceo-jensen-huang-to-suspected-chinese-intelligence-asset/index.html">surveillance ongoing at the time of the Times report</a>, Oct 2026.</li>
+<li id="r15">Wikipedia, <a href="https://en.wikipedia.org/wiki/Nvidia_alleged_spying_scandal">Nvidia alleged spying scandal</a> (Commerce inquiry since September 2024); <a href="https://www.mexc.com/news/125729">Singapore police probe of Megaspeed</a>, via CNBC.</li>
+<li id="r16">Bloomberg via Tom's Hardware, <a href="https://www.tomshardware.com/tech-industry/policy/president-trump-says-the-fbi-is-investigating-jensen-huangs-affair-nvidia-also-accused-of-intervening-in-megaspeed-chip-smuggling-investigation">Trump on the FBI; Nvidia's general counsel and Commerce; the Justice Department's pause</a>, Nov 10, 2026.</li>
+<li id="r17">Cryptopolitan via MEXC, <a href="https://www.mexc.com/news/327999">Megaspeed's imports, Alibaba leasing and Malaysia's statement</a>.</li>
+<li id="r18">Financial Times, as reported by OfficeChai, <a href="https://officechai.com/ai/jensen-huang-had-a-romantic-relationship-with-alleged-chinese-spy-alice-huang-ft-reports/">the memo and her reported brief</a>, Nov 7, 2026.</li>
+<li id="r19">Orlando Figes, <i>Crimea: The Last Crusade</i> (2010); Wikipedia, <a href="https://en.wikipedia.org/wiki/David_Urquhart">David Urquhart</a>.</li>
+<li id="r20">Francis Wheen, <i>Karl Marx</i> (1999), <a href="https://www.marxists.org/archive/marx/bio/marx/wheen/ch07.htm">ch. 7</a>.</li>
+<li id="r21">IBTimes, <a href="https://www.ibtimes.co.uk/nvidia-shareholders-lawsuit-jensen-huang-allegations-1831298">Nvidia loses $190B as shareholders sue</a>, Nov 10, 2026.</li>
+<li id="r22">Yahoo Finance, <a href="https://finance.yahoo.com/technology/live/nvidia-scandal-live-updates-nvidia-stock--board-investigates-ceo-jensen-huang-affair-alleged-chinese-spy-163130372.html">live updates, Nov 9, 2026</a>: peers, the monthly decline, succession and analysts.</li>
+<li id="r23">Pasquale Pillitteri, <a href="https://pasqualepillitteri.it/en/news/30728/congress-asks-jensen-huang-alleged-chinese-spy-alice-huang">timeline of the memo and the House briefing request</a>, Nov 2026.</li>
+<li id="r24">18 U.S.C. § 951, <a href="https://uscode.house.gov/us/usc/119-121/t18/s951/">agents of foreign governments</a>; <a href="https://law.justia.com/cases/federal/district-courts/FSupp/601/196/1734505/">United States v. Zehe</a>, 601 F. Supp. 196 (D. Mass. 1985), applying the Espionage Act to a foreign national abroad. I am not a lawyer.</li>
+</ol>
+</section>
+<p class="note">Written by Vikas Erraballi. Every claim was checked against the source listed; <a href="../how-i-built-a-writing-system/">how these pieces are made</a>. This piece will be updated if any agency puts its name to the assessment, or if anyone is charged.</p>
+</main>
+
+<script src="../assets/mtm.js" defer></script>
+</body>
+</html>
